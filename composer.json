@@ -11,6 +11,13 @@
     "require-dev": {
         "api-clients/test-utilities": "^4.2"
     },
+    "extra": {
+        "reactive-apps": {
+            "command": {
+                "ReactiveApps\\Command\\HttpServer": "src"
+            }
+        }
+    },
     "config": {
         "sort-packages": true,
         "platform": {
