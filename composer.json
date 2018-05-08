@@ -1,4 +1,6 @@
 {
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "name": "reactive-apps/command-http-server",
     "require": {
         "php": "^7.0",
@@ -6,10 +8,12 @@
         "nikic/fast-route": "^1.2",
         "react/http": "^0.8.0",
         "reactive-apps/command": "dev-master",
-        "wyrihaximus/doctrine-annotation-autoloader": "^1.0"
+        "wyrihaximus/doctrine-annotation-autoloader": "^1.0",
+        "wyrihaximus/react-http-psr-15-middleware-group": "^1.2"
     },
     "require-dev": {
-        "api-clients/test-utilities": "^4.2"
+        "api-clients/test-utilities": "^4.2",
+        "monolog/monolog": "^1.23"
     },
     "extra": {
         "reactive-apps": {
