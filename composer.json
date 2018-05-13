@@ -16,10 +16,19 @@
         "monolog/monolog": "^1.23"
     },
     "extra": {
+        "php-di-definitions": {
+          "di": [
+            "config/di/http-server.php"
+          ]
+        },
         "reactive-apps": {
             "command": {
                 "ReactiveApps\\Command\\HttpServer": "src"
-            }
+            },
+          "required-config": {
+            "http-server.address": "The IP + Port to listen on, for example: 0.0.0.0:8080",
+            "http-server.handler": "Callable that handles the incoming request"
+          }
         }
     },
     "config": {

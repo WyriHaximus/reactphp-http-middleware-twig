@@ -4,7 +4,6 @@ namespace ReactiveApps\Command\HttpServer;
 
 use Psr\Log\LoggerInterface;
 use React\EventLoop\LoopInterface;
-use React\Http\Response;
 use React\Http\Server as ReactHttpServer;
 use React\Socket\Server as SocketServer;
 use ReactiveApps\Command\Command;
@@ -25,24 +24,36 @@ final class HttpServer implements Command
     private $logger;
 
     /**
+     * @var string
+     */
+    private $address;
+
+    /**
+     * @var callable
+     */
+    private $handler;
+
+    /**
      * @param LoopInterface $loop
      * @param LoggerInterface $logger
+     * @param string $address
+     * @param callable $handler
      */
-    public function __construct(LoopInterface $loop, LoggerInterface $logger)
+    public function __construct(LoopInterface $loop, LoggerInterface $logger, string $address, callable $handler)
     {
         $this->loop = $loop;
         $this->logger = $logger;
+        $this->address = $address;
+        $this->handler = $handler;
     }
 
     public function __invoke()
     {
-        $socket = new SocketServer('0.0.0.0:8888', $this->loop);
-        $httpServer = new ReactHttpServer([
-            Factory::create($this->loop, $this->logger),
-            function () {
-                return new Response(200, [], 'Hello World');
-            }
-        ]);
+        $socket = new SocketServer($this->address, $this->loop);
+        $middleware = [];
+        $middleware[] = Factory::create($this->loop, $this->logger);
+        $middleware[] = $this->handler;
+        $httpServer = new ReactHttpServer($middleware);
         $httpServer->listen($socket);
     }
 }
