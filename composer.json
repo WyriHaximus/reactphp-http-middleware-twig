@@ -9,6 +9,8 @@
         "react/http": "^0.8.0",
         "reactive-apps/command": "dev-master",
         "wyrihaximus/doctrine-annotation-autoloader": "^1.0",
+        "wyrihaximus/psr-3-callable-throwable-logger": "^1.0",
+        "wyrihaximus/psr-3-context-logger": "^1.0",
         "wyrihaximus/react-http-middleware-webroot-preload": "^1.0",
         "wyrihaximus/react-http-psr-15-middleware-group": "^1.2"
     },

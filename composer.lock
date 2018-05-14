@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "88ab6e00c1ffdb39f508f9b9a1b3b5db",
+    "content-hash": "1b874ab98bce14bbf75c4a93ecdbb42a",
     "packages": [
         {
             "name": "cedricziel/stupidmime",
@@ -2351,6 +2351,96 @@
             ],
             "description": "Request middleware",
             "time": "2017-06-19T15:02:15+00:00"
+        },
+        {
+            "name": "wyrihaximus/psr-3-callable-throwable-logger",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/WyriHaximus/php-psr-3-callable-throwable-logger.git",
+                "reference": "78cb940b11cd8ccce64e7bb3c731fbd340c705d1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/WyriHaximus/php-psr-3-callable-throwable-logger/zipball/78cb940b11cd8ccce64e7bb3c731fbd340c705d1",
+                "reference": "78cb940b11cd8ccce64e7bb3c731fbd340c705d1",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.0",
+                "psr/log": "^1.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.3",
+                "jakub-onderka/php-console-highlighter": "^0.3.2",
+                "jakub-onderka/php-parallel-lint": "^0.9.2",
+                "phake/phake": "^2.3",
+                "phpunit/phpunit": "^6.0",
+                "wyrihaximus/psr-3-utilities": "^1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "WyriHaximus\\PSR3\\CallableThrowableLogger\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Cees-Jan Kiewiet",
+                    "email": "ceesjank@gmail.com"
+                }
+            ],
+            "description": "callable throwable decorator around a PSR-3 logger (to be used with react/promise and reactivex/rxphp)",
+            "time": "2018-05-07T18:12:24+00:00"
+        },
+        {
+            "name": "wyrihaximus/psr-3-context-logger",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/WyriHaximus/php-psr-3-context-logger.git",
+                "reference": "c84bf1c14eee63037c1799b2d234a0ecc7a7512a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/WyriHaximus/php-psr-3-context-logger/zipball/c84bf1c14eee63037c1799b2d234a0ecc7a7512a",
+                "reference": "c84bf1c14eee63037c1799b2d234a0ecc7a7512a",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.0",
+                "psr/log": "^1.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.3",
+                "jakub-onderka/php-console-highlighter": "^0.3.2",
+                "jakub-onderka/php-parallel-lint": "^0.9.2",
+                "phake/phake": "^2.3",
+                "phpunit/phpunit": "^5.0",
+                "wyrihaximus/psr-3-utilities": "^1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "WyriHaximus\\PSR3\\ContextLogger\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Cees-Jan Kiewiet",
+                    "email": "ceesjank@gmail.com"
+                }
+            ],
+            "description": "PSR-3 context logger decorator",
+            "time": "2018-05-06T20:31:49+00:00"
         },
         {
             "name": "wyrihaximus/react-http-middleware-webroot-preload",
