@@ -59,7 +59,6 @@ final class HttpServer implements Command
 
     public function __invoke()
     {
-        $socket = new SocketServer($this->address, $this->loop);
         $middleware = [];
         $middleware[] = Factory::create($this->loop, $this->logger);
         if ($this->public !== null && file_exists($this->public) && is_dir($this->public)) {
@@ -69,8 +68,10 @@ final class HttpServer implements Command
             );
         }
         $middleware[] = $this->handler;
+
         $httpServer = new ReactHttpServer($middleware);
         $httpServer->on('error', CallableThrowableLogger::create($this->logger));
-        $httpServer->listen($socket);
+
+        $httpServer->listen(new SocketServer($this->address, $this->loop));
     }
 }
