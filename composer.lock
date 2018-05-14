@@ -4,8 +4,41 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "11cdae564a6ef342177f7c750438055e",
+    "content-hash": "88ab6e00c1ffdb39f508f9b9a1b3b5db",
     "packages": [
+        {
+            "name": "cedricziel/stupidmime",
+            "version": "0.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cedricziel/stupidmime.git",
+                "reference": "09e36cac34dc180b23f738a6d382cd6231c1c903"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cedricziel/stupidmime/zipball/09e36cac34dc180b23f738a6d382cd6231c1c903",
+                "reference": "09e36cac34dc180b23f738a6d382cd6231c1c903",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/mime_type_lib.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Cedric Ziel",
+                    "email": "cedric@cedric-ziel.com"
+                }
+            ],
+            "description": "Stupid mime detection.",
+            "time": "2015-12-10T10:28:26+00:00"
+        },
         {
             "name": "doctrine/annotations",
             "version": "v1.4.0",
@@ -2243,6 +2276,47 @@
             "time": "2018-01-15T21:00:49+00:00"
         },
         {
+            "name": "scriptfusion/byte-formatter",
+            "version": "3.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ScriptFUSION/ByteFormatter.git",
+                "reference": "edc3b7f02b00b460e8139dc019b284e42948612e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ScriptFUSION/ByteFormatter/zipball/edc3b7f02b00b460e8139dc019b284e42948612e",
+                "reference": "edc3b7f02b00b460e8139dc019b284e42948612e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5"
+            },
+            "require-dev": {
+                "mockery/mockery": "^0",
+                "phpunit/phpunit": "^4",
+                "squizlabs/php_codesniffer": "^2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ScriptFUSION\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Bilge",
+                    "email": "bilge@scriptfusion.com"
+                }
+            ],
+            "description": "Formats byte values as human-readable strings.",
+            "time": "2016-01-03T23:54:33+00:00"
+        },
+        {
             "name": "wyrihaximus/doctrine-annotation-autoloader",
             "version": "1.0.0",
             "source": {
@@ -2277,6 +2351,52 @@
             ],
             "description": "Request middleware",
             "time": "2017-06-19T15:02:15+00:00"
+        },
+        {
+            "name": "wyrihaximus/react-http-middleware-webroot-preload",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/WyriHaximus/reactphp-http-middleware-webroot-preload.git",
+                "reference": "3bb6d1ea9ab256ab990ff986233db98705451350"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/WyriHaximus/reactphp-http-middleware-webroot-preload/zipball/3bb6d1ea9ab256ab990ff986233db98705451350",
+                "reference": "3bb6d1ea9ab256ab990ff986233db98705451350",
+                "shasum": ""
+            },
+            "require": {
+                "cedricziel/stupidmime": "^0.0.2",
+                "php": "^7.0",
+                "psr/http-message": "^1.0",
+                "psr/log": "^1.0",
+                "react/http": "^0.8.0",
+                "scriptfusion/byte-formatter": "^3.2"
+            },
+            "require-dev": {
+                "api-clients/test-utilities": "^4.2",
+                "psr/log": "^1.0",
+                "ringcentral/psr7": "^1.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "WyriHaximus\\React\\Http\\Middleware\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Cees-Jan Kiewiet",
+                    "email": "ceesjank@gmail.com"
+                }
+            ],
+            "description": "react/http middleware static webroot serving",
+            "time": "2017-12-13T16:24:04+00:00"
         },
         {
             "name": "wyrihaximus/react-http-psr-15-middleware-group",

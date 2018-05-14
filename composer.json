@@ -9,6 +9,7 @@
         "react/http": "^0.8.0",
         "reactive-apps/command": "dev-master",
         "wyrihaximus/doctrine-annotation-autoloader": "^1.0",
+        "wyrihaximus/react-http-middleware-webroot-preload": "^1.0",
         "wyrihaximus/react-http-psr-15-middleware-group": "^1.2"
     },
     "require-dev": {
