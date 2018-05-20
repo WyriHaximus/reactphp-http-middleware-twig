@@ -7,6 +7,7 @@ use React\EventLoop\LoopInterface;
 use React\Http\Server as ReactHttpServer;
 use React\Socket\Server as SocketServer;
 use ReactiveApps\Command\Command;
+use ReactiveApps\Rx\Shutdown;
 use WyriHaximus\PSR3\CallableThrowableLogger\CallableThrowableLogger;
 use WyriHaximus\PSR3\ContextLogger\ContextLogger;
 use WyriHaximus\React\Http\Middleware\WebrootPreloadMiddleware;
@@ -27,6 +28,11 @@ final class HttpServer implements Command
     private $logger;
 
     /**
+     * @var Shutdown
+     */
+    private $shutdown;
+
+    /**
      * @var string
      */
     private $address;
@@ -44,14 +50,16 @@ final class HttpServer implements Command
     /**
      * @param LoopInterface $loop
      * @param LoggerInterface $logger
+     * @param Shutdown $shutdown
      * @param string $address
      * @param callable $handler
      * @param string $public
      */
-    public function __construct(LoopInterface $loop, LoggerInterface $logger, string $address, callable $handler, string $public = null)
+    public function __construct(LoopInterface $loop, LoggerInterface $logger, Shutdown $shutdown, string $address, callable $handler, string $public = null)
     {
         $this->loop = $loop;
         $this->logger = new ContextLogger($logger, ['section' => 'http-server'], 'http-server');
+        $this->shutdown = $shutdown;
         $this->address = $address;
         $this->handler = $handler;
         $this->public = $public;
@@ -72,6 +80,12 @@ final class HttpServer implements Command
         $httpServer = new ReactHttpServer($middleware);
         $httpServer->on('error', CallableThrowableLogger::create($this->logger));
 
-        $httpServer->listen(new SocketServer($this->address, $this->loop));
+        $socket = new SocketServer($this->address, $this->loop);
+        $httpServer->listen($socket);
+
+        // Stop listening and let current requests complete on shutdown
+        $this->shutdown->subscribe(null, null, function () use ($socket) {
+            $socket->close();
+        });
     }
 }

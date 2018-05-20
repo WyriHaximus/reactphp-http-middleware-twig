@@ -3,11 +3,12 @@
     "prefer-stable": true,
     "name": "reactive-apps/command-http-server",
     "require": {
-        "php": "^7.0",
+        "php": "^7.2",
         "doctrine/annotations": "^1.4",
         "nikic/fast-route": "^1.2",
         "react/http": "^0.8.0",
         "reactive-apps/command": "dev-master",
+        "reactive-apps/rx-streams": "dev-master",
         "wyrihaximus/doctrine-annotation-autoloader": "^1.0",
         "wyrihaximus/psr-3-callable-throwable-logger": "^1.0",
         "wyrihaximus/psr-3-context-logger": "^1.0",
@@ -37,7 +38,7 @@
     "config": {
         "sort-packages": true,
         "platform": {
-            "php": "7.0"
+            "php": "7.2"
         }
     },
     "autoload": {
