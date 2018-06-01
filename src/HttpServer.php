@@ -10,8 +10,6 @@ use ReactiveApps\Command\Command;
 use ReactiveApps\Rx\Shutdown;
 use WyriHaximus\PSR3\CallableThrowableLogger\CallableThrowableLogger;
 use WyriHaximus\PSR3\ContextLogger\ContextLogger;
-use WyriHaximus\React\Http\Middleware\WebrootPreloadMiddleware;
-use WyriHaximus\React\Http\PSR15MiddlewareGroup\Factory;
 
 final class HttpServer implements Command
 {
@@ -38,46 +36,29 @@ final class HttpServer implements Command
     private $address;
 
     /**
-     * @var callable
+     * @var array
      */
-    private $handler;
-
-    /**
-     * @var string
-     */
-    private $public;
+    private $middleware;
 
     /**
      * @param LoopInterface $loop
      * @param LoggerInterface $logger
      * @param Shutdown $shutdown
      * @param string $address
-     * @param callable $handler
-     * @param string $public
+     * @param array $middleware
      */
-    public function __construct(LoopInterface $loop, LoggerInterface $logger, Shutdown $shutdown, string $address, callable $handler, string $public = null)
+    public function __construct(LoopInterface $loop, LoggerInterface $logger, Shutdown $shutdown, string $address, array $middleware)
     {
         $this->loop = $loop;
         $this->logger = new ContextLogger($logger, ['section' => 'http-server'], 'http-server');
         $this->shutdown = $shutdown;
         $this->address = $address;
-        $this->handler = $handler;
-        $this->public = $public;
+        $this->middleware = $middleware;
     }
 
     public function __invoke()
     {
-        $middleware = [];
-        $middleware[] = Factory::create($this->loop, $this->logger);
-        if ($this->public !== null && file_exists($this->public) && is_dir($this->public)) {
-            $middleware[] = new WebrootPreloadMiddleware(
-                $this->public,
-                new ContextLogger($this->logger, ['section' => 'webroot'], 'webroot')
-            );
-        }
-        $middleware[] = $this->handler;
-
-        $httpServer = new ReactHttpServer($middleware);
+        $httpServer = new ReactHttpServer($this->middleware);
         $httpServer->on('error', CallableThrowableLogger::create($this->logger));
 
         $socket = new SocketServer($this->address, $this->loop);
