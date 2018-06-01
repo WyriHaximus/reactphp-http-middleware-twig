@@ -67,6 +67,7 @@ final class HttpServer implements Command
         // Stop listening and let current requests complete on shutdown
         $this->shutdown->subscribe(null, null, function () use ($socket) {
             $socket->close();
+            $this->logger->debug('Closed listening socket for new incoming requests');
         });
     }
 }
