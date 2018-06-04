@@ -4,7 +4,7 @@
     "name": "reactive-apps/command-http-server",
     "require": {
         "php": "^7.2",
-        "doctrine/annotations": "^1.4",
+        "doctrine/annotations": "^1.6",
         "nikic/fast-route": "^1.2",
         "react/http": "^0.8.0",
         "reactive-apps/command": "dev-master",
