@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace ReactiveApps\Command\HttpServer;
+namespace ReactiveApps\Command\HttpServer\Command;
 
 use Psr\Log\LoggerInterface;
 use React\EventLoop\LoopInterface;

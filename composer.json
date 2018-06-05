@@ -30,7 +30,7 @@
         },
         "reactive-apps": {
             "command": {
-                "ReactiveApps\\Command\\HttpServer": "src"
+                "ReactiveApps\\Command\\HttpServer\\Command": "src/Command"
             },
           "required-config": {
             "http-server.address": "The IP + Port to listen on, for example: 0.0.0.0:8080",
