@@ -1,7 +1,9 @@
 <?php
 
+use Psr\Container\ContainerInterface;
 use Psr\Log\LoggerInterface;
 use React\EventLoop\LoopInterface;
+use ReactiveApps\Command\HttpServer\ControllerMiddleware;
 use ReactiveApps\Command\HttpServer\HttpServer;
 use ReactiveApps\Rx\Shutdown;
 use WyriHaximus\PSR3\ContextLogger\ContextLogger;
@@ -13,6 +15,7 @@ return [
         LoopInterface $loop,
         LoggerInterface $logger,
         Shutdown $shutdown,
+        ContainerInterface $container,
         string $address,
         callable $handler,
         array $middlwarePrefix = [],
@@ -29,6 +32,7 @@ return [
             );
         }
         array_push($middleware, ...$middlwareSuffix);
+        $middleware[] = new ControllerMiddleware($container);
         $middleware[] = $handler;
 
         return new HttpServer($loop, $logger, $shutdown, $address, $middleware);
