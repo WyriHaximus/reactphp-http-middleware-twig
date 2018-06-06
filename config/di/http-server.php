@@ -4,7 +4,7 @@ use Psr\Container\ContainerInterface;
 use Psr\Log\LoggerInterface;
 use React\EventLoop\LoopInterface;
 use ReactiveApps\Command\HttpServer\ControllerMiddleware;
-use ReactiveApps\Command\HttpServer\HttpServer;
+use ReactiveApps\Command\HttpServer\Command\HttpServer;
 use ReactiveApps\Rx\Shutdown;
 use WyriHaximus\PSR3\ContextLogger\ContextLogger;
 use WyriHaximus\React\Http\Middleware\WebrootPreloadMiddleware;
