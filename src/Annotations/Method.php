@@ -16,7 +16,7 @@ final class Method
     /**
      * @param string[] $methods
      */
-    public function __construct(string ...$methods)
+    public function __construct(array $methods)
     {
         $this->method = current($methods);
     }

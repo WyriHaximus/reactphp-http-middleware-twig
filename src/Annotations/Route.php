@@ -16,7 +16,7 @@ final class Route
     /**
      * @param string[] $routes
      */
-    public function __construct(string ...$routes)
+    public function __construct(array $routes)
     {
         $this->route = current($routes);
     }
