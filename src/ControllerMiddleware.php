@@ -88,7 +88,7 @@ final class ControllerMiddleware
                 $annotations = (new  Collection($annotationReader->getMethodAnnotations((new \ReflectionClass($class->getName()))->getMethod($method->getShortName()))))
                     ->indexBy(function (object $annotation) {
                         return get_class($annotation);
-                    });
+                    })->toArray();
 
 
                 if (!isset($annotations[Method::class]) || !isset($annotations[Route::class])) {
