@@ -33,10 +33,15 @@
             "command": {
                 "ReactiveApps\\Command\\HttpServer\\Command": "src/Command"
             },
-          "required-config": {
-            "http-server.address": "The IP + Port to listen on, for example: 0.0.0.0:8080",
-            "http-server.handler": "Callable that handles the incoming request"
-          }
+            "required-config": {
+                "http-server.address": "The IP + Port to listen on, for example: 0.0.0.0:8080",
+                "http-server.handler": "Callable that handles the incoming request"
+            },
+            "suggested-config": {
+                "http-server.public": "Public webroot to serve, note only put files in here everyone is allowed to see",
+                "http-server.middleware.prefix": "An array with react/http middleware added before the accesslog and webroot serving middleware",
+                "http-server.middleware.suffix": "An array with react/http middleware added after the accesslog and webroot serving middleware and before the route middleware and request handler"
+            }
         }
     },
     "config": {
