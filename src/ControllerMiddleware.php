@@ -17,6 +17,7 @@ use ReactiveApps\Command\HttpServer\Annotations\Route;
 use Roave\BetterReflection\BetterReflection;
 use Roave\BetterReflection\Reflector\ClassReflector;
 use Roave\BetterReflection\SourceLocator\Type\SingleFileSourceLocator;
+use function WyriHaximus\from_get_in_packages_composer;
 
 final class ControllerMiddleware
 {
@@ -46,34 +47,8 @@ final class ControllerMiddleware
 
     private function routes(): iterable
     {
-        foreach ($this->locations() as $controller) {
+        foreach (from_get_in_packages_composer('extra.reactive-apps.http-controller') as $controller) {
             yield from $this->controllerRoutes($controller);
-        }
-    }
-
-    private function locations(): iterable
-    {
-        /** @var Package $package */
-        foreach (packages(true) as $package) {
-            $config = $package->getConfig('extra');
-
-            if ($config === null) {
-                continue;
-            }
-
-            $controllers = get_in(
-                $config,
-                [
-                    'reactive-apps',
-                    'http-controller',
-                ]
-            );
-
-            if ($controllers === null) {
-                continue;
-            }
-
-            yield from $controllers;
         }
     }
 
