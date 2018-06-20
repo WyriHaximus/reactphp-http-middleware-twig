@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "986b230308379ef3d0a9db8629c9136c",
+    "content-hash": "d7aa525647d374c87221e1a6b8db4c26",
     "packages": [
         {
             "name": "cakephp/collection",
@@ -2917,21 +2917,25 @@
         },
         {
             "name": "wyrihaximus/get-in-packages-composer.jason",
-            "version": "dev-master",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/php-get-in-packages-composer.json.git",
-                "reference": "d82cfc6300a6de69b1c708b8ceec694cf262b841"
+                "reference": "5d42230dcacd8f30c2d5cb3dc9ed0fafb79aaaa8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/php-get-in-packages-composer.json/zipball/d82cfc6300a6de69b1c708b8ceec694cf262b841",
-                "reference": "d82cfc6300a6de69b1c708b8ceec694cf262b841",
+                "url": "https://api.github.com/repos/WyriHaximus/php-get-in-packages-composer.json/zipball/5d42230dcacd8f30c2d5cb3dc9ed0fafb79aaaa8",
+                "reference": "5d42230dcacd8f30c2d5cb3dc9ed0fafb79aaaa8",
                 "shasum": ""
             },
             "require": {
                 "igorw/get-in": "^1.0",
-                "joshdifabio/composed": "^1.0"
+                "joshdifabio/composed": "^1.0",
+                "php": "^7.2"
+            },
+            "require-dev": {
+                "api-clients/test-utilities": "^5.0"
             },
             "type": "library",
             "autoload": {
@@ -2940,7 +2944,18 @@
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2018-06-13T20:28:35+00:00"
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Cees-Jan Kiewiet",
+                    "email": "ceesjank@gmail.com",
+                    "homepage": "http://wyrihaximus.net/"
+                }
+            ],
+            "description": "Functions around joshdifabio/composed and igorw/get-in to gather configuration from composer.json",
+            "time": "2018-06-19T20:43:13+00:00"
         },
         {
             "name": "wyrihaximus/psr-3-callable-throwable-logger",
@@ -6103,8 +6118,7 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "reactive-apps/command": 20,
-        "reactive-apps/rx-streams": 20,
-        "wyrihaximus/get-in-packages-composer.jason": 20
+        "reactive-apps/rx-streams": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

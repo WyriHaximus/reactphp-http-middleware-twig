@@ -3,13 +3,9 @@
 namespace ReactiveApps\Command\HttpServer;
 
 use Cake\Collection\Collection;
-use Composed\Package;
-use function Composed\packages;
 use Doctrine\Common\Annotations\AnnotationReader;
 use FastRoute\Dispatcher;
 use FastRoute\RouteCollector;
-use function FastRoute\simpleDispatcher;
-use function igorw\get_in;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use ReactiveApps\Command\HttpServer\Annotations\Method;
@@ -17,6 +13,7 @@ use ReactiveApps\Command\HttpServer\Annotations\Route;
 use Roave\BetterReflection\BetterReflection;
 use Roave\BetterReflection\Reflector\ClassReflector;
 use Roave\BetterReflection\SourceLocator\Type\SingleFileSourceLocator;
+use function FastRoute\simpleDispatcher;
 use function WyriHaximus\from_get_in_packages_composer;
 
 final class ControllerMiddleware
