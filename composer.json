@@ -19,7 +19,7 @@
         "wyrihaximus/react-http-psr-15-middleware-group": "^1.2"
     },
     "require-dev": {
-        "api-clients/test-utilities": "^4.2",
+        "api-clients/test-utilities": "^5.0",
         "monolog/monolog": "^1.23"
     },
     "extra": {
