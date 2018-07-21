@@ -15,6 +15,8 @@ use Roave\BetterReflection\Reflector\ClassReflector;
 use Roave\BetterReflection\SourceLocator\Type\SingleFileSourceLocator;
 use function FastRoute\simpleDispatcher;
 use function WyriHaximus\from_get_in_packages_composer;
+use function WyriHaximus\toChildProcessOrNotToChildProcess;
+use function WyriHaximus\toCoroutineOrNotToCoroutine;
 
 final class ControllerMiddleware
 {
@@ -29,6 +31,11 @@ final class ControllerMiddleware
     private $router;
 
     /**
+     * @var array
+     */
+    private $annotations = [];
+
+    /**
      * @param ContainerInterface $container
      */
     public function __construct(ContainerInterface $container)
@@ -37,7 +44,8 @@ final class ControllerMiddleware
 
         $this->router = simpleDispatcher(function (RouteCollector $routeCollector) {
             foreach ($this->routes() as $route) {
-                $routeCollector->addRoute(...$route);
+                $routeCollector->addRoute(...$route['route']);
+                $this->annotations[$route['handler']] = $route['annotations'];
             }
         });
     }
@@ -67,10 +75,19 @@ final class ControllerMiddleware
                     continue;
                 }
 
+                $requestHandler = $class->getName() . '::' . $method->getName();
+
                 yield [
-                    $annotations[Method::class]->getMethod(),
-                    $annotations[Route::class]->getRoute(),
-                    $class->getName() . '::' . $method->getName(),
+                    'handler' => $requestHandler,
+                    'route' => [
+                        $annotations[Method::class]->getMethod(),
+                        $annotations[Route::class]->getRoute(),
+                        $requestHandler,
+                    ],
+                    'annotations' => [
+                        'childprocess' => toChildProcessOrNotToChildProcess($requestHandler, $annotationReader),
+                        'coroutine' => toCoroutineOrNotToCoroutine($requestHandler, $annotationReader),
+                    ],
                 ];
             }
         }
@@ -92,7 +109,10 @@ final class ControllerMiddleware
             $request = $request->withAttribute($name, $value);
         }
 
-        $request = $request->withAttribute('request-handler', $route[1]);
+        $request = $request
+            ->withAttribute('request-handler', $route[1])
+            ->withAttribute('request-handler-annotations', $this->annotations[$route[1]])
+        ;
 
         return $next($request);
     }

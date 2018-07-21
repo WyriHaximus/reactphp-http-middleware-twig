@@ -16,7 +16,9 @@
         "wyrihaximus/psr-3-callable-throwable-logger": "^1.0",
         "wyrihaximus/psr-3-context-logger": "^1.0",
         "wyrihaximus/react-http-middleware-webroot-preload": "^1.0",
-        "wyrihaximus/react-http-psr-15-middleware-group": "^1.2"
+        "wyrihaximus/react-http-psr-15-middleware-group": "^1.2",
+        "wyrihaximus/to-child-process-or-not-to-child-process": "dev-master",
+        "wyrihaximus/to-coroutine-or-not-to-coroutine": "dev-master"
     },
     "require-dev": {
         "api-clients/test-utilities": "^5.0",
