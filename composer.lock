@@ -1,14 +1,14 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
     "content-hash": "b7f38c5ba15bdc62312a969f0598bd82",
     "packages": [
         {
             "name": "cakephp/collection",
-            "version": "3.6.7",
+            "version": "3.6.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/collection.git",
@@ -3207,19 +3207,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/php-to-child-process-or-not-to-child-process.git",
-                "reference": "2b60d6b5a8b90e6cb9cecda8b921bf9cfc2dc6f8"
+                "reference": "dbb0531a0e0328fc6b297b7ca7247d19176e1a71"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/php-to-child-process-or-not-to-child-process/zipball/2b60d6b5a8b90e6cb9cecda8b921bf9cfc2dc6f8",
-                "reference": "2b60d6b5a8b90e6cb9cecda8b921bf9cfc2dc6f8",
+                "url": "https://api.github.com/repos/WyriHaximus/php-to-child-process-or-not-to-child-process/zipball/dbb0531a0e0328fc6b297b7ca7247d19176e1a71",
+                "reference": "dbb0531a0e0328fc6b297b7ca7247d19176e1a71",
                 "shasum": ""
             },
             "require": {
-                "cakephp/collection": "^3.6",
-                "doctrine/annotations": "^1.6",
                 "php": "^7.2",
-                "wyrihaximus/doctrine-annotation-autoloader": "^1.0"
+                "wyrihaximus/doctrine-annotation-autoloader": "^1.0",
+                "wyrihaximus/to-x-or-not-to-x": "dev-master"
             },
             "require-dev": {
                 "api-clients/test-utilities": "^5.0"
@@ -3257,7 +3256,7 @@
                 }
             ],
             "description": "To child process or not to child process",
-            "time": "2018-06-25T18:59:11+00:00"
+            "time": "2018-07-16T18:22:08+00:00"
         },
         {
             "name": "wyrihaximus/to-coroutine-or-not-to-coroutine",
@@ -3265,12 +3264,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/php-to-coroutine-or-not-to-coroutine.git",
-                "reference": "2b4a48c2bab0a022ebfe2a0366b172860fbf77af"
+                "reference": "0ae56845503468f215aaf40c2e530fc3d1dd67ac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/php-to-coroutine-or-not-to-coroutine/zipball/2b4a48c2bab0a022ebfe2a0366b172860fbf77af",
-                "reference": "2b4a48c2bab0a022ebfe2a0366b172860fbf77af",
+                "url": "https://api.github.com/repos/WyriHaximus/php-to-coroutine-or-not-to-coroutine/zipball/0ae56845503468f215aaf40c2e530fc3d1dd67ac",
+                "reference": "0ae56845503468f215aaf40c2e530fc3d1dd67ac",
                 "shasum": ""
             },
             "require": {
@@ -3314,7 +3313,7 @@
                 }
             ],
             "description": "To coroutine or not to coroutine",
-            "time": "2018-07-17T06:12:28+00:00"
+            "time": "2018-07-21T22:32:14+00:00"
         },
         {
             "name": "wyrihaximus/to-x-or-not-to-x",
