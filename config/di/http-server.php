@@ -5,6 +5,7 @@ use Psr\Log\LoggerInterface;
 use React\EventLoop\LoopInterface;
 use ReactiveApps\Command\HttpServer\ControllerMiddleware;
 use ReactiveApps\Command\HttpServer\Command\HttpServer;
+use ReactiveApps\Command\HttpServer\RequestHandlerMiddleware;
 use ReactiveApps\Rx\Shutdown;
 use WyriHaximus\PSR3\ContextLogger\ContextLogger;
 use WyriHaximus\React\Http\Middleware\WebrootPreloadMiddleware;
@@ -17,7 +18,6 @@ return [
         Shutdown $shutdown,
         ContainerInterface $container,
         string $address,
-        callable $handler,
         array $middlwarePrefix = [],
         array $middlwareSuffix = [],
         string $public = null
@@ -33,12 +33,11 @@ return [
         }
         array_push($middleware, ...$middlwareSuffix);
         $middleware[] = new ControllerMiddleware($container);
-        $middleware[] = $handler;
+        $middleware[] = new RequestHandlerMiddleware($loop);
 
         return new HttpServer($loop, $logger, $shutdown, $address, $middleware);
     })
     ->parameter('address', \DI\get('config.http-server.address'))
-    ->parameter('handler', \DI\get('config.http-server.handler'))
     ->parameter('public', \DI\get('config.http-server.public'))
     ->parameter('middlwarePrefix', \DI\get('config.http-server.middleware.prefix'))
     ->parameter('middlwareSuffix', \DI\get('config.http-server.middleware.suffix')),
