@@ -58,11 +58,14 @@ final class HttpServer implements Command
 
     public function __invoke()
     {
+        $this->logger->debug('Creating HTTP server');
         $httpServer = new ReactHttpServer($this->middleware);
         $httpServer->on('error', CallableThrowableLogger::create($this->logger));
 
+        $this->logger->debug('Creating HTTP server socket');
         $socket = new SocketServer($this->address, $this->loop);
         $httpServer->listen($socket);
+        $this->logger->debug('Listening for incoming requests');
 
         // Stop listening and let current requests complete on shutdown
         $this->shutdown->subscribe(null, null, function () use ($socket) {
