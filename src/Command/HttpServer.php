@@ -50,7 +50,7 @@ final class HttpServer implements Command
     public function __construct(LoopInterface $loop, LoggerInterface $logger, Shutdown $shutdown, string $address, array $middleware)
     {
         $this->loop = $loop;
-        $this->logger = new ContextLogger($logger, ['section' => 'http-server'], 'http-server');
+        $this->logger = $logger;
         $this->shutdown = $shutdown;
         $this->address = $address;
         $this->middleware = $middleware;

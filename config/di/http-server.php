@@ -23,6 +23,7 @@ return [
         string $public = null,
         bool $hsts = false
     ) {
+        $logger = new ContextLogger($logger, ['section' => 'http-server'], 'http-server');
         $middleware = [];
         array_push($middleware, ...$middlwarePrefix);
         $middleware[] = Factory::create(
