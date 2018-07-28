@@ -20,11 +20,18 @@ return [
         string $address,
         array $middlwarePrefix = [],
         array $middlwareSuffix = [],
-        string $public = null
+        string $public = null,
+        bool $hsts = false
     ) {
         $middleware = [];
         array_push($middleware, ...$middlwarePrefix);
-        $middleware[] = Factory::create($loop, $logger);
+        $middleware[] = Factory::create(
+            $loop,
+            $logger,
+            [
+                'hsts' => $hsts,
+            ]
+        );
         if ($public !== null && file_exists($public) && is_dir($public)) {
             $middleware[] = new WebrootPreloadMiddleware(
                 $public,
@@ -39,6 +46,7 @@ return [
     })
     ->parameter('address', \DI\get('config.http-server.address'))
     ->parameter('public', \DI\get('config.http-server.public'))
+    ->parameter('hsts', \DI\get('config.http-server.hsts'))
     ->parameter('middlwarePrefix', \DI\get('config.http-server.middleware.prefix'))
     ->parameter('middlwareSuffix', \DI\get('config.http-server.middleware.suffix')),
 ];

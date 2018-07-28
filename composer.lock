@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "51dffc57e67b85c3fa83ca8615e87656",
+    "content-hash": "6e0863c9bfc09685efc9c14dc50e9ffd",
     "packages": [
         {
             "name": "api-clients/rx",
@@ -52,7 +52,7 @@
         },
         {
             "name": "cakephp/collection",
-            "version": "3.6.8",
+            "version": "3.6.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/collection.git",
@@ -98,7 +98,7 @@
         },
         {
             "name": "cakephp/core",
-            "version": "3.6.8",
+            "version": "3.6.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/core.git",
@@ -147,7 +147,7 @@
         },
         {
             "name": "cakephp/utility",
-            "version": "3.6.8",
+            "version": "3.6.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/utility.git",
