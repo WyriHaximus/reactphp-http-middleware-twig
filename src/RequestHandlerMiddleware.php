@@ -82,23 +82,25 @@ final class RequestHandlerMiddleware
     private function runChildProcess(ServerRequestInterface $request): PromiseInterface
     {
         $jsonRequest = psr7_server_request_encode($request);
+        $rpc = MessageFactory::rpc($this->createChildProcessClosure($jsonRequest));
 
-        return $this->pool->then(function (PoolInterface $pool) use ($jsonRequest) {
-            $rpc = MessageFactory::rpc(
-                function () use ($jsonRequest) {
-                    $request = psr7_server_request_decode($jsonRequest);
-                    $requestHandler = $request->getAttribute('request-handler');
-                    $response = $requestHandler($request);
+        return $this->pool->then(function (PoolInterface $pool) use ($rpc) {
+            return $pool->rpc($rpc);
+        })->then(function (Payload $payload) {
+            $response = $payload->getPayload();
 
-                    return psr7_response_encode($response);
-                }
-            );
-
-            return $pool->rpc($rpc)->then(function (Payload $payload) {
-                return $payload->getPayload();
-            });
-        })->then(function ($response) {
             return psr7_response_decode($response);
         });
+    }
+
+    private function createChildProcessClosure(array $jsonRequest): callable
+    {
+        return function () use ($jsonRequest) {
+            $request = psr7_server_request_decode($jsonRequest);
+            $requestHandler = $request->getAttribute('request-handler');
+            $response = $requestHandler($request);
+
+            return psr7_response_encode($response);
+        };
     }
 }
