@@ -72,10 +72,10 @@ final class RequestHandlerMiddleware
 
     private function runCoroutine(ServerRequestInterface $request): PromiseInterface
     {
-        $call = new Call($request->getAttribute('request-handler'), $request);
-        $this->callStream->onNext($call);
-        return new Promise(function ($resolve, $reject) use ($call) {
+        return new Promise(function ($resolve, $reject) use ($request) {
+            $call = new Call($request->getAttribute('request-handler'), $request);
             $call->wait($resolve, $reject);
+            $this->callStream->onNext($call);
         });
     }
 
