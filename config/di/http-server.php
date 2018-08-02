@@ -3,8 +3,9 @@
 use Psr\Container\ContainerInterface;
 use Psr\Log\LoggerInterface;
 use React\EventLoop\LoopInterface;
-use ReactiveApps\Command\HttpServer\ControllerMiddleware;
+use React\Promise\PromiseInterface;
 use ReactiveApps\Command\HttpServer\Command\HttpServer;
+use ReactiveApps\Command\HttpServer\ControllerMiddleware;
 use ReactiveApps\Command\HttpServer\RequestHandlerMiddleware;
 use ReactiveApps\Rx\Shutdown;
 use WyriHaximus\PSR3\ContextLogger\ContextLogger;
@@ -21,7 +22,8 @@ return [
         array $middlwarePrefix = [],
         array $middlwareSuffix = [],
         string $public = null,
-        bool $hsts = false
+        bool $hsts = false,
+        PromiseInterface $pool
     ) {
         $logger = new ContextLogger($logger, ['section' => 'http-server'], 'http-server');
         $middleware = [];
@@ -41,7 +43,7 @@ return [
         }
         array_push($middleware, ...$middlwareSuffix);
         $middleware[] = new ControllerMiddleware($container);
-        $middleware[] = new RequestHandlerMiddleware($loop);
+        $middleware[] = new RequestHandlerMiddleware($loop, $pool);
 
         return new HttpServer($loop, $logger, $shutdown, $address, $middleware);
     })
@@ -49,5 +51,6 @@ return [
     ->parameter('public', \DI\get('config.http-server.public'))
     ->parameter('hsts', \DI\get('config.http-server.hsts'))
     ->parameter('middlwarePrefix', \DI\get('config.http-server.middleware.prefix'))
-    ->parameter('middlwareSuffix', \DI\get('config.http-server.middleware.suffix')),
+    ->parameter('middlwareSuffix', \DI\get('config.http-server.middleware.suffix'))
+    ->parameter('childProcessPool', \DI\get('internal.http-server.child-process.pool')),
 ];

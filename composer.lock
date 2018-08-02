@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "6e0863c9bfc09685efc9c14dc50e9ffd",
+    "content-hash": "13fd7ca42b47d27331737c9d09098b91",
     "packages": [
         {
             "name": "api-clients/rx",
@@ -618,6 +618,7 @@
                 "request",
                 "response"
             ],
+            "abandoned": "psr/http-factory",
             "time": "2018-05-22T16:11:32+00:00"
         },
         {

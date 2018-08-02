@@ -2,38 +2,21 @@
 
 namespace ReactiveApps\Command\HttpServer;
 
-use Cake\Collection\Collection;
-use Doctrine\Common\Annotations\AnnotationReader;
-use FastRoute\Dispatcher;
-use FastRoute\RouteCollector;
-use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use React\EventLoop\LoopInterface;
 use React\Promise\Promise;
 use React\Promise\PromiseInterface;
-use ReactiveApps\Command\HttpServer\Annotations\Method;
-use ReactiveApps\Command\HttpServer\Annotations\Route;
 use Recoil\React\ReactKernel;
-use Roave\BetterReflection\BetterReflection;
-use Roave\BetterReflection\Reflector\ClassReflector;
-use Roave\BetterReflection\SourceLocator\Type\SingleFileSourceLocator;
-use function FastRoute\simpleDispatcher;
 use Rx\Subject\Subject;
-use function WyriHaximus\from_get_in_packages_composer;
+use WyriHaximus\React\ChildProcess\Closure\MessageFactory;
+use WyriHaximus\React\ChildProcess\Messenger\Messages\Payload;
+use WyriHaximus\React\ChildProcess\Pool\PoolInterface;
+use WyriHaximus\Recoil\Call;
+use WyriHaximus\Recoil\QueueCaller;
 use function WyriHaximus\psr7_response_decode;
 use function WyriHaximus\psr7_response_encode;
 use function WyriHaximus\psr7_server_request_decode;
 use function WyriHaximus\psr7_server_request_encode;
-use WyriHaximus\React\ChildProcess\Closure\ClosureChild;
-use WyriHaximus\React\ChildProcess\Closure\MessageFactory;
-use WyriHaximus\React\ChildProcess\Messenger\Messages\Payload;
-use WyriHaximus\React\ChildProcess\Pool\Factory\Flexible;
-use WyriHaximus\React\ChildProcess\Pool\Options;
-use WyriHaximus\React\ChildProcess\Pool\PoolInterface;
-use WyriHaximus\Recoil\Call;
-use WyriHaximus\Recoil\QueueCaller;
-use function WyriHaximus\toChildProcessOrNotToChildProcess;
-use function WyriHaximus\toCoroutineOrNotToCoroutine;
 
 final class RequestHandlerMiddleware
 {
@@ -47,11 +30,11 @@ final class RequestHandlerMiddleware
      */
     private $pool;
 
-    public function __construct(LoopInterface $loop)
+    public function __construct(LoopInterface $loop, PromiseInterface $pool)
     {
         $this->callStream = new Subject();
         (new QueueCaller(ReactKernel::create($loop)))->call($this->callStream);
-        $this->pool = Flexible::createFromClass(ClosureChild::class, $loop, [Options::TTL => 0.25, Options::MIN_SIZE => 0, Options::MAX_SIZE => 5]);
+        $this->pool = $pool;
     }
 
     public function __invoke(ServerRequestInterface $request)
