@@ -19,11 +19,11 @@ return [
         Shutdown $shutdown,
         ContainerInterface $container,
         string $address,
+        PromiseInterface $childProcessPool,
         array $middlwarePrefix = [],
         array $middlwareSuffix = [],
         string $public = null,
-        bool $hsts = false,
-        PromiseInterface $pool
+        bool $hsts = false
     ) {
         $logger = new ContextLogger($logger, ['section' => 'http-server'], 'http-server');
         $middleware = [];
@@ -43,7 +43,7 @@ return [
         }
         array_push($middleware, ...$middlwareSuffix);
         $middleware[] = new ControllerMiddleware($container);
-        $middleware[] = new RequestHandlerMiddleware($loop, $pool);
+        $middleware[] = new RequestHandlerMiddleware($loop, $childProcessPool);
 
         return new HttpServer($loop, $logger, $shutdown, $address, $middleware);
     })
