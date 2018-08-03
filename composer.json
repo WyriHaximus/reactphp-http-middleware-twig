@@ -21,6 +21,7 @@
         "wyrihaximus/react-child-process-pool": "^1.4",
         "wyrihaximus/react-http-middleware-webroot-preload": "^1.0",
         "wyrihaximus/react-http-psr-15-middleware-group": "^1.2",
+        "wyrihaximus/react-inspector-child-process-pools": "dev-master",
         "wyrihaximus/to-child-process-or-not-to-child-process": "dev-master",
         "wyrihaximus/to-coroutine-or-not-to-coroutine": "dev-master"
     },

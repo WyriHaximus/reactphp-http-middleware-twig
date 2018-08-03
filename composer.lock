@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "13fd7ca42b47d27331737c9d09098b91",
+    "content-hash": "d1c4d3c10d0e4efd64ca47bdb901f1d8",
     "packages": [
         {
             "name": "api-clients/rx",
@@ -4201,6 +4201,125 @@
             "time": "2018-04-30T19:56:13+00:00"
         },
         {
+            "name": "wyrihaximus/react-inspector",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/WyriHaximus/reactphp-inspector.git",
+                "reference": "e0002e7536f1ba701e8d04f2921fd705b6218f36"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/WyriHaximus/reactphp-inspector/zipball/e0002e7536f1ba701e8d04f2921fd705b6218f36",
+                "reference": "e0002e7536f1ba701e8d04f2921fd705b6218f36",
+                "shasum": ""
+            },
+            "require": {
+                "api-clients/rx": "^2.2",
+                "php": "^7.2",
+                "psr/container": "^1.0",
+                "reactivex/rxphp": "^2.0",
+                "wyrihaximus/get-in-packages-composer.jason": "^1.0",
+                "wyrihaximus/ticking-promise": "^1.6"
+            },
+            "require-dev": {
+                "api-clients/test-utilities": "^5.0"
+            },
+            "suggest": {
+                "wyrihaximus/react-inspector-bunny": "Measure what is going through fread/fwrite calls from bunny/bunny",
+                "wyrihaximus/react-inspector-cpu-usage": "Measure the CPU usage of your application and it's child processes",
+                "wyrihaximus/react-inspector-event-loop": "Measure what is going through the event loop",
+                "wyrihaximus/react-inspector-memory-usage": "Message the memory usage of the current PHP process",
+                "wyrihaximus/react-inspector-stream": "Measure what is going through fread/fwrite calls from react/stream"
+            },
+            "type": "library",
+            "extra": {
+                "react-inspector": {
+                    "collectors": {
+                        "WyriHaximus\\React\\Inspector\\Collector": "src/Collector"
+                    },
+                    "metrics": [
+                        "inspector.metrics"
+                    ],
+                    "reset": {
+                        "ticks": [
+                            "inspector.metrics"
+                        ]
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "WyriHaximus\\React\\Inspector\\": "src/"
+                },
+                "files": [
+                    "src/bootstrap_include.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Cees-Jan Kiewiet",
+                    "email": "ceesjank@gmail.com",
+                    "homepage": "http://wyrihaximus.net/"
+                }
+            ],
+            "description": "Inspect react/* packages for metrics and other insights                               ",
+            "time": "2018-06-30T14:45:43+00:00"
+        },
+        {
+            "name": "wyrihaximus/react-inspector-child-process-pools",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/WyriHaximus/reactphp-inspector-child-process-pools.git",
+                "reference": "2c36d5e239528a9364aab77f80c4b925606f8549"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/WyriHaximus/reactphp-inspector-child-process-pools/zipball/2c36d5e239528a9364aab77f80c4b925606f8549",
+                "reference": "2c36d5e239528a9364aab77f80c4b925606f8549",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2",
+                "wyrihaximus/react-child-process-pool": "^1.4",
+                "wyrihaximus/react-inspector": "dev-master"
+            },
+            "require-dev": {
+                "api-clients/test-utilities": "^5.0"
+            },
+            "type": "library",
+            "extra": {
+                "react-inspector": {
+                    "collectors": {
+                        "WyriHaximus\\React\\Inspector\\ChildProcessPools": "src"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "WyriHaximus\\React\\Inspector\\ChildProcessPools\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Cees-Jan Kiewiet",
+                    "email": "ceesjank@gmail.com",
+                    "homepage": "https://www.wyrihaximus.net/"
+                }
+            ],
+            "description": "Child process pools collector for wyrihaximus/react-inspector",
+            "time": "2018-07-20T15:28:29+00:00"
+        },
+        {
             "name": "wyrihaximus/recoil-queue-caller",
             "version": "2.0.0",
             "source": {
@@ -7214,6 +7333,7 @@
     "stability-flags": {
         "reactive-apps/command": 20,
         "reactive-apps/rx-streams": 20,
+        "wyrihaximus/react-inspector-child-process-pools": 20,
         "wyrihaximus/to-child-process-or-not-to-child-process": 20,
         "wyrihaximus/to-coroutine-or-not-to-coroutine": 20
     },
