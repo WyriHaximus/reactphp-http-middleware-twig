@@ -35,5 +35,5 @@ return [
     })
         ->parameter('ttl', \DI\get('config.http-server.pool.ttl'))
         ->parameter('min', \DI\get('config.http-server.pool.min'))
-        ->parameter('max', \DI\get('config.http-server.pool.min')),
+        ->parameter('max', \DI\get('config.http-server.pool.max')),
 ];
