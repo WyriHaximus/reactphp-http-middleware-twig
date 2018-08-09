@@ -1,6 +1,7 @@
 {
     "minimum-stability": "dev",
     "prefer-stable": true,
+    "license": "MIT",
     "name": "reactive-apps/command-http-server",
     "require": {
         "php": "^7.2",
