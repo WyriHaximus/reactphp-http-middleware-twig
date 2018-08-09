@@ -10,15 +10,18 @@ use WyriHaximus\React\Inspector\ChildProcessPools\ChildProcessPoolsCollector;
 return [
     'internal.http-server.child-process.pool' => \DI\factory(function (
         LoopInterface $loop,
-        ChildProcessPoolsCollector $collector = null
+        ChildProcessPoolsCollector $collector = null,
+        float $ttl = 0.25,
+        int $min = 0,
+        int $max = 5
     ) {
         $childProcessPool = Flexible::createFromClass(
             ClosureChild::class,
             $loop,
             [
-                Options::TTL      => 0.25,
-                Options::MIN_SIZE => 0,
-                Options::MAX_SIZE => 5,
+                Options::TTL      => $ttl,
+                Options::MIN_SIZE => $min,
+                Options::MAX_SIZE => $max,
             ]
         );
 
@@ -29,5 +32,8 @@ return [
         }
 
         return $childProcessPool;
-    }),
+    })
+        ->parameter('ttl', \DI\get('config.http-server.pool.ttl'))
+        ->parameter('min', \DI\get('config.http-server.pool.min'))
+        ->parameter('max', \DI\get('config.http-server.pool.min')),
 ];
