@@ -1,7 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
     "content-hash": "264374583f177ec189abb8cbd73c2b85",
@@ -569,59 +569,6 @@
             "time": "2018-01-24T07:10:06+00:00"
         },
         {
-            "name": "http-interop/http-factory",
-            "version": "0.4.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/http-interop/http-factory.git",
-                "reference": "c8d8491117c4ecc080b5d80e380f5aa590232fcb"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/http-interop/http-factory/zipball/c8d8491117c4ecc080b5d80e380f5aa590232fcb",
-                "reference": "c8d8491117c4ecc080b5d80e380f5aa590232fcb",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.0.0",
-                "psr/http-message": "^1.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Interop\\Http\\Factory\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "PHP-FIG",
-                    "homepage": "http://www.php-fig.org/"
-                }
-            ],
-            "description": "Common interface for HTTP message factories",
-            "keywords": [
-                "factory",
-                "http",
-                "message",
-                "psr",
-                "psr-17",
-                "psr-7",
-                "request",
-                "response"
-            ],
-            "abandoned": "psr/http-factory",
-            "time": "2018-05-22T16:11:32+00:00"
-        },
-        {
             "name": "icecave/repr",
             "version": "1.0.1",
             "source": {
@@ -1009,16 +956,16 @@
         },
         {
             "name": "middlewares/access-log",
-            "version": "v1.0.0",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/middlewares/access-log.git",
-                "reference": "648dcd458d12118f2d566332398c63be7867d54e"
+                "reference": "fb8a0fb821552b9761f7ba18db7f17c031b75065"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/middlewares/access-log/zipball/648dcd458d12118f2d566332398c63be7867d54e",
-                "reference": "648dcd458d12118f2d566332398c63be7867d54e",
+                "url": "https://api.github.com/repos/middlewares/access-log/zipball/fb8a0fb821552b9761f7ba18db7f17c031b75065",
+                "reference": "fb8a0fb821552b9761f7ba18db7f17c031b75065",
                 "shasum": ""
             },
             "require": {
@@ -1028,9 +975,9 @@
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "^2.0",
-                "middlewares/utils": "^1.0",
+                "middlewares/utils": "^2.1",
                 "monolog/monolog": "^1.21",
-                "phpunit/phpunit": "^6.0",
+                "phpunit/phpunit": "^6.0|^7.0",
                 "squizlabs/php_codesniffer": "^3.0",
                 "zendframework/zend-diactoros": "^1.3"
             },
@@ -1056,25 +1003,25 @@
                 "psr-7",
                 "server"
             ],
-            "time": "2018-01-27T20:08:29+00:00"
+            "time": "2018-08-04T10:41:44+00:00"
         },
         {
             "name": "middlewares/cache",
-            "version": "v1.0.0",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/middlewares/cache.git",
-                "reference": "095c481c8427489c7afe8b9c38efc4290baf0f62"
+                "reference": "a8bd6115f4905a0d8394a041cfb1860854d12a4a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/middlewares/cache/zipball/095c481c8427489c7afe8b9c38efc4290baf0f62",
-                "reference": "095c481c8427489c7afe8b9c38efc4290baf0f62",
+                "url": "https://api.github.com/repos/middlewares/cache/zipball/a8bd6115f4905a0d8394a041cfb1860854d12a4a",
+                "reference": "a8bd6115f4905a0d8394a041cfb1860854d12a4a",
                 "shasum": ""
             },
             "require": {
                 "micheh/psr7-cache": "^0.5.0",
-                "middlewares/utils": "^1.0",
+                "middlewares/utils": "^2.1",
                 "php": "^7.0",
                 "psr/cache": "^1.0",
                 "psr/http-server-middleware": "^1.0"
@@ -1082,7 +1029,7 @@
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "^2.0",
                 "matthiasmullie/scrapbook": "^1.3",
-                "phpunit/phpunit": "^6.0",
+                "phpunit/phpunit": "^6.0|^7.0",
                 "squizlabs/php_codesniffer": "^3.0",
                 "zendframework/zend-diactoros": "^1.3"
             },
@@ -1104,20 +1051,20 @@
                 "psr-15",
                 "psr-7"
             ],
-            "time": "2018-01-25T21:43:41+00:00"
+            "time": "2018-08-04T10:41:46+00:00"
         },
         {
             "name": "middlewares/client-ip",
-            "version": "v1.0.2",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/middlewares/client-ip.git",
-                "reference": "26f117e43528189e1d45d711797b1681a9c73b82"
+                "reference": "1ec6d1dd026e86d10af0d477699d654693d5b848"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/middlewares/client-ip/zipball/26f117e43528189e1d45d711797b1681a9c73b82",
-                "reference": "26f117e43528189e1d45d711797b1681a9c73b82",
+                "url": "https://api.github.com/repos/middlewares/client-ip/zipball/1ec6d1dd026e86d10af0d477699d654693d5b848",
+                "reference": "1ec6d1dd026e86d10af0d477699d654693d5b848",
                 "shasum": ""
             },
             "require": {
@@ -1127,7 +1074,7 @@
             "require-dev": {
                 "eloquent/phony-phpunit": "^3.0|^4.0",
                 "friendsofphp/php-cs-fixer": "^2.0",
-                "middlewares/utils": "^1.0",
+                "middlewares/utils": "^2.1",
                 "phpunit/phpunit": "^6.0|^7.0",
                 "squizlabs/php_codesniffer": "^3.0",
                 "zendframework/zend-diactoros": "^1.3"
@@ -1152,31 +1099,31 @@
                 "psr-7",
                 "server"
             ],
-            "time": "2018-06-28T20:20:00+00:00"
+            "time": "2018-08-04T10:41:46+00:00"
         },
         {
             "name": "middlewares/filesystem",
-            "version": "v1.0.0",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/middlewares/filesystem.git",
-                "reference": "81d69222e01794b3ad1f8c62e32a2ec2118c8fe6"
+                "reference": "f62988bd723053b83e3aa2be26f980acc35d87b9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/middlewares/filesystem/zipball/81d69222e01794b3ad1f8c62e32a2ec2118c8fe6",
-                "reference": "81d69222e01794b3ad1f8c62e32a2ec2118c8fe6",
+                "url": "https://api.github.com/repos/middlewares/filesystem/zipball/f62988bd723053b83e3aa2be26f980acc35d87b9",
+                "reference": "f62988bd723053b83e3aa2be26f980acc35d87b9",
                 "shasum": ""
             },
             "require": {
                 "league/flysystem": "^1.0",
-                "middlewares/utils": "^1.0",
+                "middlewares/utils": "^2.1",
                 "php": "^7.0",
                 "psr/http-server-middleware": "^1.0"
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "^2.0",
-                "phpunit/phpunit": "^6.0",
+                "phpunit/phpunit": "^6.0|^7.0",
                 "squizlabs/php_codesniffer": "^3.0",
                 "zendframework/zend-diactoros": "^1.3"
             },
@@ -1201,30 +1148,30 @@
                 "psr-15",
                 "psr-7"
             ],
-            "time": "2018-01-25T19:31:15+00:00"
+            "time": "2018-08-04T10:41:48+00:00"
         },
         {
             "name": "middlewares/https",
-            "version": "v1.1.0",
+            "version": "v1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/middlewares/https.git",
-                "reference": "bbd7e0b77eb18cb4c4f92b7dda128334eff23fce"
+                "reference": "5a4d27e706e5503526db1a01f0c3a35a77706ea3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/middlewares/https/zipball/bbd7e0b77eb18cb4c4f92b7dda128334eff23fce",
-                "reference": "bbd7e0b77eb18cb4c4f92b7dda128334eff23fce",
+                "url": "https://api.github.com/repos/middlewares/https/zipball/5a4d27e706e5503526db1a01f0c3a35a77706ea3",
+                "reference": "5a4d27e706e5503526db1a01f0c3a35a77706ea3",
                 "shasum": ""
             },
             "require": {
-                "middlewares/utils": "^1.0",
+                "middlewares/utils": "^2.1",
                 "php": "^7.0",
                 "psr/http-server-middleware": "^1.0"
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "^2.0",
-                "phpunit/phpunit": "^6.0",
+                "phpunit/phpunit": "^6.0|^7.0",
                 "squizlabs/php_codesniffer": "^3.0",
                 "zendframework/zend-diactoros": "^1.3"
             },
@@ -1248,20 +1195,20 @@
                 "psr-15",
                 "psr-7"
             ],
-            "time": "2018-03-11T11:31:55+00:00"
+            "time": "2018-08-04T10:41:49+00:00"
         },
         {
             "name": "middlewares/response-time",
-            "version": "v1.0.0",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/middlewares/response-time.git",
-                "reference": "0eb140f53365bcda5a88449fda29b818aa95c64a"
+                "reference": "23785dbecffedb59a3f589a00485fee2641e73f4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/middlewares/response-time/zipball/0eb140f53365bcda5a88449fda29b818aa95c64a",
-                "reference": "0eb140f53365bcda5a88449fda29b818aa95c64a",
+                "url": "https://api.github.com/repos/middlewares/response-time/zipball/23785dbecffedb59a3f589a00485fee2641e73f4",
+                "reference": "23785dbecffedb59a3f589a00485fee2641e73f4",
                 "shasum": ""
             },
             "require": {
@@ -1270,8 +1217,8 @@
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "^2.0",
-                "middlewares/utils": "^1.0",
-                "phpunit/phpunit": "^6.0",
+                "middlewares/utils": "^2.1",
+                "phpunit/phpunit": "^6.0|^7.0",
                 "squizlabs/php_codesniffer": "^3.0",
                 "zendframework/zend-diactoros": "^1.3"
             },
@@ -1296,33 +1243,33 @@
                 "server",
                 "time"
             ],
-            "time": "2018-01-27T14:05:43+00:00"
+            "time": "2018-08-04T10:41:54+00:00"
         },
         {
             "name": "middlewares/utils",
-            "version": "v1.2.0",
+            "version": "v2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/middlewares/utils.git",
-                "reference": "92a018dde6ef7f394d8a68d22cec85f1ae549af9"
+                "reference": "5b9396c94c260d8bc53dcf4b8f24d726d803b846"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/middlewares/utils/zipball/92a018dde6ef7f394d8a68d22cec85f1ae549af9",
-                "reference": "92a018dde6ef7f394d8a68d22cec85f1ae549af9",
+                "url": "https://api.github.com/repos/middlewares/utils/zipball/5b9396c94c260d8bc53dcf4b8f24d726d803b846",
+                "reference": "5b9396c94c260d8bc53dcf4b8f24d726d803b846",
                 "shasum": ""
             },
             "require": {
-                "http-interop/http-factory": "^0.4",
                 "php": "^7.0",
                 "psr/container": "^1.0",
+                "psr/http-factory": "^1.0",
                 "psr/http-message": "^1.0",
                 "psr/http-server-middleware": "^1.0"
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "^2.0",
                 "guzzlehttp/psr7": "^1.3",
-                "phpunit/phpunit": "^6.0",
+                "phpunit/phpunit": "^6.0|^7.0",
                 "slim/slim": "^3.5",
                 "squizlabs/php_codesniffer": "^3.0",
                 "zendframework/zend-diactoros": "^1.3"
@@ -1344,22 +1291,23 @@
                 "http",
                 "middleware",
                 "psr-15",
+                "psr-17",
                 "psr-7"
             ],
-            "time": "2018-07-17T17:04:07+00:00"
+            "time": "2018-08-02T18:26:37+00:00"
         },
         {
             "name": "middlewares/uuid",
-            "version": "v1.0.0",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/middlewares/uuid.git",
-                "reference": "63a25d5b422cb707c86e7ccaf14fcbdaf49c322f"
+                "reference": "7526d690724150b4b2ff8a0a6250fac87a574ae2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/middlewares/uuid/zipball/63a25d5b422cb707c86e7ccaf14fcbdaf49c322f",
-                "reference": "63a25d5b422cb707c86e7ccaf14fcbdaf49c322f",
+                "url": "https://api.github.com/repos/middlewares/uuid/zipball/7526d690724150b4b2ff8a0a6250fac87a574ae2",
+                "reference": "7526d690724150b4b2ff8a0a6250fac87a574ae2",
                 "shasum": ""
             },
             "require": {
@@ -1369,8 +1317,8 @@
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "^2.0",
-                "middlewares/utils": "^1.0",
-                "phpunit/phpunit": "^6.0",
+                "middlewares/utils": "^2.1",
+                "phpunit/phpunit": "^6.0|^7.0",
                 "squizlabs/php_codesniffer": "^3.0",
                 "zendframework/zend-diactoros": "^1.3"
             },
@@ -1393,7 +1341,7 @@
                 "psr-7",
                 "uuid"
             ],
-            "time": "2018-01-27T11:36:54+00:00"
+            "time": "2018-08-04T10:41:55+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -1918,6 +1866,58 @@
                 "psr"
             ],
             "time": "2017-02-14T16:28:37+00:00"
+        },
+        {
+            "name": "psr/http-factory",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/http-factory.git",
+                "reference": "378bfe27931ecc54ff824a20d6f6bfc303bbd04c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/http-factory/zipball/378bfe27931ecc54ff824a20d6f6bfc303bbd04c",
+                "reference": "378bfe27931ecc54ff824a20d6f6bfc303bbd04c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0.0",
+                "psr/http-message": "^1.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Http\\Message\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "http://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interfaces for PSR-7 HTTP message factories",
+            "keywords": [
+                "factory",
+                "http",
+                "message",
+                "psr",
+                "psr-17",
+                "psr-7",
+                "request",
+                "response"
+            ],
+            "time": "2018-07-30T21:54:04+00:00"
         },
         {
             "name": "psr/http-message",
@@ -3231,25 +3231,28 @@
         },
         {
             "name": "symfony/polyfill-ctype",
-            "version": "v1.8.0",
+            "version": "v1.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-ctype.git",
-                "reference": "7cc359f1b7b80fc25ed7796be7d96adc9b354bae"
+                "reference": "e3d826245268269cd66f8326bd8bc066687b4a19"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/7cc359f1b7b80fc25ed7796be7d96adc9b354bae",
-                "reference": "7cc359f1b7b80fc25ed7796be7d96adc9b354bae",
+                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/e3d826245268269cd66f8326bd8bc066687b4a19",
+                "reference": "e3d826245268269cd66f8326bd8bc066687b4a19",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3"
             },
+            "suggest": {
+                "ext-ctype": "For best performance"
+            },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.8-dev"
+                    "dev-master": "1.9-dev"
                 }
             },
             "autoload": {
@@ -3282,7 +3285,7 @@
                 "polyfill",
                 "portable"
             ],
-            "time": "2018-04-30T19:57:29+00:00"
+            "time": "2018-08-06T14:22:27+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -3816,6 +3819,44 @@
             "time": "2018-03-03T23:07:12+00:00"
         },
         {
+            "name": "wyrihaximus/psr-15-cat",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/WyriHaximus/php-psr-15-cat.git",
+                "reference": "ea895a2076b835946e7e0850f15ea93e6605498e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/WyriHaximus/php-psr-15-cat/zipball/ea895a2076b835946e7e0850f15ea93e6605498e",
+                "reference": "ea895a2076b835946e7e0850f15ea93e6605498e",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1",
+                "psr/http-server-middleware": "^1.0",
+                "zendframework/zend-diactoros": "^1.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "WyriHaximus\\Psr15\\Cat\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Cees-Jan Kiewiet",
+                    "email": "ceesjank@gmail.com"
+                }
+            ],
+            "description": "CAT!",
+            "time": "2018-08-09T21:18:21+00:00"
+        },
+        {
             "name": "wyrihaximus/psr-3-callable-throwable-logger",
             "version": "1.0.0",
             "source": {
@@ -4152,16 +4193,16 @@
         },
         {
             "name": "wyrihaximus/react-http-psr-15-middleware-group",
-            "version": "1.2.1",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/reactphp-http-psr-15-middleware-group.git",
-                "reference": "2dd5cc02e3c30f39115c96c249c91ae0d6bfd1f6"
+                "reference": "4195bf8660be6ae268854074603bec10802ee887"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/reactphp-http-psr-15-middleware-group/zipball/2dd5cc02e3c30f39115c96c249c91ae0d6bfd1f6",
-                "reference": "2dd5cc02e3c30f39115c96c249c91ae0d6bfd1f6",
+                "url": "https://api.github.com/repos/WyriHaximus/reactphp-http-psr-15-middleware-group/zipball/4195bf8660be6ae268854074603bec10802ee887",
+                "reference": "4195bf8660be6ae268854074603bec10802ee887",
                 "shasum": ""
             },
             "require": {
@@ -4174,8 +4215,9 @@
                 "middlewares/https": "^1.1",
                 "middlewares/response-time": "^1.0",
                 "middlewares/uuid": "^1.0",
-                "php": "^7.0",
-                "psr/log": "^1.0"
+                "php": "^7.1",
+                "psr/log": "^1.0",
+                "wyrihaximus/psr-15-cat": "^1.0.1"
             },
             "require-dev": {
                 "api-clients/test-utilities": "^4.2",
@@ -4198,7 +4240,7 @@
                 }
             ],
             "description": "Opinionated PSR-15 middleware group for react/http",
-            "time": "2018-04-30T19:56:13+00:00"
+            "time": "2018-08-09T21:22:54+00:00"
         },
         {
             "name": "wyrihaximus/react-inspector",
@@ -4466,12 +4508,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/php-to-child-process-or-not-to-child-process.git",
-                "reference": "dbb0531a0e0328fc6b297b7ca7247d19176e1a71"
+                "reference": "898c657689d8f90171667c57f79b3a7da4fc3174"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/php-to-child-process-or-not-to-child-process/zipball/dbb0531a0e0328fc6b297b7ca7247d19176e1a71",
-                "reference": "dbb0531a0e0328fc6b297b7ca7247d19176e1a71",
+                "url": "https://api.github.com/repos/WyriHaximus/php-to-child-process-or-not-to-child-process/zipball/898c657689d8f90171667c57f79b3a7da4fc3174",
+                "reference": "898c657689d8f90171667c57f79b3a7da4fc3174",
                 "shasum": ""
             },
             "require": {
@@ -4515,7 +4557,7 @@
                 }
             ],
             "description": "To child process or not to child process",
-            "time": "2018-07-16T18:22:08+00:00"
+            "time": "2018-08-09T06:05:59+00:00"
         },
         {
             "name": "wyrihaximus/to-coroutine-or-not-to-coroutine",
@@ -4523,12 +4565,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/php-to-coroutine-or-not-to-coroutine.git",
-                "reference": "0ae56845503468f215aaf40c2e530fc3d1dd67ac"
+                "reference": "e6096bde144dc111b873c72a10854cf39a293895"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/php-to-coroutine-or-not-to-coroutine/zipball/0ae56845503468f215aaf40c2e530fc3d1dd67ac",
-                "reference": "0ae56845503468f215aaf40c2e530fc3d1dd67ac",
+                "url": "https://api.github.com/repos/WyriHaximus/php-to-coroutine-or-not-to-coroutine/zipball/e6096bde144dc111b873c72a10854cf39a293895",
+                "reference": "e6096bde144dc111b873c72a10854cf39a293895",
                 "shasum": ""
             },
             "require": {
@@ -4572,7 +4614,7 @@
                 }
             ],
             "description": "To coroutine or not to coroutine",
-            "time": "2018-07-21T22:32:14+00:00"
+            "time": "2018-08-09T06:05:29+00:00"
         },
         {
             "name": "wyrihaximus/to-x-or-not-to-x",
@@ -4580,12 +4622,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/php-to-X-or-not-to-X.git",
-                "reference": "20b123918ba7034a5cac9428194e38e95f3daded"
+                "reference": "8316099ef290e43c1ab4c7771f4cb4d878620422"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/php-to-X-or-not-to-X/zipball/20b123918ba7034a5cac9428194e38e95f3daded",
-                "reference": "20b123918ba7034a5cac9428194e38e95f3daded",
+                "url": "https://api.github.com/repos/WyriHaximus/php-to-X-or-not-to-X/zipball/8316099ef290e43c1ab4c7771f4cb4d878620422",
+                "reference": "8316099ef290e43c1ab4c7771f4cb4d878620422",
                 "shasum": ""
             },
             "require": {
@@ -4630,7 +4672,70 @@
                 }
             ],
             "description": "To X or not to X",
-            "time": "2018-07-16T17:41:15+00:00"
+            "time": "2018-08-08T17:57:26+00:00"
+        },
+        {
+            "name": "zendframework/zend-diactoros",
+            "version": "1.8.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zendframework/zend-diactoros.git",
+                "reference": "736ffa7c2bfa4a60e8a10acb316fa2ac456c5fba"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zendframework/zend-diactoros/zipball/736ffa7c2bfa4a60e8a10acb316fa2ac456c5fba",
+                "reference": "736ffa7c2bfa4a60e8a10acb316fa2ac456c5fba",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.6 || ^7.0",
+                "psr/http-message": "^1.0"
+            },
+            "provide": {
+                "psr/http-message-implementation": "1.0"
+            },
+            "require-dev": {
+                "ext-dom": "*",
+                "ext-libxml": "*",
+                "phpunit/phpunit": "^5.7.16 || ^6.0.8 || ^7.2.7",
+                "zendframework/zend-coding-standard": "~1.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.8.x-dev",
+                    "dev-develop": "1.9.x-dev",
+                    "dev-release-2.0": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/functions/create_uploaded_file.php",
+                    "src/functions/marshal_headers_from_sapi.php",
+                    "src/functions/marshal_method_from_sapi.php",
+                    "src/functions/marshal_protocol_version_from_sapi.php",
+                    "src/functions/marshal_uri_from_sapi.php",
+                    "src/functions/normalize_server.php",
+                    "src/functions/normalize_uploaded_files.php",
+                    "src/functions/parse_cookie_header.php"
+                ],
+                "psr-4": {
+                    "Zend\\Diactoros\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "description": "PSR HTTP Message implementations",
+            "homepage": "https://github.com/zendframework/zend-diactoros",
+            "keywords": [
+                "http",
+                "psr",
+                "psr-7"
+            ],
+            "time": "2018-08-01T13:47:49+00:00"
         }
     ],
     "packages-dev": [
