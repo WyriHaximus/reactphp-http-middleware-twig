@@ -12,7 +12,7 @@ use WyriHaximus\React\ChildProcess\Closure\MessageFactory;
 use WyriHaximus\React\ChildProcess\Messenger\Messages\Payload;
 use WyriHaximus\React\ChildProcess\Pool\PoolInterface;
 use WyriHaximus\Recoil\Call;
-use WyriHaximus\Recoil\QueueCaller;
+use WyriHaximus\Recoil\InfiniteCaller;
 use function WyriHaximus\psr7_response_decode;
 use function WyriHaximus\psr7_response_encode;
 use function WyriHaximus\psr7_server_request_decode;
@@ -33,7 +33,7 @@ final class RequestHandlerMiddleware
     public function __construct(LoopInterface $loop, PromiseInterface $pool)
     {
         $this->callStream = new Subject();
-        (new QueueCaller(ReactKernel::create($loop)))->call($this->callStream);
+        (new InfiniteCaller(ReactKernel::create($loop)))->call($this->callStream);
         $this->pool = $pool;
     }
 
