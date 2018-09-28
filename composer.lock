@@ -4461,12 +4461,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/recoilphp-queue-caller-pool.git",
-                "reference": "362ca99fe643538f998a1bdb5d8f4d61d647030a"
+                "reference": "cbc473112be485d99b851e282ba27fd54a2dd5a3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/recoilphp-queue-caller-pool/zipball/362ca99fe643538f998a1bdb5d8f4d61d647030a",
-                "reference": "362ca99fe643538f998a1bdb5d8f4d61d647030a",
+                "url": "https://api.github.com/repos/WyriHaximus/recoilphp-queue-caller-pool/zipball/cbc473112be485d99b851e282ba27fd54a2dd5a3",
+                "reference": "cbc473112be485d99b851e282ba27fd54a2dd5a3",
                 "shasum": ""
             },
             "require": {
@@ -4498,7 +4498,7 @@
                 }
             ],
             "description": "Pool wyrihaximus/recoil-queue-caller",
-            "time": "2018-08-29T15:30:22+00:00"
+            "time": "2018-09-03T20:40:29+00:00"
         },
         {
             "name": "wyrihaximus/rx-recoil-looper",
