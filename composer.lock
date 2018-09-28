@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "cf51d3462dc6ea6f1f64ab549aff0bfc",
+    "content-hash": "6e4fcf26fe36fd52931071612db78752",
     "packages": [
         {
             "name": "api-clients/rx",
@@ -52,7 +52,7 @@
         },
         {
             "name": "cakephp/collection",
-            "version": "3.6.10",
+            "version": "3.6.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/collection.git",
@@ -98,7 +98,7 @@
         },
         {
             "name": "cakephp/core",
-            "version": "3.6.10",
+            "version": "3.6.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/core.git",
@@ -147,16 +147,16 @@
         },
         {
             "name": "cakephp/utility",
-            "version": "3.6.10",
+            "version": "3.6.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/utility.git",
-                "reference": "93b37e7747c95a10d6638d39d0e1f867d98c9ef9"
+                "reference": "759915f39c648790dab3a9491eb3785b09f4a6c3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/utility/zipball/93b37e7747c95a10d6638d39d0e1f867d98c9ef9",
-                "reference": "93b37e7747c95a10d6638d39d0e1f867d98c9ef9",
+                "url": "https://api.github.com/repos/cakephp/utility/zipball/759915f39c648790dab3a9491eb3785b09f4a6c3",
+                "reference": "759915f39c648790dab3a9491eb3785b09f4a6c3",
                 "shasum": ""
             },
             "require": {
@@ -196,7 +196,7 @@
                 "string",
                 "utility"
             ],
-            "time": "2018-07-26T19:56:06+00:00"
+            "time": "2018-09-02T05:18:03+00:00"
         },
         {
             "name": "daverandom/exceptional-json",
@@ -824,26 +824,26 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.46",
+            "version": "1.0.47",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "f3e0d925c18b92cf3ce84ea5cc58d62a1762a2b2"
+                "reference": "a11e4a75f256bdacf99d20780ce42d3b8272975c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/f3e0d925c18b92cf3ce84ea5cc58d62a1762a2b2",
-                "reference": "f3e0d925c18b92cf3ce84ea5cc58d62a1762a2b2",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/a11e4a75f256bdacf99d20780ce42d3b8272975c",
+                "reference": "a11e4a75f256bdacf99d20780ce42d3b8272975c",
                 "shasum": ""
             },
             "require": {
+                "ext-fileinfo": "*",
                 "php": ">=5.5.9"
             },
             "conflict": {
                 "league/flysystem-sftp": "<1.0.6"
             },
             "require-dev": {
-                "ext-fileinfo": "*",
                 "phpspec/phpspec": "^3.4",
                 "phpunit/phpunit": "^5.7.10"
             },
@@ -904,7 +904,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2018-08-22T07:45:22+00:00"
+            "time": "2018-09-14T15:30:29+00:00"
         },
         {
             "name": "micheh/psr7-cache",
@@ -2674,12 +2674,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactive-apps/command.git",
-                "reference": "179e7ce94aaabc138a351091bf15d8ea7d65f127"
+                "reference": "dd38c8569247ad303618eee61392a1ab9fa171ba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactive-apps/command/zipball/179e7ce94aaabc138a351091bf15d8ea7d65f127",
-                "reference": "179e7ce94aaabc138a351091bf15d8ea7d65f127",
+                "url": "https://api.github.com/repos/reactive-apps/command/zipball/dd38c8569247ad303618eee61392a1ab9fa171ba",
+                "reference": "dd38c8569247ad303618eee61392a1ab9fa171ba",
                 "shasum": ""
             },
             "require": {
@@ -2695,7 +2695,7 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2018-07-09T21:34:55+00:00"
+            "time": "2018-09-03T07:41:16+00:00"
         },
         {
             "name": "reactive-apps/rx-streams",
@@ -2703,12 +2703,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactive-apps/rx-streams.git",
-                "reference": "10a968255ffbcdaf1c0edf7d2f7accc7cc855972"
+                "reference": "9ef2dff37579aa8914dcf53828ae3d0282fa6e2c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactive-apps/rx-streams/zipball/10a968255ffbcdaf1c0edf7d2f7accc7cc855972",
-                "reference": "10a968255ffbcdaf1c0edf7d2f7accc7cc855972",
+                "url": "https://api.github.com/repos/reactive-apps/rx-streams/zipball/9ef2dff37579aa8914dcf53828ae3d0282fa6e2c",
+                "reference": "9ef2dff37579aa8914dcf53828ae3d0282fa6e2c",
                 "shasum": ""
             },
             "require": {
@@ -2725,7 +2725,7 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2018-07-09T21:34:00+00:00"
+            "time": "2018-09-03T07:41:06+00:00"
         },
         {
             "name": "reactivex/rxphp",
@@ -4193,28 +4193,29 @@
         },
         {
             "name": "wyrihaximus/react-http-middleware-webroot-preload",
-            "version": "1.2.0",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/reactphp-http-middleware-webroot-preload.git",
-                "reference": "46784121aaae31353f9c029fd292ac8b2230fcf2"
+                "reference": "66e37f0b96f23232bb9616bbbefdfcb969270d0f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/reactphp-http-middleware-webroot-preload/zipball/46784121aaae31353f9c029fd292ac8b2230fcf2",
-                "reference": "46784121aaae31353f9c029fd292ac8b2230fcf2",
+                "url": "https://api.github.com/repos/WyriHaximus/reactphp-http-middleware-webroot-preload/zipball/66e37f0b96f23232bb9616bbbefdfcb969270d0f",
+                "reference": "66e37f0b96f23232bb9616bbbefdfcb969270d0f",
                 "shasum": ""
             },
             "require": {
                 "narrowspark/mimetypes": "^0.1.2",
-                "php": "^7.1",
+                "php": "^7.2",
                 "psr/http-message": "^1.0",
                 "psr/log": "^1.0",
+                "react/cache": "^0.5.0",
                 "react/http": "^0.8.0",
                 "scriptfusion/byte-formatter": "^3.2"
             },
             "require-dev": {
-                "api-clients/test-utilities": "^4.2",
+                "api-clients/test-utilities": "^5.1",
                 "brunty/cigar": "^1.8",
                 "psr/log": "^1.0",
                 "ringcentral/psr7": "^1.2"
@@ -4236,7 +4237,7 @@
                 }
             ],
             "description": "react/http middleware static webroot serving",
-            "time": "2018-03-17T21:21:29+00:00"
+            "time": "2018-09-12T20:30:19+00:00"
         },
         {
             "name": "wyrihaximus/react-http-psr-15-middleware-group",
@@ -4295,12 +4296,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/reactphp-inspector.git",
-                "reference": "e0002e7536f1ba701e8d04f2921fd705b6218f36"
+                "reference": "51ff207c27784dea1512996fd3efa9e1653cbc80"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/reactphp-inspector/zipball/e0002e7536f1ba701e8d04f2921fd705b6218f36",
-                "reference": "e0002e7536f1ba701e8d04f2921fd705b6218f36",
+                "url": "https://api.github.com/repos/WyriHaximus/reactphp-inspector/zipball/51ff207c27784dea1512996fd3efa9e1653cbc80",
+                "reference": "51ff207c27784dea1512996fd3efa9e1653cbc80",
                 "shasum": ""
             },
             "require": {
@@ -4357,7 +4358,7 @@
                 }
             ],
             "description": "Inspect react/* packages for metrics and other insights                               ",
-            "time": "2018-06-30T14:45:43+00:00"
+            "time": "2018-09-10T20:17:25+00:00"
         },
         {
             "name": "wyrihaximus/react-inspector-child-process-pools",
@@ -4456,7 +4457,7 @@
         },
         {
             "name": "wyrihaximus/recoil-queue-caller-pool",
-            "version": "dev-master",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/recoilphp-queue-caller-pool.git",
@@ -4596,22 +4597,22 @@
         },
         {
             "name": "wyrihaximus/to-child-process-or-not-to-child-process",
-            "version": "dev-master",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/php-to-child-process-or-not-to-child-process.git",
-                "reference": "898c657689d8f90171667c57f79b3a7da4fc3174"
+                "reference": "289ed48877f5a843b39643c79419ae40e3f500b0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/php-to-child-process-or-not-to-child-process/zipball/898c657689d8f90171667c57f79b3a7da4fc3174",
-                "reference": "898c657689d8f90171667c57f79b3a7da4fc3174",
+                "url": "https://api.github.com/repos/WyriHaximus/php-to-child-process-or-not-to-child-process/zipball/289ed48877f5a843b39643c79419ae40e3f500b0",
+                "reference": "289ed48877f5a843b39643c79419ae40e3f500b0",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.2",
                 "wyrihaximus/doctrine-annotation-autoloader": "^1.0",
-                "wyrihaximus/to-x-or-not-to-x": "dev-master"
+                "wyrihaximus/to-x-or-not-to-x": "^1.0"
             },
             "require-dev": {
                 "api-clients/test-utilities": "^5.0"
@@ -4649,26 +4650,26 @@
                 }
             ],
             "description": "To child process or not to child process",
-            "time": "2018-08-09T06:05:59+00:00"
+            "time": "2018-09-22T20:06:24+00:00"
         },
         {
             "name": "wyrihaximus/to-coroutine-or-not-to-coroutine",
-            "version": "dev-master",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/php-to-coroutine-or-not-to-coroutine.git",
-                "reference": "e6096bde144dc111b873c72a10854cf39a293895"
+                "reference": "f9b66cc962005147096f69c2b139d2537ec5cd50"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/php-to-coroutine-or-not-to-coroutine/zipball/e6096bde144dc111b873c72a10854cf39a293895",
-                "reference": "e6096bde144dc111b873c72a10854cf39a293895",
+                "url": "https://api.github.com/repos/WyriHaximus/php-to-coroutine-or-not-to-coroutine/zipball/f9b66cc962005147096f69c2b139d2537ec5cd50",
+                "reference": "f9b66cc962005147096f69c2b139d2537ec5cd50",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.2",
                 "wyrihaximus/doctrine-annotation-autoloader": "^1.0",
-                "wyrihaximus/to-x-or-not-to-x": "dev-master"
+                "wyrihaximus/to-x-or-not-to-x": "^1.0"
             },
             "require-dev": {
                 "api-clients/test-utilities": "^5.0"
@@ -4706,20 +4707,20 @@
                 }
             ],
             "description": "To coroutine or not to coroutine",
-            "time": "2018-08-09T06:05:29+00:00"
+            "time": "2018-09-22T20:31:37+00:00"
         },
         {
             "name": "wyrihaximus/to-x-or-not-to-x",
-            "version": "dev-master",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/php-to-X-or-not-to-X.git",
-                "reference": "8316099ef290e43c1ab4c7771f4cb4d878620422"
+                "reference": "78c2cda81e3f293f10d9a772a22fed188ea50e43"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/php-to-X-or-not-to-X/zipball/8316099ef290e43c1ab4c7771f4cb4d878620422",
-                "reference": "8316099ef290e43c1ab4c7771f4cb4d878620422",
+                "url": "https://api.github.com/repos/WyriHaximus/php-to-X-or-not-to-X/zipball/78c2cda81e3f293f10d9a772a22fed188ea50e43",
+                "reference": "78c2cda81e3f293f10d9a772a22fed188ea50e43",
                 "shasum": ""
             },
             "require": {
@@ -4764,7 +4765,7 @@
                 }
             ],
             "description": "To X or not to X",
-            "time": "2018-08-08T17:57:26+00:00"
+            "time": "2018-09-22T19:43:24+00:00"
         }
     ],
     "packages-dev": [
@@ -4984,16 +4985,16 @@
         },
         {
             "name": "composer/xdebug-handler",
-            "version": "1.2.1",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/xdebug-handler.git",
-                "reference": "e37cbd80da64afe314c72de8d2d2fec0e40d9373"
+                "reference": "b8e9745fb9b06ea6664d8872c4505fb16df4611c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/xdebug-handler/zipball/e37cbd80da64afe314c72de8d2d2fec0e40d9373",
-                "reference": "e37cbd80da64afe314c72de8d2d2fec0e40d9373",
+                "url": "https://api.github.com/repos/composer/xdebug-handler/zipball/b8e9745fb9b06ea6664d8872c4505fb16df4611c",
+                "reference": "b8e9745fb9b06ea6664d8872c4505fb16df4611c",
                 "shasum": ""
             },
             "require": {
@@ -5024,7 +5025,7 @@
                 "Xdebug",
                 "performance"
             ],
-            "time": "2018-08-23T12:00:19+00:00"
+            "time": "2018-08-31T19:07:57+00:00"
         },
         {
             "name": "friendsofphp/php-cs-fixer",
@@ -5641,7 +5642,7 @@
                     "homepage": "http://blog.astrumfutura.com"
                 },
                 {
-                    "name": "Théo FIDRY",
+                    "name": "Théo Fidry",
                     "email": "theo.fidry@gmail.com"
                 }
             ],
@@ -5990,20 +5991,23 @@
         },
         {
             "name": "phpunit/php-file-iterator",
-            "version": "2.0.1",
+            "version": "2.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-file-iterator.git",
-                "reference": "cecbc684605bb0cc288828eb5d65d93d5c676d3c"
+                "reference": "050bedf145a257b1ff02746c31894800e5122946"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-file-iterator/zipball/cecbc684605bb0cc288828eb5d65d93d5c676d3c",
-                "reference": "cecbc684605bb0cc288828eb5d65d93d5c676d3c",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-file-iterator/zipball/050bedf145a257b1ff02746c31894800e5122946",
+                "reference": "050bedf145a257b1ff02746c31894800e5122946",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7.1"
             },
             "type": "library",
             "extra": {
@@ -6033,7 +6037,7 @@
                 "filesystem",
                 "iterator"
             ],
-            "time": "2018-06-11T11:44:00+00:00"
+            "time": "2018-09-13T20:33:42+00:00"
         },
         {
             "name": "phpunit/php-text-template",
@@ -6176,16 +6180,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "7.3.2",
+            "version": "7.3.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "34705f81bddc3f505b9599a2ef96e2b4315ba9b8"
+                "reference": "7b331efabbb628c518c408fdfcaf571156775de2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/34705f81bddc3f505b9599a2ef96e2b4315ba9b8",
-                "reference": "34705f81bddc3f505b9599a2ef96e2b4315ba9b8",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/7b331efabbb628c518c408fdfcaf571156775de2",
+                "reference": "7b331efabbb628c518c408fdfcaf571156775de2",
                 "shasum": ""
             },
             "require": {
@@ -6256,7 +6260,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2018-08-22T06:39:21+00:00"
+            "time": "2018-09-08T15:14:29+00:00"
         },
         {
             "name": "pimple/pimple",
@@ -7472,10 +7476,7 @@
     "stability-flags": {
         "reactive-apps/command": 20,
         "reactive-apps/rx-streams": 20,
-        "wyrihaximus/react-inspector-child-process-pools": 20,
-        "wyrihaximus/recoil-queue-caller-pool": 20,
-        "wyrihaximus/to-child-process-or-not-to-child-process": 20,
-        "wyrihaximus/to-coroutine-or-not-to-coroutine": 20
+        "wyrihaximus/react-inspector-child-process-pools": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

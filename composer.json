@@ -22,9 +22,9 @@
         "wyrihaximus/react-http-middleware-webroot-preload": "^1.0",
         "wyrihaximus/react-http-psr-15-middleware-group": "^1.2",
         "wyrihaximus/react-inspector-child-process-pools": "dev-master",
-        "wyrihaximus/recoil-queue-caller-pool": "dev-master",
-        "wyrihaximus/to-child-process-or-not-to-child-process": "dev-master",
-        "wyrihaximus/to-coroutine-or-not-to-coroutine": "dev-master"
+        "wyrihaximus/recoil-queue-caller-pool": "^1.0",
+        "wyrihaximus/to-child-process-or-not-to-child-process": "^1.0",
+        "wyrihaximus/to-coroutine-or-not-to-coroutine": "^1.0"
     },
     "require-dev": {
         "api-clients/test-utilities": "^5.0",
