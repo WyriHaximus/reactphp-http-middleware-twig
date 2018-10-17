@@ -98,7 +98,7 @@
         },
         {
             "name": "cakephp/core",
-            "version": "3.6.11",
+            "version": "3.6.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/core.git",
@@ -147,16 +147,16 @@
         },
         {
             "name": "cakephp/utility",
-            "version": "3.6.11",
+            "version": "3.6.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/utility.git",
-                "reference": "759915f39c648790dab3a9491eb3785b09f4a6c3"
+                "reference": "14b61586db830a84aedadd57be2825f40cc29e09"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/utility/zipball/759915f39c648790dab3a9491eb3785b09f4a6c3",
-                "reference": "759915f39c648790dab3a9491eb3785b09f4a6c3",
+                "url": "https://api.github.com/repos/cakephp/utility/zipball/14b61586db830a84aedadd57be2825f40cc29e09",
+                "reference": "14b61586db830a84aedadd57be2825f40cc29e09",
                 "shasum": ""
             },
             "require": {
@@ -196,7 +196,7 @@
                 "string",
                 "utility"
             ],
-            "time": "2018-09-02T05:18:03+00:00"
+            "time": "2018-09-05T00:44:03+00:00"
         },
         {
             "name": "daverandom/exceptional-json",
@@ -2577,16 +2577,16 @@
         },
         {
             "name": "react/socket",
-            "version": "v1.0.0",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/socket.git",
-                "reference": "476e2644a634c6301b8111e6d22a61679e6e6bd0"
+                "reference": "34381d9282d12670eb56b45981aad82e033ed58f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/socket/zipball/476e2644a634c6301b8111e6d22a61679e6e6bd0",
-                "reference": "476e2644a634c6301b8111e6d22a61679e6e6bd0",
+                "url": "https://api.github.com/repos/reactphp/socket/zipball/34381d9282d12670eb56b45981aad82e033ed58f",
+                "reference": "34381d9282d12670eb56b45981aad82e033ed58f",
                 "shasum": ""
             },
             "require": {
@@ -2620,7 +2620,7 @@
                 "reactphp",
                 "stream"
             ],
-            "time": "2018-07-11T14:38:22+00:00"
+            "time": "2018-10-01T12:20:53+00:00"
         },
         {
             "name": "react/stream",
@@ -3995,26 +3995,25 @@
         },
         {
             "name": "wyrihaximus/react-child-process-closure",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/reactphp-child-process-closure.git",
-                "reference": "09bf3b33020d3dd301b829e9f9a3158eb36fc0fb"
+                "reference": "29f77402d1b2a2789236153820eafcba152c4219"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/reactphp-child-process-closure/zipball/09bf3b33020d3dd301b829e9f9a3158eb36fc0fb",
-                "reference": "09bf3b33020d3dd301b829e9f9a3158eb36fc0fb",
+                "url": "https://api.github.com/repos/WyriHaximus/reactphp-child-process-closure/zipball/29f77402d1b2a2789236153820eafcba152c4219",
+                "reference": "29f77402d1b2a2789236153820eafcba152c4219",
                 "shasum": ""
             },
             "require": {
                 "jeremeamia/superclosure": "^2.3",
-                "nikic/php-parser": "^2.0|^3.0",
-                "php": "^7.0",
-                "wyrihaximus/react-child-process-messenger": "^2.7"
+                "php": "^7.2",
+                "wyrihaximus/react-child-process-messenger": "^2.8"
             },
             "require-dev": {
-                "api-clients/test-utilities": "^4.1"
+                "api-clients/test-utilities": "^5.1"
             },
             "type": "library",
             "autoload": {
@@ -4033,7 +4032,7 @@
                 }
             ],
             "description": "Run closures in ReactPHP Child Processes",
-            "time": "2017-05-28T17:54:05+00:00"
+            "time": "2018-10-16T15:44:55+00:00"
         },
         {
             "name": "wyrihaximus/react-child-process-messenger",
