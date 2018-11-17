@@ -9,6 +9,7 @@ use ReactiveApps\Command\HttpServer\ControllerMiddleware;
 use ReactiveApps\Command\HttpServer\RequestHandlerMiddleware;
 use ReactiveApps\Rx\Shutdown;
 use WyriHaximus\PSR3\ContextLogger\ContextLogger;
+use WyriHaximus\React\Http\Middleware\RewriteMiddleware;
 use WyriHaximus\React\Http\Middleware\WebrootPreloadMiddleware;
 use WyriHaximus\React\Http\PSR15MiddlewareGroup\Factory;
 
@@ -22,6 +23,7 @@ return [
         PromiseInterface $childProcessPool,
         array $middlwarePrefix = [],
         array $middlwareSuffix = [],
+        array $rewrites = [],
         string $public = null,
         bool $hsts = false
     ) {
@@ -35,6 +37,9 @@ return [
                 'hsts' => $hsts,
             ]
         );
+        if (count($rewrites) > 0) {
+            $middleware[] = new RewriteMiddleware($rewrites);
+        }
         if ($public !== null && file_exists($public) && is_dir($public)) {
             $middleware[] = new WebrootPreloadMiddleware(
                 $public,
@@ -52,5 +57,6 @@ return [
     ->parameter('hsts', \DI\get('config.http-server.hsts'))
     ->parameter('middlwarePrefix', \DI\get('config.http-server.middleware.prefix'))
     ->parameter('middlwareSuffix', \DI\get('config.http-server.middleware.suffix'))
+    ->parameter('rewrites', \DI\get('config.http-server.rewrites'))
     ->parameter('childProcessPool', \DI\get('internal.http-server.child-process.pool')),
 ];

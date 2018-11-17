@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "191aee85a0321ae62b3745d0e0fcb0a7",
+    "content-hash": "7eedaf961a7b39630fbafc72af261d9d",
     "packages": [
         {
             "name": "api-clients/rx",
@@ -4195,6 +4195,50 @@
             ],
             "description": "Wrapping ticks into a promise",
             "time": "2017-10-17T11:37:15+00:00"
+        },
+        {
+            "name": "wyrihaximus/react-http-middleware-rewrite",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/WyriHaximus/reactphp-http-middleware-rewrite.git",
+                "reference": "9c83d983aa593d53b7c534e6ea15d8bc25faf04d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/WyriHaximus/reactphp-http-middleware-rewrite/zipball/9c83d983aa593d53b7c534e6ea15d8bc25faf04d",
+                "reference": "9c83d983aa593d53b7c534e6ea15d8bc25faf04d",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2",
+                "psr/http-message": "^1.0",
+                "react/http": "^0.8.0"
+            },
+            "require-dev": {
+                "api-clients/test-utilities": "^5.1",
+                "brunty/cigar": "^1.8",
+                "psr/log": "^1.0",
+                "ringcentral/psr7": "^1.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "WyriHaximus\\React\\Http\\Middleware\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Cees-Jan Kiewiet",
+                    "email": "ceesjank@gmail.com"
+                }
+            ],
+            "description": "A internal path rewrite middleware for react/http",
+            "time": "2018-11-17T21:32:39+00:00"
         },
         {
             "name": "wyrihaximus/react-http-middleware-webroot-preload",
