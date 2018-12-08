@@ -16,9 +16,10 @@ use WyriHaximus\React\Http\PSR15MiddlewareGroup\Factory;
 return [
     RequestHandlerMiddleware::class => \DI\factory(function (
         LoopInterface $loop,
-        PromiseInterface $childProcessPool
+        PromiseInterface $childProcessPool,
+        ContainerInterface $container
     ) {
-        return new RequestHandlerMiddleware($loop, $childProcessPool);
+        return new RequestHandlerMiddleware($loop, $childProcessPool, $container);
     })
     ->parameter('childProcessPool', \DI\get('internal.http-server.child-process.pool')),
     ControllerMiddleware::class => \DI\factory(function (ContainerInterface $container) {
