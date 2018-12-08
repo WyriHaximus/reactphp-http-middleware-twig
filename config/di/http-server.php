@@ -1,9 +1,7 @@
 <?php
 
-use Psr\Container\ContainerInterface;
 use Psr\Log\LoggerInterface;
 use React\EventLoop\LoopInterface;
-use React\Promise\PromiseInterface;
 use ReactiveApps\Command\HttpServer\Command\HttpServer;
 use ReactiveApps\Command\HttpServer\ControllerMiddleware;
 use ReactiveApps\Command\HttpServer\RequestHandlerMiddleware;
@@ -18,9 +16,9 @@ return [
         LoopInterface $loop,
         LoggerInterface $logger,
         Shutdown $shutdown,
-        ContainerInterface $container,
+        ControllerMiddleware $controllerMiddleware,
         string $address,
-        PromiseInterface $childProcessPool,
+        RequestHandlerMiddleware $requestHandlerMiddleware,
         array $middlwarePrefix = [],
         array $middlwareSuffix = [],
         array $rewrites = [],
@@ -47,8 +45,8 @@ return [
             );
         }
         array_push($middleware, ...$middlwareSuffix);
-        $middleware[] = new ControllerMiddleware($container);
-        $middleware[] = new RequestHandlerMiddleware($loop, $childProcessPool);
+        $middleware[] = $controllerMiddleware;
+        $middleware[] = $requestHandlerMiddleware;
 
         return new HttpServer($loop, $logger, $shutdown, $address, $middleware);
     })
@@ -57,6 +55,5 @@ return [
     ->parameter('hsts', \DI\get('config.http-server.hsts'))
     ->parameter('middlwarePrefix', \DI\get('config.http-server.middleware.prefix'))
     ->parameter('middlwareSuffix', \DI\get('config.http-server.middleware.suffix'))
-    ->parameter('rewrites', \DI\get('config.http-server.rewrites'))
-    ->parameter('childProcessPool', \DI\get('internal.http-server.child-process.pool')),
+    ->parameter('rewrites', \DI\get('config.http-server.rewrites')),
 ];

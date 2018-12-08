@@ -35,7 +35,8 @@
         "php-di-definitions": {
           "di": [
             "config/di/child-process-pool.php",
-            "config/di/http-server.php"
+            "config/di/http-server.php",
+            "config/di/middleware.php"
           ]
         },
         "reactive-apps": {
