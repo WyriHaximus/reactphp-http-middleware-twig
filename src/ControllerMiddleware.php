@@ -30,10 +30,8 @@ final class ControllerMiddleware
      */
     private $router;
 
-    /**
-     * @var array
-     */
-    private $annotations = [];
+    /** @var array */
+    private $routes = [];
 
     /**
      * @param ContainerInterface $container
@@ -43,14 +41,17 @@ final class ControllerMiddleware
         $this->container = $container;
 
         $this->router = simpleDispatcher(function (RouteCollector $routeCollector) {
-            foreach ($this->routes() as $route) {
+            foreach ($this->locateRoutes() as $route) {
                 $routeCollector->addRoute(...$route['route']);
-                $this->annotations[$route['handler']] = $route['annotations'];
+                $this->routes[$route['handler']] = [
+                    'annotations' => $route['annotations'],
+                    'static' => $route['static'],
+                ];
             }
         });
     }
 
-    private function routes(): iterable
+    private function locateRoutes(): iterable
     {
         foreach (from_get_in_packages_composer('extra.reactive-apps.http-controller') as $controller) {
             yield from $this->controllerRoutes($controller);
@@ -79,6 +80,7 @@ final class ControllerMiddleware
 
                 yield [
                     'handler' => $requestHandler,
+                    'static' => $method->isStatic(),
                     'route' => [
                         $annotations[Method::class]->getMethod(),
                         $annotations[Route::class]->getRoute(),
@@ -111,7 +113,8 @@ final class ControllerMiddleware
 
         $request = $request
             ->withAttribute('request-handler', $route[1])
-            ->withAttribute('request-handler-annotations', $this->annotations[$route[1]])
+            ->withAttribute('request-handler-annotations', $this->routes[$route[1]]['annotations'])
+            ->withAttribute('request-handler-static', $this->routes[$route[1]]['static'])
         ;
 
         return $next($request);
