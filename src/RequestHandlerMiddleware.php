@@ -2,6 +2,7 @@
 
 namespace ReactiveApps\Command\HttpServer;
 
+use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use React\EventLoop\LoopInterface;
 use React\Promise\Promise;
@@ -30,11 +31,15 @@ final class RequestHandlerMiddleware
      */
     private $pool;
 
-    public function __construct(LoopInterface $loop, PromiseInterface $pool)
+    /** @var ContainerInterface */
+    private $container;
+
+    public function __construct(LoopInterface $loop, PromiseInterface $pool, ContainerInterface $container)
     {
         $this->callStream = new Subject();
         (new InfiniteCaller(ReactKernel::create($loop)))->call($this->callStream);
         $this->pool = $pool;
+        $this->container = $container;
     }
 
     public function __invoke(ServerRequestInterface $request)
@@ -56,7 +61,18 @@ final class RequestHandlerMiddleware
     private function runCoroutine(ServerRequestInterface $request): PromiseInterface
     {
         return new Promise(function ($resolve, $reject) use ($request) {
-            $call = new Call($request->getAttribute('request-handler'), $request);
+            $requestHandler = $request->getAttribute('request-handler');
+            if ($request->getAttribute('request-handler-static') === false) {
+                $requestHandler = (function (string $requestHandler) {
+                    [$controller, $method] = \explode('::', $requestHandler);
+
+                    return [
+                        $this->container->get($controller),
+                        $method,
+                    ];
+                })($requestHandler);
+            }
+            $call = new Call($requestHandler, $request);
             $call->wait($resolve, $reject);
             $this->callStream->onNext($call);
         });
