@@ -4701,16 +4701,16 @@
         },
         {
             "name": "wyrihaximus/to-coroutine-or-not-to-coroutine",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/php-to-coroutine-or-not-to-coroutine.git",
-                "reference": "f9b66cc962005147096f69c2b139d2537ec5cd50"
+                "reference": "8b9e7de28c81ce88359189f5c032da734eba60c4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/php-to-coroutine-or-not-to-coroutine/zipball/f9b66cc962005147096f69c2b139d2537ec5cd50",
-                "reference": "f9b66cc962005147096f69c2b139d2537ec5cd50",
+                "url": "https://api.github.com/repos/WyriHaximus/php-to-coroutine-or-not-to-coroutine/zipball/8b9e7de28c81ce88359189f5c032da734eba60c4",
+                "reference": "8b9e7de28c81ce88359189f5c032da734eba60c4",
                 "shasum": ""
             },
             "require": {
@@ -4719,7 +4719,7 @@
                 "wyrihaximus/to-x-or-not-to-x": "^1.0"
             },
             "require-dev": {
-                "api-clients/test-utilities": "^5.0"
+                "api-clients/test-utilities": "^5.4"
             },
             "type": "library",
             "extra": {
@@ -4754,20 +4754,20 @@
                 }
             ],
             "description": "To coroutine or not to coroutine",
-            "time": "2018-09-22T20:31:37+00:00"
+            "time": "2019-01-02T16:52:38+00:00"
         },
         {
             "name": "wyrihaximus/to-x-or-not-to-x",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/php-to-X-or-not-to-X.git",
-                "reference": "78c2cda81e3f293f10d9a772a22fed188ea50e43"
+                "reference": "e46de217a51c7191d8bc68b1471824d41abad595"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/php-to-X-or-not-to-X/zipball/78c2cda81e3f293f10d9a772a22fed188ea50e43",
-                "reference": "78c2cda81e3f293f10d9a772a22fed188ea50e43",
+                "url": "https://api.github.com/repos/WyriHaximus/php-to-X-or-not-to-X/zipball/e46de217a51c7191d8bc68b1471824d41abad595",
+                "reference": "e46de217a51c7191d8bc68b1471824d41abad595",
                 "shasum": ""
             },
             "require": {
@@ -4777,7 +4777,8 @@
                 "wyrihaximus/doctrine-annotation-autoloader": "^1.0"
             },
             "require-dev": {
-                "api-clients/test-utilities": "^5.0"
+                "api-clients/cs-fixer-config": "^1.1",
+                "api-clients/test-utilities": "^5.4"
             },
             "type": "library",
             "extra": {
@@ -4812,7 +4813,7 @@
                 }
             ],
             "description": "To X or not to X",
-            "time": "2018-09-22T19:43:24+00:00"
+            "time": "2019-01-01T20:57:03+00:00"
         }
     ],
     "packages-dev": [
