@@ -4458,16 +4458,16 @@
         },
         {
             "name": "wyrihaximus/recoil-queue-caller",
-            "version": "2.1.0",
+            "version": "2.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/recoilphp-queue-caller.git",
-                "reference": "03b37fcde71db7a72a568301b94532c694c945b2"
+                "reference": "1965afd96f2909a027174dbce0282310f42f69d0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/recoilphp-queue-caller/zipball/03b37fcde71db7a72a568301b94532c694c945b2",
-                "reference": "03b37fcde71db7a72a568301b94532c694c945b2",
+                "url": "https://api.github.com/repos/WyriHaximus/recoilphp-queue-caller/zipball/1965afd96f2909a027174dbce0282310f42f69d0",
+                "reference": "1965afd96f2909a027174dbce0282310f42f69d0",
                 "shasum": ""
             },
             "require": {
@@ -4480,7 +4480,7 @@
                 "wyrihaximus/rx-recoil-looper": "^1.0"
             },
             "require-dev": {
-                "api-clients/test-utilities": "^4.2",
+                "api-clients/test-utilities": "^5.4",
                 "ringcentral/psr7": "^1.2"
             },
             "type": "library",
@@ -4500,20 +4500,20 @@
                 }
             ],
             "description": "Call all callables from the observable from within a RecoilPHP coroutine",
-            "time": "2018-08-03T15:34:33+00:00"
+            "time": "2019-01-01T21:39:25+00:00"
         },
         {
             "name": "wyrihaximus/recoil-queue-caller-pool",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/recoilphp-queue-caller-pool.git",
-                "reference": "362ca99fe643538f998a1bdb5d8f4d61d647030a"
+                "reference": "ed6c3fdeb2c00bd8d095826092c58e155de5fcff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/recoilphp-queue-caller-pool/zipball/362ca99fe643538f998a1bdb5d8f4d61d647030a",
-                "reference": "362ca99fe643538f998a1bdb5d8f4d61d647030a",
+                "url": "https://api.github.com/repos/WyriHaximus/recoilphp-queue-caller-pool/zipball/ed6c3fdeb2c00bd8d095826092c58e155de5fcff",
+                "reference": "ed6c3fdeb2c00bd8d095826092c58e155de5fcff",
                 "shasum": ""
             },
             "require": {
@@ -4526,7 +4526,7 @@
                 "wyrihaximus/recoil-queue-caller": "^2.1"
             },
             "require-dev": {
-                "api-clients/test-utilities": "^5.0"
+                "api-clients/test-utilities": "^5.4"
             },
             "type": "library",
             "autoload": {
@@ -4545,20 +4545,20 @@
                 }
             ],
             "description": "Pool wyrihaximus/recoil-queue-caller",
-            "time": "2018-08-29T15:30:22+00:00"
+            "time": "2019-01-03T20:36:13+00:00"
         },
         {
             "name": "wyrihaximus/rx-recoil-looper",
-            "version": "1.0.1",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/php-rxphp-recoilphp-looper.git",
-                "reference": "b8e15dd4ebdf0e8648af0936d3e150b161cb967a"
+                "reference": "ef6151ca926fcb1e45b4b8a60c5ba8617a1f258a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/php-rxphp-recoilphp-looper/zipball/b8e15dd4ebdf0e8648af0936d3e150b161cb967a",
-                "reference": "b8e15dd4ebdf0e8648af0936d3e150b161cb967a",
+                "url": "https://api.github.com/repos/WyriHaximus/php-rxphp-recoilphp-looper/zipball/ef6151ca926fcb1e45b4b8a60c5ba8617a1f258a",
+                "reference": "ef6151ca926fcb1e45b4b8a60c5ba8617a1f258a",
                 "shasum": ""
             },
             "require": {
@@ -4570,7 +4570,7 @@
                 "recoil/recoil": "^1.0"
             },
             "require-dev": {
-                "api-clients/test-utilities": "^4.2",
+                "api-clients/test-utilities": "^5.4",
                 "ringcentral/psr7": "^1.2"
             },
             "type": "library",
@@ -4593,7 +4593,7 @@
                 }
             ],
             "description": "Looper functions for while and foreach around rxphp using recoil",
-            "time": "2018-08-02T06:08:06+00:00"
+            "time": "2019-01-03T20:42:34+00:00"
         },
         {
             "name": "wyrihaximus/ticking-promise",
