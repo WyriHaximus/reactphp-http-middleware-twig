@@ -1,27 +1,20 @@
 <?php
 
 use Psr\Container\ContainerInterface;
-use Psr\Log\LoggerInterface;
-use React\EventLoop\LoopInterface;
 use React\Promise\PromiseInterface;
-use ReactiveApps\Command\HttpServer\Command\HttpServer;
 use ReactiveApps\Command\HttpServer\ControllerMiddleware;
 use ReactiveApps\Command\HttpServer\RequestHandlerMiddleware;
-use ReactiveApps\Rx\Shutdown;
-use WyriHaximus\PSR3\ContextLogger\ContextLogger;
-use WyriHaximus\React\Http\Middleware\RewriteMiddleware;
-use WyriHaximus\React\Http\Middleware\WebrootPreloadMiddleware;
-use WyriHaximus\React\Http\PSR15MiddlewareGroup\Factory;
+use WyriHaximus\Recoil\QueueCallerInterface;
 
 return [
     RequestHandlerMiddleware::class => \DI\factory(function (
-        LoopInterface $loop,
+        QueueCallerInterface $queueCaller,
         PromiseInterface $childProcessPool,
         ContainerInterface $container
     ) {
-        return new RequestHandlerMiddleware($loop, $childProcessPool, $container);
+        return new RequestHandlerMiddleware($queueCaller, $childProcessPool, $container);
     })
-    ->parameter('childProcessPool', \DI\get('internal.http-server.child-process.pool')),
+        ->parameter('childProcessPool', \DI\get('internal.http-server.child-process.pool')),
     ControllerMiddleware::class => \DI\factory(function (ContainerInterface $container) {
         return new ControllerMiddleware($container);
     }),

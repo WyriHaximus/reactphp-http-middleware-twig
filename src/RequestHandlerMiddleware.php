@@ -4,16 +4,14 @@ namespace ReactiveApps\Command\HttpServer;
 
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use React\EventLoop\LoopInterface;
 use React\Promise\Promise;
 use React\Promise\PromiseInterface;
-use Recoil\React\ReactKernel;
 use Rx\Subject\Subject;
 use WyriHaximus\React\ChildProcess\Closure\MessageFactory;
 use WyriHaximus\React\ChildProcess\Messenger\Messages\Payload;
 use WyriHaximus\React\ChildProcess\Pool\PoolInterface;
 use WyriHaximus\Recoil\Call;
-use WyriHaximus\Recoil\InfiniteCaller;
+use WyriHaximus\Recoil\QueueCallerInterface;
 use function WyriHaximus\psr7_response_decode;
 use function WyriHaximus\psr7_response_encode;
 use function WyriHaximus\psr7_server_request_decode;
@@ -34,10 +32,10 @@ final class RequestHandlerMiddleware
     /** @var ContainerInterface */
     private $container;
 
-    public function __construct(LoopInterface $loop, PromiseInterface $pool, ContainerInterface $container)
+    public function __construct(QueueCallerInterface $queueCaller, PromiseInterface $pool, ContainerInterface $container)
     {
         $this->callStream = new Subject();
-        (new InfiniteCaller(ReactKernel::create($loop)))->call($this->callStream);
+        $queueCaller->call($this->callStream);
         $this->pool = $pool;
         $this->container = $container;
     }
