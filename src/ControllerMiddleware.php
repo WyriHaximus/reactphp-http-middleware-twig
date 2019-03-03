@@ -41,7 +41,7 @@ final class ControllerMiddleware
         $this->container = $container;
 
         $this->router = simpleDispatcher(function (RouteCollector $routeCollector) {
-            foreach ($this->locateRoutes() as $route) {
+            foreach ($this->locateRoutes(from_get_in_packages_composer('extra.reactive-apps.http-controller')) as $route) {
                 $routeCollector->addRoute(...$route['route']);
                 $this->routes[$route['handler']] = [
                     'annotations' => $route['annotations'],
@@ -50,12 +50,22 @@ final class ControllerMiddleware
             }
         });
     }
-
-    private function locateRoutes(): iterable
+    private function locateRoutes(iterable $controllers): iterable
     {
-        foreach (from_get_in_packages_composer('extra.reactive-apps.http-controller') as $controller) {
-            yield from $this->controllerRoutes($controller);
+        foreach ($controllers as $controller) {
+            yield from self::locateRoute($controller);
         }
+    }
+
+    private function locateRoute(string $controller): iterable
+    {
+        if (\strpos($controller, '*') !== false) {
+            yield from self::locateRoutes(\glob($controller));
+
+            return;
+        }
+
+        yield from $this->controllerRoutes($controller);
     }
 
     private function controllerRoutes(string $controller)
