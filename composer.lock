@@ -2595,12 +2595,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactive-apps/command.git",
-                "reference": "784be6b87a014a5180cd4164becb9100f67d4ea5"
+                "reference": "154946b83b2dd08244dbd3747418f66854884aa7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactive-apps/command/zipball/784be6b87a014a5180cd4164becb9100f67d4ea5",
-                "reference": "784be6b87a014a5180cd4164becb9100f67d4ea5",
+                "url": "https://api.github.com/repos/reactive-apps/command/zipball/154946b83b2dd08244dbd3747418f66854884aa7",
+                "reference": "154946b83b2dd08244dbd3747418f66854884aa7",
                 "shasum": ""
             },
             "require": {
@@ -2616,7 +2616,7 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2019-01-22T13:09:00+00:00"
+            "time": "2019-03-17T13:35:04+00:00"
         },
         {
             "name": "reactive-apps/rx-streams",
@@ -2624,12 +2624,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactive-apps/rx-streams.git",
-                "reference": "1860a3af2130d2cc09f12a671a255da17a673a59"
+                "reference": "997e2b36bb8dfe62c742e6dd7919f379deda92fb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactive-apps/rx-streams/zipball/1860a3af2130d2cc09f12a671a255da17a673a59",
-                "reference": "1860a3af2130d2cc09f12a671a255da17a673a59",
+                "url": "https://api.github.com/repos/reactive-apps/rx-streams/zipball/997e2b36bb8dfe62c742e6dd7919f379deda92fb",
+                "reference": "997e2b36bb8dfe62c742e6dd7919f379deda92fb",
                 "shasum": ""
             },
             "require": {
@@ -2646,7 +2646,7 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2019-01-22T13:09:11+00:00"
+            "time": "2019-03-17T13:34:59+00:00"
         },
         {
             "name": "reactivex/rxphp",
@@ -6171,16 +6171,16 @@
         },
         {
             "name": "monolog/monolog",
-            "version": "1.23.0",
+            "version": "1.24.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "fd8c787753b3a2ad11bc60c063cff1358a32a3b4"
+                "reference": "bfc9ebb28f97e7a24c45bdc3f0ff482e47bb0266"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/fd8c787753b3a2ad11bc60c063cff1358a32a3b4",
-                "reference": "fd8c787753b3a2ad11bc60c063cff1358a32a3b4",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/bfc9ebb28f97e7a24c45bdc3f0ff482e47bb0266",
+                "reference": "bfc9ebb28f97e7a24c45bdc3f0ff482e47bb0266",
                 "shasum": ""
             },
             "require": {
@@ -6245,7 +6245,7 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2017-06-19T01:22:40+00:00"
+            "time": "2018-11-05T09:00:11+00:00"
         },
         {
             "name": "myclabs/deep-copy",
