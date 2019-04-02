@@ -7,9 +7,7 @@ use React\EventLoop\LoopInterface;
 use React\Http\Server as ReactHttpServer;
 use React\Socket\Server as SocketServer;
 use ReactiveApps\Command\Command;
-use ReactiveApps\Rx\Shutdown;
 use WyriHaximus\PSR3\CallableThrowableLogger\CallableThrowableLogger;
-use WyriHaximus\PSR3\ContextLogger\ContextLogger;
 
 final class HttpServer implements Command
 {
@@ -26,14 +24,9 @@ final class HttpServer implements Command
     private $logger;
 
     /**
-     * @var Shutdown
+     * @var SocketServer
      */
-    private $shutdown;
-
-    /**
-     * @var string
-     */
-    private $address;
+    private $socket;
 
     /**
      * @var array
@@ -43,16 +36,14 @@ final class HttpServer implements Command
     /**
      * @param LoopInterface $loop
      * @param LoggerInterface $logger
-     * @param Shutdown $shutdown
-     * @param string $address
+     * @param SocketServer $socket
      * @param array $middleware
      */
-    public function __construct(LoopInterface $loop, LoggerInterface $logger, Shutdown $shutdown, string $address, array $middleware)
+    public function __construct(LoopInterface $loop, LoggerInterface $logger, SocketServer $socket, array $middleware)
     {
         $this->loop = $loop;
         $this->logger = $logger;
-        $this->shutdown = $shutdown;
-        $this->address = $address;
+        $this->socket = $socket;
         $this->middleware = $middleware;
     }
 
@@ -63,14 +54,7 @@ final class HttpServer implements Command
         $httpServer->on('error', CallableThrowableLogger::create($this->logger));
 
         $this->logger->debug('Creating HTTP server socket');
-        $socket = new SocketServer($this->address, $this->loop);
-        $httpServer->listen($socket);
+        $httpServer->listen($this->socket);
         $this->logger->debug('Listening for incoming requests');
-
-        // Stop listening and let current requests complete on shutdown
-        $this->shutdown->subscribe(null, null, function () use ($socket) {
-            $socket->close();
-            $this->logger->debug('Closed listening socket for new incoming requests');
-        });
     }
 }

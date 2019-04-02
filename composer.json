@@ -55,6 +55,11 @@
                 "http-server.pool.ttl": "TTL for a child process to wait for it's next task",
                 "http-server.pool.min": "Minimum number of child processes",
                 "http-server.pool.max": "maximum number of child processes"
+            },
+            "listeners": {
+                "ReactiveApps\\Event\\Shutdown": [
+                    "src/Listener/Shutdown.php"
+                ]
             }
         }
     },
