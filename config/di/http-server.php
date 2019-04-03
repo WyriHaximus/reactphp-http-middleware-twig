@@ -25,7 +25,8 @@ return [
         LoggerInterface $logger
     ) {
         return new Shutdown($socket, $logger);
-    }),
+    })
+        ->parameter('socket', \DI\get('internal.http-server.socket')),
     HttpServer::class => \DI\factory(function (
         LoopInterface $loop,
         LoggerInterface $logger,
