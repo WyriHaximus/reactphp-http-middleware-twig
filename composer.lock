@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "54de85f8bdb3424a79bd4291188db3ff",
+    "content-hash": "f651eaee3fce414b968a2337152249ad",
     "packages": [
         {
             "name": "api-clients/rx",
@@ -2622,36 +2622,6 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "time": "2019-03-17T13:35:04+00:00"
-        },
-        {
-            "name": "reactive-apps/rx-streams",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/reactive-apps/rx-streams.git",
-                "reference": "997e2b36bb8dfe62c742e6dd7919f379deda92fb"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/reactive-apps/rx-streams/zipball/997e2b36bb8dfe62c742e6dd7919f379deda92fb",
-                "reference": "997e2b36bb8dfe62c742e6dd7919f379deda92fb",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.2",
-                "reactivex/rxphp": "^2.0"
-            },
-            "require-dev": {
-                "api-clients/test-utilities": "^5.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "ReactiveApps\\Rx\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "time": "2019-03-17T13:34:59+00:00"
         },
         {
             "name": "reactivex/rxphp",
@@ -9606,7 +9576,6 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "reactive-apps/command": 20,
-        "reactive-apps/rx-streams": 20,
         "wyrihaximus/react-inspector-child-process-pools": 20
     },
     "prefer-stable": true,
