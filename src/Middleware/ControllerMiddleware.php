@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace ReactiveApps\Command\HttpServer;
+namespace ReactiveApps\Command\HttpServer\Middleware;
 
 use Cake\Collection\Collection;
 use Doctrine\Common\Annotations\AnnotationReader;
@@ -17,6 +17,7 @@ use function FastRoute\simpleDispatcher;
 use function WyriHaximus\from_get_in_packages_composer;
 use function WyriHaximus\toChildProcessOrNotToChildProcess;
 use function WyriHaximus\toCoroutineOrNotToCoroutine;
+use function WyriHaximus\toThreadOrNotToThread;
 
 final class ControllerMiddleware
 {
@@ -99,6 +100,7 @@ final class ControllerMiddleware
                     'annotations' => [
                         'childprocess' => toChildProcessOrNotToChildProcess($requestHandler, $annotationReader),
                         'coroutine' => toCoroutineOrNotToCoroutine($requestHandler, $annotationReader),
+                        'thread' => toThreadOrNotToThread($requestHandler, $annotationReader),
                     ],
                 ];
             }

@@ -4,7 +4,7 @@
     "license": "MIT",
     "name": "reactive-apps/command-http-server",
     "require": {
-        "php": "^7.2",
+        "php": "^7.3",
         "cakephp/collection": "^3.6",
         "doctrine/annotations": "^1.6",
         "nikic/fast-route": "^1.2",
@@ -19,16 +19,23 @@
         "wyrihaximus/react-child-process-closure": "^1.0",
         "wyrihaximus/react-child-process-pool": "^1.4",
         "wyrihaximus/react-http-middleware-rewrite": "^1.0",
+        "wyrihaximus/react-http-middleware-runner": "^1.0",
         "wyrihaximus/react-http-middleware-webroot-preload": "^1.0",
         "wyrihaximus/react-http-psr-15-middleware-group": "^1.2",
         "wyrihaximus/react-inspector-child-process-pools": "dev-master",
         "wyrihaximus/recoil-queue-caller-pool": "^1.2",
         "wyrihaximus/to-child-process-or-not-to-child-process": "^1.0",
-        "wyrihaximus/to-coroutine-or-not-to-coroutine": "^1.0"
+        "wyrihaximus/to-coroutine-or-not-to-coroutine": "^1.0",
+        "wyrihaximus/to-thread-or-not-to-thread": "dev-master"
     },
     "require-dev": {
         "api-clients/test-utilities": "^5.0",
-        "monolog/monolog": "^1.23"
+        "monolog/monolog": "^1.23",
+        "wyrihaximus/pool-info": "dev-master",
+        "wyrihaximus/react-parallel": "dev-master"
+    },
+    "suggest": {
+        "wyrihaximus/react-parallel": "Run request handlers in threads (more performant than child processes)"
     },
     "extra": {
         "php-di-definitions": {
@@ -65,7 +72,7 @@
     "config": {
         "sort-packages": true,
         "platform": {
-            "php": "7.2"
+            "php": "7.3"
         }
     },
     "autoload": {

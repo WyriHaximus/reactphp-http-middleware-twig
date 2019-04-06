@@ -4,10 +4,9 @@ use Psr\Log\LoggerInterface;
 use React\EventLoop\LoopInterface;
 use React\Socket\Server as SocketServer;
 use ReactiveApps\Command\HttpServer\Command\HttpServer;
-use ReactiveApps\Command\HttpServer\ControllerMiddleware;
 use ReactiveApps\Command\HttpServer\Listener\Shutdown;
-use ReactiveApps\Command\HttpServer\RequestHandlerMiddleware;
 use WyriHaximus\PSR3\ContextLogger\ContextLogger;
+use WyriHaximus\React\Http\Middleware\MiddlewareRunner;
 use WyriHaximus\React\Http\Middleware\RewriteMiddleware;
 use WyriHaximus\React\Http\Middleware\WebrootPreloadMiddleware;
 use WyriHaximus\React\Http\PSR15MiddlewareGroup\Factory;
@@ -30,8 +29,7 @@ return [
     HttpServer::class => \DI\factory(function (
         LoopInterface $loop,
         LoggerInterface $logger,
-        ControllerMiddleware $controllerMiddleware,
-        RequestHandlerMiddleware $requestHandlerMiddleware,
+        MiddlewareRunner $middlewareRunner,
         SocketServer $socket,
         array $middlwarePrefix = [],
         array $middlwareSuffix = [],
@@ -59,8 +57,6 @@ return [
             );
         }
         array_push($middleware, ...$middlwareSuffix);
-        $middleware[] = $controllerMiddleware;
-        $middleware[] = $requestHandlerMiddleware;
 
         return new HttpServer($loop, $logger, $socket, $middleware);
     })
@@ -69,5 +65,6 @@ return [
     ->parameter('hsts', \DI\get('config.http-server.hsts'))
     ->parameter('middlwarePrefix', \DI\get('config.http-server.middleware.prefix'))
     ->parameter('middlwareSuffix', \DI\get('config.http-server.middleware.suffix'))
+    ->parameter('middlewareRunner', \DI\get('internal.http-server.request-handling-middleware-runner'))
     ->parameter('rewrites', \DI\get('config.http-server.rewrites')),
 ];
