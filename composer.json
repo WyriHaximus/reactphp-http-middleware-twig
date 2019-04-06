@@ -10,7 +10,7 @@
         "nikic/fast-route": "^1.2",
         "react/http": "^0.8.0",
         "reactive-apps/command": "dev-master",
-        "roave/better-reflection": "^3.0 || ^2.0",
+        "roave/better-reflection": "^3.2",
         "wyrihaximus/doctrine-annotation-autoloader": "^1.0",
         "wyrihaximus/get-in-packages-composer.jason": "^1.0",
         "wyrihaximus/json-psr7": "^1.0",
