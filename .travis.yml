@@ -44,7 +44,9 @@ install:
 
 ## Run the actual test
 script:
+  - if [ -z "$qaExtended" ]; then docker run --rm -v `pwd`:`pwd` -w `pwd` -t "wyrihaximusnet/php:7.3-nts-alpine3.9-dev" make ci; fi;
   - if [ -z "$qaExtended" ]; then docker run --rm -v `pwd`:`pwd` -w `pwd` -t "wyrihaximusnet/php:7.3-zts-alpine3.9-dev" make ci; fi;
+  - if [ "$qaExtended" = "true" ]; then docker run --rm -v `pwd`:`pwd` -w `pwd` -t "wyrihaximusnet/php:7.3-nts-alpine3.9-dev" make ci-extended; fi;
   - if [ "$qaExtended" = "true" ]; then docker run --rm -v `pwd`:`pwd` -w `pwd` -t "wyrihaximusnet/php:7.3-zts-alpine3.9-dev" make ci-extended; fi;
 
 ## Gather coverage and set it to coverage servers
