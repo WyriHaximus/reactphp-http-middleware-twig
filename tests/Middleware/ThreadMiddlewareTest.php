@@ -34,7 +34,8 @@ final class ThreadMiddlewareTest extends TestCase
             return new Response();
         })->withAttribute('request-handler-annotations', ['thread' => true]);
 
-        (new ThreadMiddleware($pool->reveal()))($request, function() {});
+        (new ThreadMiddleware($pool->reveal()))($request, function (): void {
+        });
 
         self::assertTrue($handlerCalled);
     }
@@ -50,7 +51,7 @@ final class ThreadMiddlewareTest extends TestCase
             'https://example.com/'
         ))->withAttribute('request-handler-annotations', ['thread' => false]);
 
-        (new ThreadMiddleware($pool->reveal()))($request,  function () use (&$handlerCalled) {
+        (new ThreadMiddleware($pool->reveal()))($request, function () use (&$handlerCalled) {
             $handlerCalled = true;
 
             return new Response();
