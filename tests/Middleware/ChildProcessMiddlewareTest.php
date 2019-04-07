@@ -34,7 +34,7 @@ final class ChildProcessMiddlewareTest extends AsyncTestCase
             'https://example.com/'
         ))->withAttribute(
             'request-handler',
-            ChildProcessMiddlewareTest::class . '::handlerRequest'
+            RequestHandlerStub::class . '::handlerRequest'
         )->withAttribute(
             'request-handler-annotations',
             ['childprocess' => true]
@@ -65,10 +65,5 @@ final class ChildProcessMiddlewareTest extends AsyncTestCase
         });
 
         self::assertTrue($handlerCalled);
-    }
-
-    public static function handlerRequest()
-    {
-        return new Response(123);
     }
 }
