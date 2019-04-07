@@ -6,7 +6,6 @@ use Prophecy\Argument;
 use Psr\Http\Message\ResponseInterface;
 use function React\Promise\resolve;
 use ReactiveApps\Command\HttpServer\Middleware\ChildProcessMiddleware;
-use ReactiveApps\Command\HttpServer\Middleware\ThreadMiddleware;
 use RingCentral\Psr7\Response;
 use RingCentral\Psr7\ServerRequest;
 use SuperClosure\Serializer;
@@ -48,10 +47,10 @@ final class ChildProcessMiddlewareTest extends AsyncTestCase
         self::assertSame(123, $response->getStatusCode());
     }
 
-    public function _testNotAChildProcessingRequest(): void
+    public function testNotAChildProcessingRequest(): void
     {
         $pool = $this->prophesize(PoolInterface::class);
-        $pool->run(Argument::type('callable'), Argument::type('array'))->shouldNotBeCalled();
+        $pool->rpc(Argument::type(Rpc::class))->shouldNotBeCalled();
 
         $handlerCalled = false;
         $request = (new ServerRequest(
@@ -59,7 +58,7 @@ final class ChildProcessMiddlewareTest extends AsyncTestCase
             'https://example.com/'
         ))->withAttribute('request-handler-annotations', ['childprocess' => false]);
 
-        (new ThreadMiddleware($pool->reveal()))($request, function () use (&$handlerCalled) {
+        (new ChildProcessMiddleware(resolve($pool->reveal())))($request, function () use (&$handlerCalled) {
             $handlerCalled = true;
 
             return new Response();
