@@ -3,6 +3,7 @@
     "prefer-stable": true,
     "license": "MIT",
     "name": "reactive-apps/command-http-server",
+    "description": "HTTP Server command",
     "require": {
         "php": "^7.3",
         "cakephp/collection": "^3.6",

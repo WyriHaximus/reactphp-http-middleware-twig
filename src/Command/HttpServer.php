@@ -28,9 +28,9 @@ final class HttpServer implements Command
     private $middleware;
 
     /**
-     * @param LoggerInterface $logger
-     * @param SocketServerInterface    $socket
-     * @param array           $middleware
+     * @param LoggerInterface       $logger
+     * @param SocketServerInterface $socket
+     * @param array                 $middleware
      */
     public function __construct(LoggerInterface $logger, SocketServerInterface $socket, array $middleware)
     {

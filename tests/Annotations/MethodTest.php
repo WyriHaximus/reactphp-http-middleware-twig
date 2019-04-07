@@ -10,7 +10,7 @@ use WyriHaximus\TestUtilities\TestCase;
  */
 final class MethodTest extends TestCase
 {
-    public function testGetMethod()
+    public function testGetMethod(): void
     {
         $method = new Method(['GET', 'POST']);
 

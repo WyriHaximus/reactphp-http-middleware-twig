@@ -14,7 +14,7 @@ final class Shutdown
     private $logger;
 
     /**
-     * @param ServerInterface          $socket
+     * @param ServerInterface $socket
      * @param LoggerInterface $logger
      */
     public function __construct(ServerInterface $socket, LoggerInterface $logger)

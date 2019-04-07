@@ -2,10 +2,8 @@
 
 namespace ReactiveApps\Tests\Command\HttpServer\Listener;
 
-use Prophecy\Argument;
 use Psr\Log\LoggerInterface;
 use React\Socket\ServerInterface;
-use ReactiveApps\Command\HttpServer\Command\HttpServer;
 use ReactiveApps\Command\HttpServer\Listener\Shutdown;
 use WyriHaximus\TestUtilities\TestCase;
 
@@ -14,7 +12,7 @@ use WyriHaximus\TestUtilities\TestCase;
  */
 final class ShutdownTest extends TestCase
 {
-    public function testShutdown()
+    public function testShutdown(): void
     {
         $logger = $this->prophesize(LoggerInterface::class);
         $logger->debug('Closed listening socket for new incoming requests')->shouldBeCalled();

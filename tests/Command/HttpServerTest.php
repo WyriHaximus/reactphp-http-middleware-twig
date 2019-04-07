@@ -13,7 +13,7 @@ use WyriHaximus\TestUtilities\TestCase;
  */
 final class HttpServerTest extends TestCase
 {
-    public function testHttpServer()
+    public function testHttpServer(): void
     {
         $logger = $this->prophesize(LoggerInterface::class);
         $logger->debug('Creating HTTP server')->shouldBeCalled();

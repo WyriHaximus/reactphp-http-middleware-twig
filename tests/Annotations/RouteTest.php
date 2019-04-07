@@ -10,7 +10,7 @@ use WyriHaximus\TestUtilities\TestCase;
  */
 final class RouteTest extends TestCase
 {
-    public function testGetRoute()
+    public function testGetRoute(): void
     {
         $route = new Route(['/path/to/route', '/not/path/to/route']);
 
