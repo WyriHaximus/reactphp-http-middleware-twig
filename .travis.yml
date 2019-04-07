@@ -41,6 +41,7 @@ install:
   - if [ "$dependencies" = "lowest" ]; then composer update --prefer-lowest --prefer-dist -n --ignore-platform-reqs; fi;
   - if [ "$dependencies" = "highest" ]; then composer update --prefer-dist -n --ignore-platform-reqs; fi;
   - composer show
+  - mkdir build
 
 ## Run the actual test
 script:
