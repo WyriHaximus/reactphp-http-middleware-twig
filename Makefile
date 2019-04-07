@@ -13,9 +13,6 @@ ci-extended:
 contrib:
 	composer run-script qa-contrib --timeout=0
 
-init:
-	composer ensure-installed
-
 cs:
 	composer cs
 
@@ -28,5 +25,5 @@ unit:
 unit-coverage:
 	composer run-script unit-coverage --timeout=0
 
-ci-coverage: init
+ci-coverage:
 	composer ci-coverage
