@@ -6,9 +6,8 @@ use Psr\Http\Message\ServerRequestInterface;
 
 final class RequestHandlerMiddleware
 {
-    public function __invoke(ServerRequestInterface $request, callable $next)
+    public function __invoke(ServerRequestInterface $request)
     {
-        $requestHandler = $request->getAttribute('request-handler');
-        return $requestHandler($request);
+        return ($request->getAttribute('request-handler'))($request);
     }
 }

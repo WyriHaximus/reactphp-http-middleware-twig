@@ -40,7 +40,7 @@ final class CoroutineMiddleware
 
     private function runCoroutine(ServerRequestInterface $request): PromiseInterface
     {
-        return new Promise(function ($resolve, $reject) use ($request) {
+        return new Promise(function ($resolve, $reject) use ($request): void {
             $requestHandler = $request->getAttribute('request-handler');
             if ($request->getAttribute('request-handler-static') === false) {
                 $requestHandler = (function (string $requestHandler) {

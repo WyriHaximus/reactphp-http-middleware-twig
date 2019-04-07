@@ -18,7 +18,7 @@ final class Route
      */
     public function __construct(array $routes)
     {
-        $this->route = current($routes);
+        $this->route = \current($routes);
     }
 
     /**

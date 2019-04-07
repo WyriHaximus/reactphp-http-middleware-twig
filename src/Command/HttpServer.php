@@ -3,9 +3,8 @@
 namespace ReactiveApps\Command\HttpServer\Command;
 
 use Psr\Log\LoggerInterface;
-use React\EventLoop\LoopInterface;
 use React\Http\Server as ReactHttpServer;
-use React\Socket\Server as SocketServer;
+use React\Socket\ServerInterface as SocketServerInterface;
 use ReactiveApps\Command\Command;
 use WyriHaximus\PSR3\CallableThrowableLogger\CallableThrowableLogger;
 
@@ -14,17 +13,12 @@ final class HttpServer implements Command
     const COMMAND = 'http-server';
 
     /**
-     * @var LoopInterface
-     */
-    private $loop;
-
-    /**
      * @var LoggerInterface
      */
     private $logger;
 
     /**
-     * @var SocketServer
+     * @var SocketServerInterface
      */
     private $socket;
 
@@ -34,20 +28,18 @@ final class HttpServer implements Command
     private $middleware;
 
     /**
-     * @param LoopInterface $loop
      * @param LoggerInterface $logger
-     * @param SocketServer $socket
-     * @param array $middleware
+     * @param SocketServerInterface    $socket
+     * @param array           $middleware
      */
-    public function __construct(LoopInterface $loop, LoggerInterface $logger, SocketServer $socket, array $middleware)
+    public function __construct(LoggerInterface $logger, SocketServerInterface $socket, array $middleware)
     {
-        $this->loop = $loop;
         $this->logger = $logger;
         $this->socket = $socket;
         $this->middleware = $middleware;
     }
 
-    public function __invoke()
+    public function __invoke(): void
     {
         $this->logger->debug('Creating HTTP server');
         $httpServer = new ReactHttpServer($this->middleware);

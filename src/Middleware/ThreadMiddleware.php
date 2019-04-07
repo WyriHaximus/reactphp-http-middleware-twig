@@ -3,11 +3,11 @@
 namespace ReactiveApps\Command\HttpServer\Middleware;
 
 use Psr\Http\Message\ServerRequestInterface;
-use WyriHaximus\React\Parallel\PoolInterface;
 use function WyriHaximus\psr7_response_decode;
 use function WyriHaximus\psr7_response_encode;
 use function WyriHaximus\psr7_server_request_decode;
 use function WyriHaximus\psr7_server_request_encode;
+use WyriHaximus\React\Parallel\PoolInterface;
 
 final class ThreadMiddleware
 {

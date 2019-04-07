@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 use Psr\Container\ContainerInterface;
 use React\EventLoop\LoopInterface;
@@ -40,7 +40,7 @@ return [
 
         $middleware[] = $container->get(ControllerMiddleware::class);
         $middleware[] = $container->get(CoroutineMiddleware::class);
-        if (extension_loaded('parallel') && interface_exists(PoolInterface::class)) {
+        if (\extension_loaded('parallel') && \interface_exists(PoolInterface::class)) {
             $middleware[] = $container->get(ThreadMiddleware::class);
         }
         $middleware[] = $container->get(ChildProcessMiddleware::class);

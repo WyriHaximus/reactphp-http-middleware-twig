@@ -29,8 +29,9 @@
         "wyrihaximus/to-thread-or-not-to-thread": "dev-master"
     },
     "require-dev": {
-        "api-clients/test-utilities": "^5.0",
         "monolog/monolog": "^1.23",
+        "wyrihaximus/async-test-utilities": "^1.1",
+        "wyrihaximus/cs-fixer-config": "^1.0",
         "wyrihaximus/pool-info": "dev-master",
         "wyrihaximus/react-parallel": "dev-master"
     },
@@ -88,23 +89,18 @@
     "scripts": {
         "ensure-installed": "composer install --ansi -n -q",
         "cs": [
-            "@ensure-installed",
             "php-cs-fixer fix --config=.php_cs --ansi --dry-run --diff --verbose --allow-risky=yes --show-progress=estimating"
         ],
         "cs-fix": [
-            "@ensure-installed",
             "php-cs-fixer fix --config=.php_cs --ansi --verbose --allow-risky=yes --show-progress=estimating"
         ],
         "unit": [
-            "@ensure-installed",
             "phpunit --colors=always -c phpunit.xml.dist"
         ],
         "unit-coverage": [
-            "@ensure-installed",
             "phpunit --colors=always -c phpunit.xml.dist --coverage-text --coverage-html covHtml --coverage-clover ./build/logs/clover.xml"
         ],
         "lint-php": [
-            "@ensure-installed",
             "parallel-lint --exclude vendor ."
         ],
         "qa-all": [

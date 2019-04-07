@@ -18,7 +18,7 @@ final class Method
      */
     public function __construct(array $methods)
     {
-        $this->method = current($methods);
+        $this->method = \current($methods);
     }
 
     /**

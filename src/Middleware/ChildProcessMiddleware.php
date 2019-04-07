@@ -2,20 +2,15 @@
 
 namespace ReactiveApps\Command\HttpServer\Middleware;
 
-use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use React\Promise\Promise;
 use React\Promise\PromiseInterface;
-use Rx\Subject\Subject;
-use WyriHaximus\React\ChildProcess\Closure\MessageFactory;
-use WyriHaximus\React\ChildProcess\Messenger\Messages\Payload;
-use WyriHaximus\React\ChildProcess\Pool\PoolInterface;
-use WyriHaximus\Recoil\Call;
-use WyriHaximus\Recoil\QueueCallerInterface;
 use function WyriHaximus\psr7_response_decode;
 use function WyriHaximus\psr7_response_encode;
 use function WyriHaximus\psr7_server_request_decode;
 use function WyriHaximus\psr7_server_request_encode;
+use WyriHaximus\React\ChildProcess\Closure\MessageFactory;
+use WyriHaximus\React\ChildProcess\Messenger\Messages\Payload;
+use WyriHaximus\React\ChildProcess\Pool\PoolInterface;
 
 final class ChildProcessMiddleware
 {

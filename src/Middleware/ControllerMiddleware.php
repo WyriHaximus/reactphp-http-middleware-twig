@@ -6,6 +6,7 @@ use Cake\Collection\Collection;
 use Doctrine\Common\Annotations\AnnotationReader;
 use FastRoute\Dispatcher;
 use FastRoute\RouteCollector;
+use function FastRoute\simpleDispatcher;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use ReactiveApps\Command\HttpServer\Annotations\Method;
@@ -13,7 +14,6 @@ use ReactiveApps\Command\HttpServer\Annotations\Route;
 use Roave\BetterReflection\BetterReflection;
 use Roave\BetterReflection\Reflector\ClassReflector;
 use Roave\BetterReflection\SourceLocator\Type\SingleFileSourceLocator;
-use function FastRoute\simpleDispatcher;
 use function WyriHaximus\from_get_in_packages_composer;
 use function WyriHaximus\toChildProcessOrNotToChildProcess;
 use function WyriHaximus\toCoroutineOrNotToCoroutine;
@@ -41,7 +41,7 @@ final class ControllerMiddleware
     {
         $this->container = $container;
 
-        $this->router = simpleDispatcher(function (RouteCollector $routeCollector) {
+        $this->router = simpleDispatcher(function (RouteCollector $routeCollector): void {
             foreach ($this->locateRoutes(from_get_in_packages_composer('extra.reactive-apps.http-controller')) as $route) {
                 $routeCollector->addRoute(...$route['route']);
                 $this->routes[$route['handler']] = [
@@ -51,6 +51,32 @@ final class ControllerMiddleware
             }
         });
     }
+
+    public function __invoke(ServerRequestInterface $request, callable $next)
+    {
+        $route = $this->router->dispatch($request->getMethod(), $request->getUri()->getPath());
+
+        if ($route[0] === Dispatcher::NOT_FOUND) {
+            return Factory::createResponse(404);
+        }
+
+        if ($route[0] === Dispatcher::METHOD_NOT_ALLOWED) {
+            return Factory::createResponse(405)->withHeader('Allow', \implode(', ', $route[1]));
+        }
+
+        foreach ($route[2] as $name => $value) {
+            $request = $request->withAttribute($name, $value);
+        }
+
+        $request = $request
+            ->withAttribute('request-handler', $route[1])
+            ->withAttribute('request-handler-annotations', $this->routes[$route[1]]['annotations'])
+            ->withAttribute('request-handler-static', $this->routes[$route[1]]['static'])
+        ;
+
+        return $next($request);
+    }
+
     private function locateRoutes(iterable $controllers): iterable
     {
         foreach ($controllers as $controller) {
@@ -79,9 +105,8 @@ final class ControllerMiddleware
             foreach ($class->getMethods() as $method) {
                 $annotations = (new  Collection($annotationReader->getMethodAnnotations((new \ReflectionClass($class->getName()))->getMethod($method->getShortName()))))
                     ->indexBy(function (object $annotation) {
-                        return get_class($annotation);
+                        return \get_class($annotation);
                     })->toArray();
-
 
                 if (!isset($annotations[Method::class]) || !isset($annotations[Route::class])) {
                     continue;
@@ -105,30 +130,5 @@ final class ControllerMiddleware
                 ];
             }
         }
-    }
-
-    public function __invoke(ServerRequestInterface $request, callable $next)
-    {
-        $route = $this->router->dispatch($request->getMethod(), $request->getUri()->getPath());
-
-        if ($route[0] === Dispatcher::NOT_FOUND) {
-            return Factory::createResponse(404);
-        }
-
-        if ($route[0] === Dispatcher::METHOD_NOT_ALLOWED) {
-            return Factory::createResponse(405)->withHeader('Allow', implode(', ', $route[1]));
-        }
-
-        foreach ($route[2] as $name => $value) {
-            $request = $request->withAttribute($name, $value);
-        }
-
-        $request = $request
-            ->withAttribute('request-handler', $route[1])
-            ->withAttribute('request-handler-annotations', $this->routes[$route[1]]['annotations'])
-            ->withAttribute('request-handler-static', $this->routes[$route[1]]['static'])
-        ;
-
-        return $next($request);
     }
 }

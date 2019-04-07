@@ -11,18 +11,18 @@ return [
     QueueCallerInterface::class => function (Kernel $kernel, LoopInterface $loop, Shutdown $shutdown) {
         $ic = new InfiniteCaller($kernel);
 
-        if (class_exists(GlobalState::class)) {
-            $timer = $loop->addPeriodicTimer(0.25, function () use ($ic) {
+        if (\class_exists(GlobalState::class)) {
+            $timer = $loop->addPeriodicTimer(0.25, function () use ($ic): void {
                 foreach ($ic->info() as $key => $value) {
                     GlobalState::set('recoil.pool.' . $key, $value);
                 }
             });
 
-            $shutdown->subscribe(null, null, function () use ($loop, $timer) {
+            $shutdown->subscribe(null, null, function () use ($loop, $timer): void {
                 $loop->cancelTimer($timer);
             });
         }
-        
+
         return $ic;
     },
 ];
