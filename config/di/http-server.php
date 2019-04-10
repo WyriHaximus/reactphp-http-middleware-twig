@@ -6,6 +6,7 @@ use React\Socket\Server as SocketServer;
 use React\Socket\ServerInterface as SocketServerInterface;
 use ReactiveApps\Command\HttpServer\Command\HttpServer;
 use ReactiveApps\Command\HttpServer\Listener\Shutdown;
+use RingCentral\Psr7\Response;
 use WyriHaximus\PSR3\ContextLogger\ContextLogger;
 use WyriHaximus\React\Http\Middleware\MiddlewareRunner;
 use WyriHaximus\React\Http\Middleware\RewriteMiddleware;
@@ -59,6 +60,9 @@ return [
         }
         \array_push($middleware, ...$middlwareSuffix);
         $middleware[] = $middlewareRunner;
+        $middleware[] = function () {
+            return new Response(404);
+        };
 
         return new HttpServer($logger, $socket, $middleware);
     })
