@@ -1,7 +1,6 @@
 <?php declare(strict_types=1);
 
 use Psr\Container\ContainerInterface;
-use React\EventLoop\LoopInterface;
 use React\Promise\PromiseInterface;
 use ReactiveApps\Command\HttpServer\Middleware\ChildProcessMiddleware;
 use ReactiveApps\Command\HttpServer\Middleware\ControllerMiddleware;
@@ -9,7 +8,6 @@ use ReactiveApps\Command\HttpServer\Middleware\CoroutineMiddleware;
 use ReactiveApps\Command\HttpServer\Middleware\RequestHandlerMiddleware;
 use ReactiveApps\Command\HttpServer\Middleware\ThreadMiddleware;
 use WyriHaximus\React\Http\Middleware\MiddlewareRunner;
-use WyriHaximus\React\Parallel\Finite;
 use WyriHaximus\React\Parallel\PoolInterface;
 use WyriHaximus\Recoil\QueueCallerInterface;
 
@@ -31,10 +29,11 @@ return [
     })
         ->parameter('childProcessPool', \DI\get('internal.http-server.child-process.pool')),
     ThreadMiddleware::class => \DI\factory(function (
-        LoopInterface $loop
+        PoolInterface $pool
     ) {
-        return new ThreadMiddleware(new Finite($loop, 32));
-    }),
+        return new ThreadMiddleware($pool);
+    })
+        ->parameter('pool', \DI\get('internal.http-server.thread.pool')),
     'internal.http-server.request-handling-middleware-runner' => \DI\factory(function (ContainerInterface $container) {
         $middleware = [];
 
