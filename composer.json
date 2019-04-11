@@ -43,10 +43,7 @@
     "extra": {
         "php-di-definitions": {
           "di": [
-            "config/di/child-process-pool.php",
-            "config/di/http-server.php",
-            "config/di/middleware.php",
-            "config/di/queue-caller.php"
+            "config/di/*.php"
           ]
         },
         "reactive-apps": {
