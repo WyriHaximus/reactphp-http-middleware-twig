@@ -3,7 +3,7 @@
 namespace ReactiveApps\Command\HttpServer\Command;
 
 use Psr\Log\LoggerInterface;
-use React\Http\Server as ReactHttpServer;
+use React\Http\StreamingServer as ReactHttpServer;
 use React\Socket\ServerInterface as SocketServerInterface;
 use ReactiveApps\Command\Command;
 use WyriHaximus\PSR3\CallableThrowableLogger\CallableThrowableLogger;

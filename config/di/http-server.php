@@ -2,6 +2,8 @@
 
 use Psr\Log\LoggerInterface;
 use React\EventLoop\LoopInterface;
+use React\Http\Middleware\RequestBodyBufferMiddleware;
+use React\Http\Middleware\RequestBodyParserMiddleware;
 use React\Socket\Server as SocketServer;
 use React\Socket\ServerInterface as SocketServerInterface;
 use ReactiveApps\Command\HttpServer\Command\HttpServer;
@@ -41,6 +43,11 @@ return [
     ) {
         $logger = new ContextLogger($logger, ['section' => 'http-server'], 'http-server');
         $middleware = [];
+        $middleware[] = new RequestBodyBufferMiddleware();;
+        if (\ini_get('enable_post_data_reading') !== '') {
+            $middleware[] = new RequestBodyParserMiddleware();
+        }
+
         \array_push($middleware, ...$middlwarePrefix);
         $middleware[] = Factory::create(
             $loop,
