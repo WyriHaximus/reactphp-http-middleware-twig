@@ -1,6 +1,7 @@
 <?php declare(strict_types=1);
 
 use Psr\Log\LoggerInterface;
+use React\Cache\CacheInterface;
 use React\EventLoop\LoopInterface;
 use React\Socket\Server as SocketServer;
 use React\Socket\ServerInterface as SocketServerInterface;
@@ -32,6 +33,7 @@ return [
         LoggerInterface $logger,
         MiddlewareRunner $middlewareRunner,
         SocketServerInterface $socket,
+        CacheInterface $publicPreloadCache,
         array $middlwarePrefix = [],
         array $middlwareSuffix = [],
         array $rewrites = [],
@@ -54,7 +56,8 @@ return [
         if ($public !== null && \file_exists($public) && \is_dir($public)) {
             $middleware[] = new WebrootPreloadMiddleware(
                 $public,
-                new ContextLogger($logger, ['section' => 'webroot'], 'webroot')
+                new ContextLogger($logger, ['section' => 'webroot'], 'webroot'),
+                $publicPreloadCache
             );
         }
         \array_push($middleware, ...$middlwareSuffix);
@@ -64,6 +67,7 @@ return [
     })
     ->parameter('socket', \DI\get('internal.http-server.socket'))
     ->parameter('public', \DI\get('config.http-server.public'))
+    ->parameter('publicPreloadCache', \DI\get('config.http-server.public.preload.cache'))
     ->parameter('hsts', \DI\get('config.http-server.hsts'))
     ->parameter('middlwarePrefix', \DI\get('config.http-server.middleware.prefix'))
     ->parameter('middlwareSuffix', \DI\get('config.http-server.middleware.suffix'))
