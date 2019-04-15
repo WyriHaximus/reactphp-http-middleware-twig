@@ -3,10 +3,13 @@
 use Psr\Log\LoggerInterface;
 use React\Cache\CacheInterface;
 use React\EventLoop\LoopInterface;
+use React\Http\Middleware\RequestBodyBufferMiddleware;
+use React\Http\Middleware\RequestBodyParserMiddleware;
 use React\Socket\Server as SocketServer;
 use React\Socket\ServerInterface as SocketServerInterface;
 use ReactiveApps\Command\HttpServer\Command\HttpServer;
 use ReactiveApps\Command\HttpServer\Listener\Shutdown;
+use RingCentral\Psr7\Response;
 use WyriHaximus\PSR3\ContextLogger\ContextLogger;
 use WyriHaximus\React\Http\Middleware\MiddlewareRunner;
 use WyriHaximus\React\Http\Middleware\RewriteMiddleware;
@@ -42,6 +45,11 @@ return [
     ) {
         $logger = new ContextLogger($logger, ['section' => 'http-server'], 'http-server');
         $middleware = [];
+        $middleware[] = new RequestBodyBufferMiddleware();;
+        if (\ini_get('enable_post_data_reading') !== '') {
+            $middleware[] = new RequestBodyParserMiddleware();
+        }
+
         \array_push($middleware, ...$middlwarePrefix);
         $middleware[] = Factory::create(
             $loop,
@@ -62,6 +70,9 @@ return [
         }
         \array_push($middleware, ...$middlwareSuffix);
         $middleware[] = $middlewareRunner;
+        $middleware[] = function () {
+            return new Response(404);
+        };
 
         return new HttpServer($logger, $socket, $middleware);
     })

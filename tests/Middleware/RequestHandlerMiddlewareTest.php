@@ -21,7 +21,26 @@ final class RequestHandlerMiddlewareTest extends TestCase
             $handlerCalled = true;
         });
 
-        (new RequestHandlerMiddleware())($request);
+        $shouldNeverBeCalled = false;
+        (new RequestHandlerMiddleware())($request, function () use (&$shouldNeverBeCalled): void {
+            $shouldNeverBeCalled = true;
+        });
+
+        self::assertTrue($handlerCalled);
+        self::assertFalse($shouldNeverBeCalled);
+    }
+
+    public function testCallNextOnNoHandler(): void
+    {
+        $request = (new ServerRequest(
+            'GET',
+            'https://example.com/'
+        ));
+
+        $handlerCalled = false;
+        (new RequestHandlerMiddleware())($request, function () use (&$handlerCalled): void {
+            $handlerCalled = true;
+        });
 
         self::assertTrue($handlerCalled);
     }
