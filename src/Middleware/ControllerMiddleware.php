@@ -7,6 +7,7 @@ use Doctrine\Common\Annotations\AnnotationReader;
 use FastRoute\Dispatcher;
 use FastRoute\RouteCollector;
 use function FastRoute\simpleDispatcher;
+use Middlewares\Utils\Factory;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use ReactiveApps\Command\HttpServer\Annotations\Method;
