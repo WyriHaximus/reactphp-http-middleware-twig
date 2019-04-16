@@ -13,7 +13,7 @@ final class RoutesTest extends TestCase
     public function testGetRoute(): void
     {
         $routesList = ['/path/to/route', '/not/path/to/route'];
-        $routes = new Routes($routesList);
+        $routes = new Routes(['value' => $routesList]);
 
         self::assertSame($routesList, $routes->getRoutes());
     }

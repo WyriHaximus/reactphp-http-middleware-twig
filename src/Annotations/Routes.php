@@ -16,13 +16,16 @@ final class Routes
      */
     public function __construct(array $routes)
     {
-        $this->routes = $routes;
+        if (\is_string($routes['value'])) {
+            $routes['value'] = [$routes['value']];
+        }
+        $this->routes = $routes['value'];
     }
 
     /**
-     * @return iterable
+     * @return string[]
      */
-    public function getRoutes(): iterable
+    public function getRoutes(): array
     {
         return $this->routes;
     }
