@@ -10,7 +10,7 @@ use function FastRoute\simpleDispatcher;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use ReactiveApps\Command\HttpServer\Annotations\Method;
-use ReactiveApps\Command\HttpServer\Annotations\Route;
+use ReactiveApps\Command\HttpServer\Annotations\Routes;
 use Roave\BetterReflection\BetterReflection;
 use Roave\BetterReflection\Reflector\ClassReflector;
 use Roave\BetterReflection\SourceLocator\Type\SingleFileSourceLocator;
@@ -42,11 +42,13 @@ final class ControllerMiddleware
         $this->container = $container;
 
         $this->router = simpleDispatcher(function (RouteCollector $routeCollector): void {
-            foreach ($this->locateRoutes(from_get_in_packages_composer('extra.reactive-apps.http-controller')) as $route) {
-                $routeCollector->addRoute(...$route['route']);
-                $this->routes[$route['handler']] = [
-                    'annotations' => $route['annotations'],
-                    'static' => $route['static'],
+            foreach ($this->locateRoutes(from_get_in_packages_composer('extra.reactive-apps.http-controller')) as $routes) {
+                foreach ($routes['routes'] as $route) {
+                    $routeCollector->addRoute($routes['method'], $route, $routes['handler']);
+                }
+                $this->routes[$routes['handler']] = [
+                    'annotations' => $routes['annotations'],
+                    'static' => $routes['static'],
                 ];
             }
         });
@@ -108,7 +110,7 @@ final class ControllerMiddleware
                         return \get_class($annotation);
                     })->toArray();
 
-                if (!isset($annotations[Method::class]) || !isset($annotations[Route::class])) {
+                if (!isset($annotations[Method::class]) || !isset($annotations[Routes::class])) {
                     continue;
                 }
 
@@ -117,11 +119,8 @@ final class ControllerMiddleware
                 yield [
                     'handler' => $requestHandler,
                     'static' => $method->isStatic(),
-                    'route' => [
-                        $annotations[Method::class]->getMethod(),
-                        $annotations[Route::class]->getRoute(),
-                        $requestHandler,
-                    ],
+                    'routes' => $annotations[Routes::class]->getRoutes(),
+                    'method' => $annotations[Method::class]->getMethod(),
                     'annotations' => [
                         'childprocess' => toChildProcessOrNotToChildProcess($requestHandler, $annotationReader),
                         'coroutine' => toCoroutineOrNotToCoroutine($requestHandler, $annotationReader),
