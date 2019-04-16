@@ -6,26 +6,24 @@ namespace ReactiveApps\Command\HttpServer\Annotations;
  * @Annotation
  * @Target({"METHOD"})
  */
-final class Route
+final class Routes
 {
-    /**
-     * @var string
-     */
-    private $route;
+    /** @var string[]  */
+    private $routes;
 
     /**
      * @param string[] $routes
      */
     public function __construct(array $routes)
     {
-        $this->route = \current($routes);
+        $this->routes = $routes;
     }
 
     /**
-     * @return string
+     * @return iterable
      */
-    public function getRoute(): string
+    public function getRoutes(): iterable
     {
-        return $this->route;
+        return $this->routes;
     }
 }

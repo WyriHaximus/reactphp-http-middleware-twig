@@ -45,7 +45,7 @@ return [
     ) {
         $logger = new ContextLogger($logger, ['section' => 'http-server'], 'http-server');
         $middleware = [];
-        $middleware[] = new RequestBodyBufferMiddleware();;
+        $middleware[] = new RequestBodyBufferMiddleware();
         if (\ini_get('enable_post_data_reading') !== '') {
             $middleware[] = new RequestBodyParserMiddleware();
         }
