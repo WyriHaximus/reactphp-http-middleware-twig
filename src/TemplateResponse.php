@@ -14,8 +14,11 @@ final class TemplateResponse extends Response
         return $this->data;
     }
 
-    public function setData(array $data): void
+    public function withData(array $data): TemplateResponse
     {
-        $this->data = $data;
+        $clone = clone $this;
+        $clone->data = $data;
+
+        return $clone;
     }
 }
