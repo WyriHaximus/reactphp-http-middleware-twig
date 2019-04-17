@@ -11,6 +11,7 @@ use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use ReactiveApps\Command\HttpServer\Annotations\Method;
 use ReactiveApps\Command\HttpServer\Annotations\Routes;
+use ReactiveApps\Command\HttpServer\Annotations\Template;
 use Roave\BetterReflection\BetterReflection;
 use Roave\BetterReflection\Reflector\ClassReflector;
 use Roave\BetterReflection\SourceLocator\Type\SingleFileSourceLocator;
@@ -49,6 +50,7 @@ final class ControllerMiddleware
                 $this->routes[$routes['handler']] = [
                     'annotations' => $routes['annotations'],
                     'static' => $routes['static'],
+                    'template' => $routes['template'],
                 ];
             }
         });
@@ -75,6 +77,10 @@ final class ControllerMiddleware
             ->withAttribute('request-handler-annotations', $this->routes[$route[1]]['annotations'])
             ->withAttribute('request-handler-static', $this->routes[$route[1]]['static'])
         ;
+
+        if (\is_string($this->routes[$route[1]]['template'])) {
+            $request = $request->withAttribute('request-handler-template', $this->routes[$route[1]]['template']);
+        }
 
         return $next($request);
     }
@@ -121,6 +127,7 @@ final class ControllerMiddleware
                     'static' => $method->isStatic(),
                     'routes' => $annotations[Routes::class]->getRoutes(),
                     'method' => $annotations[Method::class]->getMethod(),
+                    'template' => isset($annotations[Template::class]) ? $annotations[Template::class]->getTemplate() : false,
                     'annotations' => [
                         'childprocess' => toChildProcessOrNotToChildProcess($requestHandler, $annotationReader),
                         'coroutine' => toCoroutineOrNotToCoroutine($requestHandler, $annotationReader),
