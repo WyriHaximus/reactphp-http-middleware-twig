@@ -6,6 +6,7 @@ use ReactiveApps\Command\HttpServer\Middleware\ChildProcessMiddleware;
 use ReactiveApps\Command\HttpServer\Middleware\ControllerMiddleware;
 use ReactiveApps\Command\HttpServer\Middleware\CoroutineMiddleware;
 use ReactiveApps\Command\HttpServer\Middleware\RequestHandlerMiddleware;
+use ReactiveApps\Command\HttpServer\Middleware\TemplateRenderMiddleware;
 use ReactiveApps\Command\HttpServer\Middleware\ThreadMiddleware;
 use WyriHaximus\React\Http\Middleware\MiddlewareRunner;
 use WyriHaximus\React\Parallel\PoolInterface;
@@ -38,6 +39,7 @@ return [
         $middleware = [];
 
         $middleware[] = $container->get(ControllerMiddleware::class);
+        $middleware[] = $container->get(TemplateRenderMiddleware::class);
         $middleware[] = $container->get(CoroutineMiddleware::class);
         if (\extension_loaded('parallel') && \interface_exists(PoolInterface::class)) {
             $middleware[] = $container->get(ThreadMiddleware::class);
