@@ -7,17 +7,17 @@ use RingCentral\Psr7\Response;
 final class TemplateResponse extends Response
 {
     /** @var array  */
-    private $data = [];
+    private $templateData = [];
 
-    public function getData(): array
+    public function getTemplateData(): array
     {
-        return $this->data;
+        return $this->templateData;
     }
 
-    public function withData(array $data): TemplateResponse
+    public function withTemplateData(array $data): TemplateResponse
     {
         $clone = clone $this;
-        $clone->data = $data;
+        $clone->templateData = $data;
 
         return $clone;
     }

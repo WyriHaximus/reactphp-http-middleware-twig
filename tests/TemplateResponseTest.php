@@ -20,7 +20,7 @@ final class TemplateResponseTest extends AsyncTestCase
             'string' => 'beer',
             'int' => \time(),
         ];
-        $response = (new TemplateResponse())->withData($data);
-        self::assertSame($data, $response->getData());
+        $response = (new TemplateResponse())->withTemplateData($data);
+        self::assertSame($data, $response->getTemplateData());
     }
 }
