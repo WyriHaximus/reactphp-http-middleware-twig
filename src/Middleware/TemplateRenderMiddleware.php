@@ -36,7 +36,7 @@ final class TemplateRenderMiddleware
                 $response = $response->withBody(
                     stream_for(
                         $this->twig->render(
-                            $template,
+                            $template . '.twig',
                             $response->getTemplateData()
                         )
                     )

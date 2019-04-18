@@ -26,7 +26,7 @@ final class TemplateRenderMiddlewareTest extends AsyncTestCase
         /** @var ResponseInterface $response */
         $response = $this->await((new TemplateRenderMiddleware(new Environment(
             new ArrayLoader([
-                'template_pawufhuiwfe' => 'Beer from a {{ foo }}',
+                'template_pawufhuiwfe.twig' => 'Beer from a {{ foo }}',
             ])
         )))($request, function () {
             return (new TemplateResponse())->withTemplateData(['foo' => 'bar']);
