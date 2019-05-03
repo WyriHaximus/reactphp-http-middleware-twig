@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c05d43ab0d9de20460fb6bd0d22e1462",
+    "content-hash": "806429351d46b48183ecfa0f747b9d40",
     "packages": [
         {
             "name": "api-clients/rx",
@@ -4699,27 +4699,30 @@
         },
         {
             "name": "wyrihaximus/react-stream-json",
-            "version": "1.1.0",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/reactphp-stream-json.git",
-                "reference": "3157f8fd95dca6e0d252749feea21a0de0db4984"
+                "reference": "6ddfaedbe51b0ff68c473e2a6893a7d588c1c0e3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/reactphp-stream-json/zipball/3157f8fd95dca6e0d252749feea21a0de0db4984",
-                "reference": "3157f8fd95dca6e0d252749feea21a0de0db4984",
+                "url": "https://api.github.com/repos/WyriHaximus/reactphp-stream-json/zipball/6ddfaedbe51b0ff68c473e2a6893a7d588c1c0e3",
+                "reference": "6ddfaedbe51b0ff68c473e2a6893a7d588c1c0e3",
                 "shasum": ""
             },
             "require": {
+                "api-clients/rx": "^2.2",
                 "php": "^7.2",
-                "react/promise": "^2.5",
-                "react/stream": "^1.1.0"
+                "react/promise": "^2.7",
+                "react/stream": "^1.1.0",
+                "reactivex/rxphp": "^2.0"
             },
             "require-dev": {
                 "api-clients/cs-fixer-config": "^1.1",
                 "api-clients/test-utilities": "^5.4",
-                "react/promise-stream": "^1.0 || ^0.1.1"
+                "react/promise-stream": "^1.0 || ^0.1.1",
+                "wyrihaximus/ticking-promise": "^1.6"
             },
             "type": "library",
             "autoload": {
@@ -4738,7 +4741,7 @@
                 }
             ],
             "description": "Incremental JSON encoder writing to a react/stream",
-            "time": "2019-01-01T17:36:59+00:00"
+            "time": "2019-04-26T17:15:31+00:00"
         },
         {
             "name": "wyrihaximus/recoil-queue-caller",
