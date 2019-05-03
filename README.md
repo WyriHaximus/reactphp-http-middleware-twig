@@ -15,6 +15,19 @@ To install via [Composer](http://getcomposer.org/), use the command below, it wi
 composer require reactive-apps/command-http-server 
 ```
 
+# Options
+
+* `http-server.address` - The IP + Port to listen on, for example: `0.0.0.0:8080`
+* `http-server.hsts` - Whether or not to set HSTS headers
+* `http-server.public` - Public webroot to serve, note only put files in here everyone is allowed to see
+* `http-server.public.preload.cache` - Custom cache to store the preloaded webroot files, stored in memory by default
+* `http-server.middleware.prefix` - An array with react/http middleware added before the accesslog and webroot serving middleware
+* `http-server.middleware.suffix` - An array with react/http middleware added after the accesslog and webroot serving middleware and before the route middleware and request handler
+* `http-server.pool.ttl` - TTL for a child process to wait for it's next task
+* `http-server.pool.min` - Minimum number of child processes
+* `http-server.pool.max` - maximum number of child processes
+* `http-server.rewrites` - Rewrites request path internally from one path to the other, invisible for visitors
+
 # License
 
 The MIT License (MIT)
