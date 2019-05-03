@@ -15,6 +15,15 @@ To install via [Composer](http://getcomposer.org/), use the command below, it wi
 composer require reactive-apps/command-http-server 
 ```
 
+# Annotations
+
+* `@ChildProcess` - Runs controller actions inside a child process
+* `@Coroutine` - Runs controller actions inside a coroutine
+* `@Method` - Allowed HTTP methods (GET, POST, PATCH, etc)
+* `@Routes` - Routes to use the given method for
+* `@Template` - Template to use when a TemplateResponse is used
+* `@Thread` - Runs controller actions inside a thread (preferred over use child processes)
+
 # Options
 
 * `http-server.address` - The IP + Port to listen on, for example: `0.0.0.0:8080`
