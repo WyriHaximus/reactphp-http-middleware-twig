@@ -12,6 +12,7 @@ use ReactiveApps\Command\HttpServer\Listener\Shutdown;
 use RingCentral\Psr7\Response;
 use WyriHaximus\PSR3\ContextLogger\ContextLogger;
 use WyriHaximus\React\Http\Middleware\MiddlewareRunner;
+use WyriHaximus\React\Http\Middleware\ResumeResponseBodyMiddleware;
 use WyriHaximus\React\Http\Middleware\RewriteMiddleware;
 use WyriHaximus\React\Http\Middleware\WebrootPreloadMiddleware;
 use WyriHaximus\React\Http\PSR15MiddlewareGroup\Factory;
@@ -45,6 +46,7 @@ return [
     ) {
         $logger = new ContextLogger($logger, ['section' => 'http-server'], 'http-server');
         $middleware = [];
+        $middleware[] = new ResumeResponseBodyMiddleware($loop);
         $middleware[] = new RequestBodyBufferMiddleware();
         if (\ini_get('enable_post_data_reading') !== '') {
             $middleware[] = new RequestBodyParserMiddleware();
