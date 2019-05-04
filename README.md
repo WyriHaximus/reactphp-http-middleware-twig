@@ -121,6 +121,37 @@ final class Root
 
 ```
 
+# Routing
+
+Routing is done through annotations on the method handling the routes. Each method can handle multiple routes but it's 
+recommended to only map routes that fit the the method.
+
+For example the following annotation will map the current method to `/` (***note: all routes are required to be 
+prefixed with `/`***): `@Routes("/")`
+
+A multi route annotation has a slightly different syntax, in the following both `/old` and `/new` will be handled by 
+the same method: 
+
+```php
+@Routes({
+    "/old",
+    "/new"
+})
+``` 
+
+The underlying engine for routes is [`nikic/fast-route`](https://github.com/nikic/FastRoute) which also makes complex 
+routes like this one possible:
+
+```php
+@Route("/{map:(?:wow_cata_draenor|wow_cata_land|wow_cata_underwater|wow_legion_azeroth|wow_battle_for_azeroth|wow_cata_elemental_plane|wow_cata_twisting_nether|wow_comp_wotlk)}/{zoom:1|2|3|4|5|6|7|8|9|10}/{width:[0-9]{1,5}}/{height:[0-9]{1,5}}/{center:[a-zA-Z0-9\`\-\~\_\@\%]{1,35}}{blips:/blip\_center|/[a-zA-Z0-9\`\-\~\_\@\%\[\]]{3,}.+|}.{quality:png|hq.jpg|lq.jpg}")
+```
+
+The different route components like `map`, and `center` are available from the request object with:
+
+```php
+$request->getAttribute('center');
+```
+
 # Annotations
 
 * `@ChildProcess` - Runs controller actions inside a child process
