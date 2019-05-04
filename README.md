@@ -15,6 +15,112 @@ To install via [Composer](http://getcomposer.org/), use the command below, it wi
 composer require reactive-apps/command-http-server 
 ```
 
+# Controllers
+
+Controllers come in two different flavours static and instantiated controllers. 
+
+## Static Controllers
+
+Static controllers are recommended when your controller doesn't have any dependencies like this ping controller used for 
+[`updown.io`](https://updown.io/r/rPWzd) health checks. ***Note: `/ping` isn't a updown standard but it's my personal 
+standard of doing health checks for my apps*** This controller only has a single method with a single route and no
+dependencies:
+
+```php
+<?php declare(strict_types=1);
+
+namespace App\Controller;
+
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use ReactiveApps\Command\HttpServer\Annotations\Method;
+use ReactiveApps\Command\HttpServer\Annotations\Routes;
+use RingCentral\Psr7\Response;
+
+final class Ping
+{
+    /**
+     * @Method("GET")
+     * @Routes("/ping")
+     *
+     * @param  ServerRequestInterface $request
+     * @return ResponseInterface
+     */
+    public static function ping(ServerRequestInterface $request): ResponseInterface
+    {
+        return new Response(
+            200,
+            ['Content-Type' => 'text/plain'],
+            'pong'
+        );
+    }
+}
+```
+
+## Instantiated Controllers
+
+Instantiated Controllers on the other hand will be instantiated and kept around to handle more requests in the future 
+as such they can have dependencies injected. The example below is a controller that has the event loop injected to wait 
+for a random number of seconds before returning the response. It also uses coroutines to make the code more readable: 
+
+```php
+<?php declare(strict_types=1);
+
+namespace App\Controller;
+
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use React\EventLoop\LoopInterface;
+use ReactiveApps\Command\HttpServer\Annotations\Method;
+use ReactiveApps\Command\HttpServer\Annotations\Routes;
+use ReactiveApps\Command\HttpServer\Annotations\Template;
+use ReactiveApps\Command\HttpServer\TemplateResponse;
+use WyriHaximus\Annotations\Coroutine;
+use function WyriHaximus\React\timedPromise;
+
+/**
+ * @Coroutine())
+ */
+final class Root
+{
+    /** @var LoopInterface */
+    private $loop;
+
+    /** @var int */
+    private $time;
+
+    public function __construct(LoopInterface $loop)
+    {
+        $this->loop = $loop;
+        $this->time = \time();
+    }
+
+    /**
+     * @Method("GET")
+     * @Routes("/")
+     * @Template("root")
+     *
+     * @param  ServerRequestInterface $request
+     * @return ResponseInterface
+     */
+    public function root(ServerRequestInterface $request)
+    {
+        $start = \time();
+
+        yield timedPromise($this->loop, \random_int(1, 5));
+
+        return (new TemplateResponse(
+            200,
+            ['Content-Type' => 'text/plain']
+        ))->withTemplateData([
+            'uptime' => (\time() - $this->time),
+            'took' => (\time() - $start),
+        ]);
+    }
+}
+
+```
+
 # Annotations
 
 * `@ChildProcess` - Runs controller actions inside a child process
