@@ -13,6 +13,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use ReactiveApps\Command\HttpServer\Annotations\Method;
 use ReactiveApps\Command\HttpServer\Annotations\Routes;
 use ReactiveApps\Command\HttpServer\Annotations\Template;
+use function RingCentral\Psr7\stream_for;
 use Roave\BetterReflection\BetterReflection;
 use Roave\BetterReflection\Reflector\ClassReflector;
 use Roave\BetterReflection\SourceLocator\Type\SingleFileSourceLocator;
@@ -62,11 +63,17 @@ final class ControllerMiddleware
         $route = $this->router->dispatch($request->getMethod(), $request->getUri()->getPath());
 
         if ($route[0] === Dispatcher::NOT_FOUND) {
-            return Factory::createResponse(404);
+            return Factory::createResponse(404)->
+                withHeader('Content-Type', 'text/plain')->
+                withBody(stream_for('Couldn\'t find what you\'re looking for'))
+            ;
         }
 
         if ($route[0] === Dispatcher::METHOD_NOT_ALLOWED) {
-            return Factory::createResponse(405)->withHeader('Allow', \implode(', ', $route[1]));
+            return Factory::createResponse(405)->withHeader('Allow', \implode(', ', $route[1]))->
+                withHeader('Content-Type', 'text/plain')->
+                withBody(stream_for('Method not allowed'))
+            ;
         }
 
         foreach ($route[2] as $name => $value) {
