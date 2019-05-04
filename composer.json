@@ -19,6 +19,7 @@
         "wyrihaximus/psr-3-context-logger": "^1.0",
         "wyrihaximus/react-child-process-closure": "^1.0",
         "wyrihaximus/react-child-process-pool": "^1.4",
+        "wyrihaximus/react-http-middleware-resume-response-body": "^1.0",
         "wyrihaximus/react-http-middleware-rewrite": "^1.0",
         "wyrihaximus/react-http-middleware-runner": "^1.0",
         "wyrihaximus/react-http-middleware-webroot-preload": "^1.0",
