@@ -73,7 +73,13 @@ return [
         \array_push($middleware, ...$middlwareSuffix);
         $middleware[] = $middlewareRunner;
         $middleware[] = function () {
-            return new Response(404);
+            return new Response(
+                404,
+                [
+                    'Content-Type' => 'text/plain',
+                ],
+                'Couldn\'t find what you\'re looking for'
+            );
         };
 
         return new HttpServer($logger, $socket, $middleware);
