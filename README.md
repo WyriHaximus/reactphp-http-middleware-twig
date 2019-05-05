@@ -152,6 +152,26 @@ The different route components like `map`, and `center` are available from the r
 $request->getAttribute('center');
 ```
 
+# Templates
+
+A route can render a template upon completion it needs an annotation and return/resolve with a `TemplateResponse` 
+holding the data required for that template. For example:
+
+```php
+/**
+ * @Template("root")
+ */
+public function root(ServerRequestInterface $request)
+{
+    return (new TemplateResponse(
+        200,
+        ['Content-Type' => 'text/plain']
+    ))->withTemplateData([
+        'beer' => 'Allmouth', // https://untappd.com/user/WyriHaximus/checkin/745226210
+    ]);
+}
+```
+
 # Annotations
 
 * `@ChildProcess` - Runs controller actions inside a child process
