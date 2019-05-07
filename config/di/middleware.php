@@ -11,7 +11,6 @@ use ReactiveApps\Command\HttpServer\Middleware\ThreadMiddleware;
 use Twig\Environment;
 use WyriHaximus\React\Http\Middleware\MiddlewareRunner;
 use WyriHaximus\React\Parallel\PoolInterface;
-use WyriHaximus\Recoil\QueueCallerInterface;
 
 return [
     ChildProcessMiddleware::class => \DI\factory(function (
@@ -23,13 +22,6 @@ return [
     ControllerMiddleware::class => \DI\factory(function (ContainerInterface $container) {
         return new ControllerMiddleware($container);
     }),
-    CoroutineMiddleware::class => \DI\factory(function (
-        QueueCallerInterface $queueCaller,
-        ContainerInterface $container
-    ) {
-        return new CoroutineMiddleware($queueCaller, $container);
-    })
-        ->parameter('childProcessPool', \DI\get('internal.http-server.child-process.pool')),
     TemplateRenderMiddleware::class => \DI\factory(function (
         Environment $twig,
         string $version
