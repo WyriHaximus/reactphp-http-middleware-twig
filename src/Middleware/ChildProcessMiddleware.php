@@ -12,6 +12,9 @@ use WyriHaximus\React\ChildProcess\Closure\MessageFactory;
 use WyriHaximus\React\ChildProcess\Messenger\Messages\Payload;
 use WyriHaximus\React\ChildProcess\Pool\PoolInterface;
 
+/**
+ * @internal
+ */
 final class ChildProcessMiddleware
 {
     /**

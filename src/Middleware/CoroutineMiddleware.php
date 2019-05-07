@@ -10,6 +10,9 @@ use Rx\Subject\Subject;
 use WyriHaximus\Recoil\Call;
 use WyriHaximus\Recoil\QueueCallerInterface;
 
+/**
+ * @internal
+ */
 final class CoroutineMiddleware
 {
     /** @var Subject */

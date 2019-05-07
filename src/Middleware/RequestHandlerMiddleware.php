@@ -5,6 +5,9 @@ namespace ReactiveApps\Command\HttpServer\Middleware;
 use Psr\Http\Message\ServerRequestInterface;
 use ReactiveApps\Command\HttpServer\RequestHandlerFactory;
 
+/**
+ * @internal
+ */
 final class RequestHandlerMiddleware
 {
     /** @var RequestHandlerFactory */

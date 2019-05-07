@@ -9,6 +9,9 @@ use ReactiveApps\Command\HttpServer\TemplateResponse;
 use function RingCentral\Psr7\stream_for;
 use Twig\Environment;
 
+/**
+ * @internal
+ */
 final class TemplateRenderMiddleware
 {
     /** @var Environment */

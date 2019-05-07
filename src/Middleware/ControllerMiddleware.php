@@ -22,6 +22,9 @@ use function WyriHaximus\toChildProcessOrNotToChildProcess;
 use function WyriHaximus\toCoroutineOrNotToCoroutine;
 use function WyriHaximus\toThreadOrNotToThread;
 
+/**
+ * @internal
+ */
 final class ControllerMiddleware
 {
     /**

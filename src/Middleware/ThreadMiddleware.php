@@ -9,6 +9,9 @@ use function WyriHaximus\psr7_server_request_decode;
 use function WyriHaximus\psr7_server_request_encode;
 use WyriHaximus\React\Parallel\PoolInterface;
 
+/**
+ * @internal
+ */
 final class ThreadMiddleware
 {
     /**
