@@ -8,6 +8,7 @@ use ReactiveApps\Command\HttpServer\Middleware\CoroutineMiddleware;
 use ReactiveApps\Command\HttpServer\Middleware\RequestHandlerMiddleware;
 use ReactiveApps\Command\HttpServer\Middleware\TemplateRenderMiddleware;
 use ReactiveApps\Command\HttpServer\Middleware\ThreadMiddleware;
+use Twig\Environment;
 use WyriHaximus\React\Http\Middleware\MiddlewareRunner;
 use WyriHaximus\React\Parallel\PoolInterface;
 use WyriHaximus\Recoil\QueueCallerInterface;
@@ -29,6 +30,15 @@ return [
         return new CoroutineMiddleware($queueCaller, $container);
     })
         ->parameter('childProcessPool', \DI\get('internal.http-server.child-process.pool')),
+    TemplateRenderMiddleware::class => \DI\factory(function (
+        Environment $twig,
+        string $version
+    ) {
+        $twig->addGlobal('version', $version);
+
+        return new TemplateRenderMiddleware($twig);
+    })
+        ->parameter('version', \DI\get('config.app.version')),
     ThreadMiddleware::class => \DI\factory(function (
         PoolInterface $pool
     ) {
