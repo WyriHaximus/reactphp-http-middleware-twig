@@ -2,29 +2,27 @@
 
 namespace ReactiveApps\Command\HttpServer\Middleware;
 
-use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use React\Promise\Promise;
 use React\Promise\PromiseInterface;
+use ReactiveApps\Command\HttpServer\RequestHandlerFactory;
 use Rx\Subject\Subject;
 use WyriHaximus\Recoil\Call;
 use WyriHaximus\Recoil\QueueCallerInterface;
 
 final class CoroutineMiddleware
 {
-    /**
-     * @var Subject
-     */
+    /** @var Subject */
     private $callStream;
 
-    /** @var ContainerInterface */
-    private $container;
+    /** @var RequestHandlerFactory */
+    private $requestHandlerFactory;
 
-    public function __construct(QueueCallerInterface $queueCaller, ContainerInterface $container)
+    public function __construct(QueueCallerInterface $queueCaller, RequestHandlerFactory $requestHandlerFactory)
     {
         $this->callStream = new Subject();
         $queueCaller->call($this->callStream);
-        $this->container = $container;
+        $this->requestHandlerFactory = $requestHandlerFactory;
     }
 
     public function __invoke(ServerRequestInterface $request, callable $next)
@@ -41,17 +39,7 @@ final class CoroutineMiddleware
     private function runCoroutine(ServerRequestInterface $request): PromiseInterface
     {
         return new Promise(function ($resolve, $reject) use ($request): void {
-            $requestHandler = $request->getAttribute('request-handler');
-            if ($request->getAttribute('request-handler-static') === false) {
-                $requestHandler = (function (string $requestHandler) {
-                    [$controller, $method] = \explode('::', $requestHandler);
-
-                    return [
-                        $this->container->get($controller),
-                        $method,
-                    ];
-                })($requestHandler);
-            }
+            $requestHandler = $this->requestHandlerFactory->create($request);
             $call = new Call($requestHandler, $request);
             $call->wait($resolve, $reject);
             $this->callStream->onNext($call);

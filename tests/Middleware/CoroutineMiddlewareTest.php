@@ -8,6 +8,7 @@ use Psr\Http\Message\ResponseInterface;
 use React\EventLoop\Factory;
 use function React\Promise\resolve;
 use ReactiveApps\Command\HttpServer\Middleware\CoroutineMiddleware;
+use ReactiveApps\Command\HttpServer\RequestHandlerFactory;
 use Recoil\React\ReactKernel;
 use RingCentral\Psr7\Response;
 use RingCentral\Psr7\ServerRequest;
@@ -58,7 +59,7 @@ final class CoroutineMiddlewareTest extends AsyncTestCase
 
         $shouldNotBeenReached = false;
         /** @var ResponseInterface $response */
-        $response = $this->await((new CoroutineMiddleware($queueCaller->reveal(), $container->reveal()))($request, function () use (&$shouldNotBeenReached) {
+        $response = $this->await((new CoroutineMiddleware($queueCaller->reveal(), new RequestHandlerFactory($container->reveal())))($request, function () use (&$shouldNotBeenReached) {
             $shouldNotBeenReached = true;
 
             return resolve(new Response(500));
@@ -104,7 +105,7 @@ final class CoroutineMiddlewareTest extends AsyncTestCase
 
         $shouldNotBeenReached = false;
         /** @var ResponseInterface $response */
-        $response = $this->await((new CoroutineMiddleware($queueCaller->reveal(), $container->reveal()))($request, function () use (&$shouldNotBeenReached) {
+        $response = $this->await((new CoroutineMiddleware($queueCaller->reveal(), new RequestHandlerFactory($container->reveal())))($request, function () use (&$shouldNotBeenReached) {
             $shouldNotBeenReached = true;
 
             return resolve(new Response(500));
@@ -127,7 +128,7 @@ final class CoroutineMiddlewareTest extends AsyncTestCase
             'https://example.com/'
         ))->withAttribute('request-handler-annotations', ['coroutine' => false]);
 
-        (new CoroutineMiddleware($queueCaller->reveal(), $container->reveal()))($request, function () use (&$handlerCalled) {
+        (new CoroutineMiddleware($queueCaller->reveal(), new RequestHandlerFactory($container->reveal())))($request, function () use (&$handlerCalled) {
             $handlerCalled = true;
 
             return new Response();
