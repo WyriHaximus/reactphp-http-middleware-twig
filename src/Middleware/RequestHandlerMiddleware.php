@@ -3,11 +3,20 @@
 namespace ReactiveApps\Command\HttpServer\Middleware;
 
 use Psr\Http\Message\ServerRequestInterface;
+use ReactiveApps\Command\HttpServer\RequestHandlerFactory;
 
 final class RequestHandlerMiddleware
 {
-    public function __invoke(ServerRequestInterface $request, $next)
+    /** @var RequestHandlerFactory */
+    private $requestHandlerFactory;
+
+    public function __construct(RequestHandlerFactory $requestHandlerFactory)
     {
-        return ($request->getAttribute('request-handler', $next))($request);
+        $this->requestHandlerFactory = $requestHandlerFactory;
+    }
+
+    public function __invoke(ServerRequestInterface $request)
+    {
+        return ($this->requestHandlerFactory->create($request))($request);
     }
 }

@@ -2,7 +2,11 @@
 
 namespace ReactiveApps\Tests\Command\HttpServer\Middleware;
 
+use Prophecy\Prophecy\ObjectProphecy;
+use Psr\Container\ContainerInterface;
 use ReactiveApps\Command\HttpServer\Middleware\RequestHandlerMiddleware;
+use ReactiveApps\Command\HttpServer\RequestHandlerFactory;
+use ReactiveApps\Tests\Command\HttpServer\RequestHandlerStub;
 use RingCentral\Psr7\ServerRequest;
 use WyriHaximus\TestUtilities\TestCase;
 
@@ -11,37 +15,53 @@ use WyriHaximus\TestUtilities\TestCase;
  */
 final class RequestHandlerMiddlewareTest extends TestCase
 {
-    public function testRequestHandling(): void
+    /** @var ObjectProphecy|ContainerInterface */
+    private $container;
+
+    /** @var RequestHandlerStub */
+    private $requestHandlerStub;
+
+    protected function setUp(): void
     {
-        $handlerCalled = false;
+        parent::setUp();
+
+        $this->container = $this->prophesize(ContainerInterface::class);
+
+        $this->requestHandlerStub = new RequestHandlerStub();
+
+        $this->container->get(RequestHandlerStub::class)->willReturn($this->requestHandlerStub);
+        RequestHandlerStub::resetStaticHandlerCalled();
+    }
+
+    public function testStaticRequestHandling(): void
+    {
         $request = (new ServerRequest(
             'GET',
             'https://example.com/'
-        ))->withAttribute('request-handler', function () use (&$handlerCalled): void {
-            $handlerCalled = true;
-        });
+        ))->withAttribute('request-handler', RequestHandlerStub::class . '::methodStatic');
 
         $shouldNeverBeCalled = false;
-        (new RequestHandlerMiddleware())($request, function () use (&$shouldNeverBeCalled): void {
-            $shouldNeverBeCalled = true;
-        });
+        (new RequestHandlerMiddleware(
+            new RequestHandlerFactory($this->container->reveal())
+        ))($request);
 
-        self::assertTrue($handlerCalled);
+        self::assertTrue(RequestHandlerStub::getStaticHandlerCalled());
         self::assertFalse($shouldNeverBeCalled);
     }
 
-    public function testCallNextOnNoHandler(): void
+    public function testInstancedRequestHandling(): void
     {
         $request = (new ServerRequest(
             'GET',
             'https://example.com/'
-        ));
+        ))->withAttribute('request-handler', RequestHandlerStub::class . '::method');
 
-        $handlerCalled = false;
-        (new RequestHandlerMiddleware())($request, function () use (&$handlerCalled): void {
-            $handlerCalled = true;
-        });
+        $shouldNeverBeCalled = false;
+        (new RequestHandlerMiddleware(
+            new RequestHandlerFactory($this->container->reveal())
+        ))($request);
 
-        self::assertTrue($handlerCalled);
+        self::assertTrue($this->requestHandlerStub->isHandlerCalled());
+        self::assertFalse($shouldNeverBeCalled);
     }
 }
