@@ -24,13 +24,18 @@ return [
     }),
     TemplateRenderMiddleware::class => \DI\factory(function (
         Environment $twig,
-        string $version
+        string $appName,
+        string $appVersion
     ) {
-        $twig->addGlobal('version', $version);
+        $twig->addGlobal('app', [
+            'name' => $appName,
+            'version' => $appVersion,
+        ]);
 
         return new TemplateRenderMiddleware($twig);
     })
-        ->parameter('version', \DI\get('config.app.version')),
+        ->parameter('appName', \DI\get('config.app.name'))
+        ->parameter('appVersion', \DI\get('config.app.version')),
     ThreadMiddleware::class => \DI\factory(function (
         PoolInterface $pool
     ) {
