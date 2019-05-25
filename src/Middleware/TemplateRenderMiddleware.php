@@ -4,6 +4,7 @@ namespace ReactiveApps\Command\HttpServer\Middleware;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use React\Promise\PromiseInterface;
 use function React\Promise\resolve;
 use ReactiveApps\Command\HttpServer\TemplateResponse;
 use function RingCentral\Psr7\stream_for;
@@ -26,12 +27,12 @@ final class TemplateRenderMiddleware
         $this->twig = $twig;
     }
 
-    public function __invoke(ServerRequestInterface $request, $next)
+    public function __invoke(ServerRequestInterface $request, callable $next): PromiseInterface
     {
         $template = $request->getAttribute('request-handler-template', false);
 
         if ($template === false) {
-            return $next($request);
+            return resolve($next($request));
         }
 
         return resolve($next($request))->then(function (ResponseInterface $response) use ($template) {

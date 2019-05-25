@@ -4,7 +4,10 @@ namespace ReactiveApps\Tests\Command\HttpServer;
 
 final class RequestHandlerStub
 {
+    /** @var bool */
     private static $staticHandlerCalled = false;
+
+    /** @var bool */
     private $handlerCalled = false;
 
     public static function methodStatic(): void

@@ -1,9 +1,7 @@
 {
-    "minimum-stability": "dev",
-    "prefer-stable": true,
-    "license": "MIT",
     "name": "reactive-apps/command-http-server",
     "description": "HTTP Server command",
+    "license": "MIT",
     "require": {
         "php": "^7.3",
         "cakephp/collection": "^3.6",
@@ -27,6 +25,7 @@
         "wyrihaximus/react-inspector-child-process-pools": "dev-master",
         "wyrihaximus/react-inspector-parallel-pools": "dev-master",
         "wyrihaximus/react-stream-json": "^1.2",
+        "wyrihaximus/recoil-promise-coroutine-wrapper": "^1.0",
         "wyrihaximus/recoil-queue-caller-pool": "^1.2",
         "wyrihaximus/to-child-process-or-not-to-child-process": "^1.0",
         "wyrihaximus/to-coroutine-or-not-to-coroutine": "^1.0",
@@ -43,11 +42,17 @@
     "suggest": {
         "wyrihaximus/react-parallel": "Run request handlers in threads (more performant than child processes)"
     },
+    "config": {
+        "platform": {
+            "php": "7.3"
+        },
+        "sort-packages": true
+    },
     "extra": {
         "php-di-definitions": {
-          "di": [
-            "config/di/*.php"
-          ]
+            "di": [
+                "etc/di/*.php"
+            ]
         },
         "reactive-apps": {
             "command": {
@@ -74,12 +79,6 @@
             }
         }
     },
-    "config": {
-        "sort-packages": true,
-        "platform": {
-            "php": "7.3"
-        }
-    },
     "autoload": {
         "psr-4": {
             "ReactiveApps\\Command\\HttpServer\\": "src/"
@@ -90,42 +89,41 @@
             "ReactiveApps\\Tests\\Command\\HttpServer\\": "tests/"
         }
     },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "scripts": {
+        "post-install-cmd": [
+            "composer normalize"
+        ],
+        "post-update-cmd": [
+            "composer normalize"
+        ],
+        "ci-coverage": [
+            "if [ -f ./build/logs/clover.xml ]; then wget https://scrutinizer-ci.com/ocular.phar && php ocular.phar code-coverage:upload --format=php-clover ./build/logs/clover.xml; fi"
+        ],
         "cs": [
             "php-cs-fixer fix --config=.php_cs --ansi --dry-run --diff --verbose --allow-risky=yes --show-progress=estimating"
         ],
         "cs-fix": [
             "php-cs-fixer fix --config=.php_cs --ansi --verbose --allow-risky=yes --show-progress=estimating"
         ],
-        "unit": [
-            "phpunit --colors=always -c phpunit.xml.dist"
-        ],
-        "unit-coverage": [
-            "phpunit --colors=always -c phpunit.xml.dist --coverage-text --coverage-html covHtml --coverage-clover ./build/logs/clover.xml"
+        "infection": [
+            "infection --ansi --threads=4"
         ],
         "lint-php": [
             "parallel-lint --exclude vendor ."
         ],
         "qa-all": [
+            "composer validate --ansi",
+            "composer normalize --ansi",
             "@lint-php",
             "@cs",
-            "@unit"
-        ],
-        "qa-all-coverage": [
-            "@lint-php",
-            "@cs",
-            "@unit-coverage"
-        ],
-        "qa-windows": [
-            "@lint-php",
-            "@cs",
-            "@unit"
+            "@stan",
+            "@unit",
+            "@infection"
         ],
         "qa-ci": [
             "@unit"
-        ],
-        "qa-ci-extended": [
-            "@qa-all-coverage"
         ],
         "qa-ci-windows": [
             "@qa-windows"
@@ -133,8 +131,17 @@
         "qa-contrib": [
             "@qa-all"
         ],
-        "ci-coverage": [
-            "if [ -f ./build/logs/clover.xml ]; then wget https://scrutinizer-ci.com/ocular.phar && php ocular.phar code-coverage:upload --format=php-clover ./build/logs/clover.xml; fi"
+        "qa-windows": [
+            "@lint-php",
+            "@cs",
+            "@stan",
+            "@unit"
+        ],
+        "stan": [
+            "phpstan analyse src tests --level max --ansi -c phpstan.neon"
+        ],
+        "unit": [
+            "phpunit --colors=always -c phpunit.xml.dist --coverage-text --coverage-html covHtml --coverage-clover ./build/logs/clover.xml"
         ]
     }
 }

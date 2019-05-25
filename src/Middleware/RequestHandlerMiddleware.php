@@ -3,6 +3,8 @@
 namespace ReactiveApps\Command\HttpServer\Middleware;
 
 use Psr\Http\Message\ServerRequestInterface;
+use React\Promise\PromiseInterface;
+use function React\Promise\resolve;
 use ReactiveApps\Command\HttpServer\RequestHandlerFactory;
 
 /**
@@ -18,8 +20,8 @@ final class RequestHandlerMiddleware
         $this->requestHandlerFactory = $requestHandlerFactory;
     }
 
-    public function __invoke(ServerRequestInterface $request)
+    public function __invoke(ServerRequestInterface $request): PromiseInterface
     {
-        return ($this->requestHandlerFactory->create($request))($request);
+        return resolve(($this->requestHandlerFactory->create($request))($request));
     }
 }

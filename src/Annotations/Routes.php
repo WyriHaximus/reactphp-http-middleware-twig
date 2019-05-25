@@ -12,13 +12,16 @@ final class Routes
     private $routes;
 
     /**
-     * @param string[] $routes
+     * @param string[]|string[][] $routes
      */
     public function __construct(array $routes)
     {
         if (\is_string($routes['value'])) {
-            $routes['value'] = [$routes['value']];
+            $this->routes = [$routes['value']];
+
+            return;
         }
+
         $this->routes = $routes['value'];
     }
 

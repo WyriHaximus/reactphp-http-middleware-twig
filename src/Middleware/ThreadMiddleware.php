@@ -3,6 +3,8 @@
 namespace ReactiveApps\Command\HttpServer\Middleware;
 
 use Psr\Http\Message\ServerRequestInterface;
+use React\Promise\PromiseInterface;
+use function React\Promise\resolve;
 use function WyriHaximus\psr7_response_decode;
 use function WyriHaximus\psr7_response_encode;
 use function WyriHaximus\psr7_server_request_decode;
@@ -24,7 +26,7 @@ final class ThreadMiddleware
         $this->pool = $pool;
     }
 
-    public function __invoke(ServerRequestInterface $request, callable $next)
+    public function __invoke(ServerRequestInterface $request, callable $next): PromiseInterface
     {
         $requestHandlerAnnotations = $request->getAttribute('request-handler-annotations');
 
@@ -40,6 +42,6 @@ final class ThreadMiddleware
             });
         }
 
-        return $next($request);
+        return resolve($next($request));
     }
 }
