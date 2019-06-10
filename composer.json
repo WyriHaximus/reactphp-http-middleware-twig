@@ -68,7 +68,8 @@
                 "http-server.pool.ttl": "TTL for a child process to wait for it's next task",
                 "http-server.pool.min": "Minimum number of child processes",
                 "http-server.pool.max": "maximum number of child processes",
-                "http-server.rewrites": "Rewrites request path internally from one path to the other, invisible for visitors"
+                "http-server.rewrites": "Rewrites request path internally from one path to the other, invisible for visitors",
+                "http-server.thruway.realms": "An array with Thruway realms"
             },
             "listeners": {
                 "ReactiveApps\\Event\\Shutdown": [
