@@ -2,8 +2,10 @@
 
 namespace ReactiveApps\Command\HttpServer\Middleware;
 
+use Closure;
 use Psr\Http\Message\ServerRequestInterface;
 use React\Promise\PromiseInterface;
+use function React\Promise\resolve;
 use function WyriHaximus\psr7_response_decode;
 use function WyriHaximus\psr7_response_encode;
 use function WyriHaximus\psr7_server_request_decode;
@@ -27,7 +29,7 @@ final class ChildProcessMiddleware
         $this->pool = $pool;
     }
 
-    public function __invoke(ServerRequestInterface $request, callable $next)
+    public function __invoke(ServerRequestInterface $request, callable $next): PromiseInterface
     {
         $requestHandlerAnnotations = $request->getAttribute('request-handler-annotations');
 
@@ -35,7 +37,7 @@ final class ChildProcessMiddleware
             return $this->runChildProcess($request);
         }
 
-        return $next($request);
+        return resolve($next($request));
     }
 
     private function runChildProcess(ServerRequestInterface $request): PromiseInterface
@@ -52,7 +54,7 @@ final class ChildProcessMiddleware
         });
     }
 
-    private function createChildProcessClosure(array $jsonRequest): callable
+    private function createChildProcessClosure(array $jsonRequest): Closure
     {
         return function () use ($jsonRequest) {
             $request = psr7_server_request_decode($jsonRequest);

@@ -15,7 +15,7 @@ use WyriHaximus\TestUtilities\TestCase;
  */
 final class RequestHandlerMiddlewareTest extends TestCase
 {
-    /** @var ObjectProphecy|ContainerInterface */
+    /** @var ObjectProphecy */
     private $container;
 
     /** @var RequestHandlerStub */
@@ -40,13 +40,14 @@ final class RequestHandlerMiddlewareTest extends TestCase
             'https://example.com/'
         ))->withAttribute('request-handler', RequestHandlerStub::class . '::methodStatic');
 
-        $shouldNeverBeCalled = false;
+        /** @var ContainerInterface $container */
+        $container = $this->container->reveal();
+
         (new RequestHandlerMiddleware(
-            new RequestHandlerFactory($this->container->reveal())
+            new RequestHandlerFactory($container)
         ))($request);
 
         self::assertTrue(RequestHandlerStub::getStaticHandlerCalled());
-        self::assertFalse($shouldNeverBeCalled);
     }
 
     public function testInstancedRequestHandling(): void
@@ -56,12 +57,13 @@ final class RequestHandlerMiddlewareTest extends TestCase
             'https://example.com/'
         ))->withAttribute('request-handler', RequestHandlerStub::class . '::method');
 
-        $shouldNeverBeCalled = false;
+        /** @var ContainerInterface $container */
+        $container = $this->container->reveal();
+
         (new RequestHandlerMiddleware(
-            new RequestHandlerFactory($this->container->reveal())
+            new RequestHandlerFactory($container)
         ))($request);
 
         self::assertTrue($this->requestHandlerStub->isHandlerCalled());
-        self::assertFalse($shouldNeverBeCalled);
     }
 }

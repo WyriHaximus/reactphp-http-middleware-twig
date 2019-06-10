@@ -43,11 +43,11 @@ final class TemplateRenderMiddlewareTest extends AsyncTestCase
         ));
 
         /** @var ResponseInterface $response */
-        $response = (new TemplateRenderMiddleware(new Environment(
+        $response = $this->await((new TemplateRenderMiddleware(new Environment(
             new ArrayLoader([])
         )))($request, function () {
             return new Response(200, [], 'no-template');
-        });
+        }));
 
         self::assertSame('no-template', $response->getBody()->getContents());
     }

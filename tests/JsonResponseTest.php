@@ -32,7 +32,11 @@ final class JsonResponseTest extends AsyncTestCase
         });
 
         $response = JsonResponse::create(666, [], $jsonStream);
-        $body = $this->await(buffer($response->getBody()), $loop);
+
+        /** @var JsonStream $body */
+        $body = $response->getBody();
+
+        $body = $this->await(buffer($body), $loop);
         self::assertSame(\json_encode($data), $body);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace ReactiveApps\Command\HttpServer;
 
+use Psr\Http\Message\ResponseInterface;
 use React\Http\Response;
 use WyriHaximus\React\Stream\Json\JsonStream;
 
@@ -18,15 +19,15 @@ final class JsonResponse
         $status = 200,
         array $headers = [],
         JsonStream $body,
-        $version = '1.1',
-        $reason = null
-    ) {
+        string $version = '1.1',
+        string $reason = ''
+    ): ResponseInterface {
         return new Response(
             $status,
             $headers,
             $body,
             $version,
-            $reason
+            $reason !== '' ? $reason : null
         );
     }
 }

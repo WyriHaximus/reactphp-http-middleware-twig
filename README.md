@@ -172,6 +172,26 @@ public function root(ServerRequestInterface $request)
 }
 ```
 
+# Blocking operations in requests
+
+While we aim for building a completely non-blocking application we can't escape the truth that there might always be 
+parts of our application that would block the loop. For those situations there are two ways provided to deal with those 
+situations:
+
+* Child Process (slow, spawns full PHP processes to handle the request)
+* Threads (fast, uses threads to do the work, requires ZTS version of PHP)
+
+## Child Processes
+
+Works on most if not all systems but requires a full PHP processes per worker. Start up can be slow and communication 
+with the child process goes over a socket. Add the `@ChildProcess` annotation to handle that specific action in a 
+child process.
+
+## Threads
+
+Works only on ZTS PHP builds, but in return starts up almost instantly, communication is directly in memory thus never 
+leaving the application server. Add the `@Thread` annotation to handle that specific action in a thread.
+
 # Annotations
 
 * `@ChildProcess` - Runs controller actions inside a child process

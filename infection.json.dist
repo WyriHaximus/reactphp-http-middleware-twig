@@ -1,0 +1,15 @@
+{
+    "timeout": 120,
+    "source": {
+        "directories": [
+            "src"
+        ]
+    },
+    "tmpDir": "build",
+    "logs": {
+        "text": "build/infection.log"
+    },
+    "mutators": {
+        "@default": true
+    }
+}
