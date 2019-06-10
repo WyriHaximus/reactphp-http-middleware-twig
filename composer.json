@@ -74,6 +74,12 @@
             "listeners": {
                 "ReactiveApps\\Event\\Shutdown": [
                     "src/Listener/Shutdown.php"
+                ],
+                "ReactiveApps\\Command\\HttpServer\\Event\\RealmClose": [
+                    "src/Listener/RealmClose.php"
+                ],
+                "ReactiveApps\\Command\\HttpServer\\Event\\RealmOpen": [
+                    "src/Listener/RealmOpen.php"
                 ]
             }
         }
