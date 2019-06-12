@@ -12,9 +12,9 @@ final class Realm
 
     /**
      * @param string $name
-     * @param Rpc[] $rpcs
+     * @param Rpc[]  $rpcs
      */
-    public function __construct(string $name, array $rpcs = [])
+    public function __construct(string $name, array $rpcs)
     {
         $this->name = $name;
         $this->rpcs = $rpcs;
