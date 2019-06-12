@@ -4,10 +4,6 @@ namespace ReactiveApps\Command\HttpServer\Routing;
 
 use Cake\Collection\Collection;
 use Doctrine\Common\Annotations\AnnotationReader;
-use FastRoute\Dispatcher;
-use FastRoute\RouteCollector;
-use function FastRoute\simpleDispatcher;
-use Psr\Container\ContainerInterface;
 use ReactiveApps\Command\HttpServer\Annotations\Method;
 use ReactiveApps\Command\HttpServer\Annotations\Routes;
 use ReactiveApps\Command\HttpServer\Annotations\Template;
@@ -24,48 +20,19 @@ use function WyriHaximus\toThreadOrNotToThread;
  */
 final class Collector
 {
-    /**
-     * @var ContainerInterface
-     */
-    private $container;
-
-    /**
-     * @var Dispatcher
-     */
-    private $router;
-
-    /** @var array */
-    private $routes = [];
-
-    /**
-     * @param ContainerInterface $container
-     */
-    public function __construct(ContainerInterface $container)
+    public static function collect(): iterable
     {
-        $this->container = $container;
-
-        $this->router = simpleDispatcher(function (RouteCollector $routeCollector): void {
-            foreach ($this->locateRoutes(from_get_in_packages_composer('extra.reactive-apps.http-controller')) as $routes) {
-                foreach ($routes['routes'] as $route) {
-                    $routeCollector->addRoute($routes['method'], $route, $routes['handler']);
-                }
-                $this->routes[$routes['handler']] = [
-                    'annotations' => $routes['annotations'],
-                    'static' => $routes['static'],
-                    'template' => $routes['template'],
-                ];
-            }
-        });
+        return self::locateRoutes(from_get_in_packages_composer('extra.reactive-apps.http-controller'));
     }
 
-    private function locateRoutes(iterable $controllers): iterable
+    private static function locateRoutes(iterable $controllers): iterable
     {
         foreach ($controllers as $controller) {
             yield from self::locateRoute($controller);
         }
     }
 
-    private function locateRoute(string $controller): iterable
+    private static function locateRoute(string $controller): iterable
     {
         if (\strpos($controller, '*') !== false) {
             /** @var iterable $files */
@@ -75,10 +42,10 @@ final class Collector
             return;
         }
 
-        yield from $this->controllerRoutes($controller);
+        yield from self::controllerRoutes($controller);
     }
 
-    private function controllerRoutes(string $controller): iterable
+    private static function controllerRoutes(string $controller): iterable
     {
         $annotationReader = new AnnotationReader();
         $betterReflection = new BetterReflection();

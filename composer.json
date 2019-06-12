@@ -29,7 +29,8 @@
         "wyrihaximus/recoil-queue-caller-pool": "^1.2",
         "wyrihaximus/to-child-process-or-not-to-child-process": "^1.0",
         "wyrihaximus/to-coroutine-or-not-to-coroutine": "^1.0",
-        "wyrihaximus/to-thread-or-not-to-thread": "dev-master"
+        "wyrihaximus/to-thread-or-not-to-thread": "dev-master",
+        "zendframework/zend-diactoros": "^2.1"
     },
     "require-dev": {
         "monolog/monolog": "^1.23",
