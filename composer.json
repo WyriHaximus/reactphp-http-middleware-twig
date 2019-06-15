@@ -6,6 +6,7 @@
         "php": "^7.3",
         "cakephp/collection": "^3.6",
         "doctrine/annotations": "^1.6",
+        "lcobucci/jwt": "^3.3",
         "nikic/fast-route": "^1.2",
         "react/http": "^0.8.0",
         "reactive-apps/command": "dev-master",
@@ -23,6 +24,7 @@
         "wyrihaximus/react-http-middleware-resume-response-body": "^1.0",
         "wyrihaximus/react-http-middleware-rewrite": "^1.0",
         "wyrihaximus/react-http-middleware-runner": "^1.0",
+        "wyrihaximus/react-http-middleware-session": "^2.1",
         "wyrihaximus/react-http-middleware-webroot-preload": "^1.0",
         "wyrihaximus/react-http-psr-15-middleware-group": "^1.2",
         "wyrihaximus/react-inspector-child-process-pools": "dev-master",
@@ -30,6 +32,7 @@
         "wyrihaximus/react-stream-json": "^1.2",
         "wyrihaximus/recoil-promise-coroutine-wrapper": "^1.0",
         "wyrihaximus/recoil-queue-caller-pool": "^1.2",
+        "wyrihaximus/string-get-in": "^1.0",
         "wyrihaximus/to-child-process-or-not-to-child-process": "^1.0",
         "wyrihaximus/to-coroutine-or-not-to-coroutine": "^1.0",
         "wyrihaximus/to-thread-or-not-to-thread": "dev-master",
@@ -62,6 +65,10 @@
             "command": {
                 "ReactiveApps\\Command\\HttpServer\\Command": "src/Command"
             },
+            "http-controller": [
+                "src/Controller/*.php",
+                "src/Controller/**/*.php"
+            ],
             "required-config": {
                 "http-server.address": "The IP + Port to listen on, for example: 0.0.0.0:8080"
             },

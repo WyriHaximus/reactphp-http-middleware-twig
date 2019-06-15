@@ -1,5 +1,6 @@
 parameters:
 	classesAllowedToBeExtended:
+		- Exception
 		- RingCentral\Psr7\Response
 
 includes:
