@@ -28,7 +28,8 @@ final class JWT
     /**
      * @Method("GET")
      * @Routes({
-     *     "/thruway/jwt/token.json"
+     *     "/thruway/jwt/token.json",
+     *     "/thruway/jwt/{realm:[a-zA-Z0-9\-\_]{1,}}.json"
      * })
      * @Template("thruway/jwt/token")
      *

@@ -59,7 +59,7 @@ final class ControllerMiddleware
 
         if ($route[0] === Dispatcher::METHOD_NOT_ALLOWED) {
             return resolve(
-                Factory::createResponse(405)->withHeader('Allow', \implode(', ', $route[1]))->
+                Factory::createResponse(405)->withHeader('Allow', \implode(', ', \array_unique($route[1])))->
                     withHeader('Content-Type', 'text/plain')->
                     withBody(stream_for('Method not allowed'))
             );
