@@ -11,6 +11,7 @@ use Roave\BetterReflection\BetterReflection;
 use Roave\BetterReflection\Reflector\ClassReflector;
 use Roave\BetterReflection\SourceLocator\Type\SingleFileSourceLocator;
 use function WyriHaximus\from_get_in_packages_composer;
+use function WyriHaximus\iteratorOrArrayToArray;
 use function WyriHaximus\toChildProcessOrNotToChildProcess;
 use function WyriHaximus\toCoroutineOrNotToCoroutine;
 use function WyriHaximus\toThreadOrNotToThread;
@@ -22,7 +23,7 @@ final class Collector
 {
     public static function collect(): iterable
     {
-        return self::locateRoutes(from_get_in_packages_composer('extra.reactive-apps.http-controller'));
+        return self::locateRoutes(iteratorOrArrayToArray(from_get_in_packages_composer('extra.reactive-apps.http-controller')));
     }
 
     private static function locateRoutes(iterable $controllers): iterable
