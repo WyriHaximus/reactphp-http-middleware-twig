@@ -10,6 +10,7 @@ use React\Socket\ServerInterface as SocketServerInterface;
 use ReactiveApps\Command\HttpServer\Command\HttpServer;
 use ReactiveApps\Command\HttpServer\Listener\Shutdown;
 use RingCentral\Psr7\Response;
+use Thruway\Middleware as ThruwayMiddleware;
 use WyriHaximus\PSR3\ContextLogger\ContextLogger;
 use WyriHaximus\React\Http\Middleware\MiddlewareRunner;
 use WyriHaximus\React\Http\Middleware\ResumeResponseBodyMiddleware;
@@ -36,6 +37,7 @@ return [
         LoopInterface $loop,
         LoggerInterface $logger,
         MiddlewareRunner $middlewareRunner,
+        ThruwayMiddleware $thruwayMiddleware,
         SocketServerInterface $socket,
         CacheInterface $publicPreloadCache,
         array $middlwarePrefix = [],
@@ -46,6 +48,12 @@ return [
     ) {
         $logger = new ContextLogger($logger, ['section' => 'http-server'], 'http-server');
         $middleware = [];
+
+        if (\count($rewrites) > 0) {
+            $middleware[] = new RewriteMiddleware($rewrites);
+        }
+
+        $middleware[] = $thruwayMiddleware;
         $middleware[] = new ResumeResponseBodyMiddleware($loop);
         $middleware[] = new RequestBodyBufferMiddleware();
         if (\ini_get('enable_post_data_reading') !== '') {
@@ -60,9 +68,7 @@ return [
                 'hsts' => $hsts,
             ]
         );
-        if (\count($rewrites) > 0) {
-            $middleware[] = new RewriteMiddleware($rewrites);
-        }
+
         if ($public !== null && \file_exists($public) && \is_dir($public)) {
             $middleware[] = new WebrootPreloadMiddleware(
                 $public,
@@ -91,5 +97,6 @@ return [
     ->parameter('middlwarePrefix', \DI\get('config.http-server.middleware.prefix'))
     ->parameter('middlwareSuffix', \DI\get('config.http-server.middleware.suffix'))
     ->parameter('middlewareRunner', \DI\get('internal.http-server.request-handling-middleware-runner'))
+    ->parameter('thruwayMiddleware', \DI\get('internal.http-server.thruway.middleware'))
     ->parameter('rewrites', \DI\get('config.http-server.rewrites')),
 ];
