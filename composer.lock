@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "087be631dfec8abb671427a8c0a72644",
+    "content-hash": "d5b32001c9bb13bda377244d49c0a374",
     "packages": [
         {
             "name": "api-clients/rx",
@@ -2545,16 +2545,16 @@
         },
         {
             "name": "react/cache",
-            "version": "v0.5.0",
+            "version": "v1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/cache.git",
-                "reference": "7d7da7fb7574d471904ba357b39bbf110ccdbf66"
+                "reference": "aa10d63a1b40a36a486bdf527f28bac607ee6466"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/cache/zipball/7d7da7fb7574d471904ba357b39bbf110ccdbf66",
-                "reference": "7d7da7fb7574d471904ba357b39bbf110ccdbf66",
+                "url": "https://api.github.com/repos/reactphp/cache/zipball/aa10d63a1b40a36a486bdf527f28bac607ee6466",
+                "reference": "aa10d63a1b40a36a486bdf527f28bac607ee6466",
                 "shasum": ""
             },
             "require": {
@@ -2581,7 +2581,7 @@
                 "promise",
                 "reactphp"
             ],
-            "time": "2018-06-25T12:52:40+00:00"
+            "time": "2019-07-11T13:45:28+00:00"
         },
         {
             "name": "react/child-process",
@@ -5815,29 +5815,28 @@
         },
         {
             "name": "wyrihaximus/react-http-middleware-session",
-            "version": "2.1.0",
+            "version": "3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/reactphp-http-middleware-session.git",
-                "reference": "929e5f1469d25cfc88bfe99a227ce0e89384d76e"
+                "reference": "86ca5d5b7cf15449e60bb0626e04eaabe9d8a231"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/reactphp-http-middleware-session/zipball/929e5f1469d25cfc88bfe99a227ce0e89384d76e",
-                "reference": "929e5f1469d25cfc88bfe99a227ce0e89384d76e",
+                "url": "https://api.github.com/repos/WyriHaximus/reactphp-http-middleware-session/zipball/86ca5d5b7cf15449e60bb0626e04eaabe9d8a231",
+                "reference": "86ca5d5b7cf15449e60bb0626e04eaabe9d8a231",
                 "shasum": ""
             },
             "require": {
                 "hansott/psr7-cookies": "^2.0 || ^1.0",
-                "php": "^7.2",
+                "php": "^7.3",
                 "psr/http-message": "^1.0",
-                "react/cache": "^0.5.0",
+                "react/cache": "^0.5.0 || ^0.6.0 || ^1.0.0",
                 "react/http": "^0.8.0",
-                "react/promise": "^2.5"
+                "react/promise": "^2.7"
             },
             "require-dev": {
-                "api-clients/test-utilities": "^5.4",
-                "ringcentral/psr7": "^1.2.2"
+                "wyrihaximus/async-test-utilities": "^1.1"
             },
             "type": "library",
             "autoload": {
@@ -5856,7 +5855,7 @@
                 }
             ],
             "description": "react/http middleware that takes care of session handling",
-            "time": "2019-01-03T06:36:36+00:00"
+            "time": "2019-07-12T06:11:38+00:00"
         },
         {
             "name": "wyrihaximus/react-http-middleware-webroot-preload",
