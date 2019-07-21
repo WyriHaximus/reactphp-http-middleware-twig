@@ -41,7 +41,7 @@ return [
 
         $router->start(false);
 
-        return new Middleware(['/'], $loop, $router);
+        return new Middleware(['/', '/ws/'], $loop, $router);
     })
         ->parameter('realms', \DI\get('internal.http-server.thruway.realms')),
     JWT::class => \DI\factory(function (
