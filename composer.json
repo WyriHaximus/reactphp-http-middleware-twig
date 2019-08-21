@@ -9,6 +9,7 @@
         "nikic/fast-route": "^1.2",
         "react/http": "^0.8.0",
         "reactive-apps/command": "dev-master",
+        "reactive-apps/life-cycle-events": "dev-master",
         "roave/better-reflection": "^3.2",
         "wyrihaximus/doctrine-annotation-autoloader": "^1.0",
         "wyrihaximus/get-in-packages-composer.jason": "^1.0",
@@ -74,7 +75,7 @@
                 "http-server.rewrites": "Rewrites request path internally from one path to the other, invisible for visitors"
             },
             "listeners": {
-                "ReactiveApps\\Event\\Shutdown": [
+                "ReactiveApps\\LifeCycleEvents\\Shutdown": [
                     "src/Listener/Shutdown.php"
                 ]
             }

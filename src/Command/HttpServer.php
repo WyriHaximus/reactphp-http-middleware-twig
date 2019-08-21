@@ -6,8 +6,13 @@ use Psr\Log\LoggerInterface;
 use React\Http\StreamingServer as ReactHttpServer;
 use React\Socket\ServerInterface as SocketServerInterface;
 use ReactiveApps\Command\Command;
+use ReactiveApps\LifeCycleEvents\Promise\Shutdown;
+use WyriHaximus\Annotations\Coroutine;
 use WyriHaximus\PSR3\CallableThrowableLogger\CallableThrowableLogger;
 
+/**
+ * @Coroutine()
+ */
 final class HttpServer implements Command
 {
     const COMMAND = 'http-server';
@@ -27,19 +32,24 @@ final class HttpServer implements Command
      */
     private $middleware;
 
+    /** @var Shutdown */
+    private $shutdownEventPromise;
+
     /**
      * @param LoggerInterface       $logger
      * @param SocketServerInterface $socket
      * @param array                 $middleware
+     * @param Shutdown              $shutdownEventPromise
      */
-    public function __construct(LoggerInterface $logger, SocketServerInterface $socket, array $middleware)
+    public function __construct(LoggerInterface $logger, SocketServerInterface $socket, array $middleware, Shutdown $shutdownEventPromise)
     {
         $this->logger = $logger;
         $this->socket = $socket;
         $this->middleware = $middleware;
+        $this->shutdownEventPromise = $shutdownEventPromise;
     }
 
-    public function __invoke(): void
+    public function __invoke()
     {
         $this->logger->debug('Creating HTTP server');
         $httpServer = new ReactHttpServer($this->middleware);
@@ -48,5 +58,9 @@ final class HttpServer implements Command
         $this->logger->debug('Creating HTTP server socket');
         $httpServer->listen($this->socket);
         $this->logger->debug('Listening for incoming requests');
+
+        yield $this->shutdownEventPromise;
+
+        return 0;
     }
 }

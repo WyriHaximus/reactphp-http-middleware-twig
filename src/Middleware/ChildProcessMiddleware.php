@@ -54,6 +54,9 @@ final class ChildProcessMiddleware
         });
     }
 
+    /**
+     * @codeCoverageIgnore
+     */
     private function createChildProcessClosure(array $jsonRequest): Closure
     {
         return function () use ($jsonRequest) {
