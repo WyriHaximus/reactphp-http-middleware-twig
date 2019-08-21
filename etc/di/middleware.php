@@ -25,17 +25,20 @@ return [
     TemplateRenderMiddleware::class => \DI\factory(function (
         Environment $twig,
         string $appName,
-        string $appVersion
+        string $appVersion,
+        string $appFullBaseUrl
     ) {
         $twig->addGlobal('app', [
             'name' => $appName,
             'version' => $appVersion,
+            'full_base_url' => $appFullBaseUrl,
         ]);
 
         return new TemplateRenderMiddleware($twig);
     })
-        ->parameter('appName', \DI\get('config.app.name'))
-        ->parameter('appVersion', \DI\get('config.app.version')),
+        ->parameter('appConfig', \DI\get('config.app.name'))
+        ->parameter('appVersion', \DI\get('config.app.version'))
+        ->parameter('appFullBaseUrl', \DI\get('config.app.full_base_url')),
     ThreadMiddleware::class => \DI\factory(function (
         PoolInterface $pool
     ) {
