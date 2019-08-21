@@ -33,7 +33,7 @@ final class ChildProcessMiddleware
     {
         $requestHandlerAnnotations = $request->getAttribute('request-handler-annotations');
 
-        if (isset($requestHandlerAnnotations['childprocess']) && $requestHandlerAnnotations['childprocess'] === true) {
+        if (array_key_exists('childprocess', $requestHandlerAnnotations) && $requestHandlerAnnotations['childprocess'] === true) {
             return $this->runChildProcess($request);
         }
 
@@ -56,6 +56,8 @@ final class ChildProcessMiddleware
 
     /**
      * @codeCoverageIgnore
+     *
+     * @param mixed[] $jsonRequest
      */
     private function createChildProcessClosure(array $jsonRequest): Closure
     {

@@ -17,6 +17,9 @@ return (function (): Config
                 ->in($paths)
                 ->append($paths)
         )
+        ->setRules([
+            'native_function_invocation' => false,
+        ])
         ->setUsingCache(false)
     ;
 })();

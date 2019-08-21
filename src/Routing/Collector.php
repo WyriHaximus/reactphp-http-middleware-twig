@@ -12,6 +12,7 @@ use Roave\BetterReflection\Reflector\ClassReflector;
 use Roave\BetterReflection\SourceLocator\Type\SingleFileSourceLocator;
 use function WyriHaximus\from_get_in_packages_composer;
 use function WyriHaximus\toChildProcessOrNotToChildProcess;
+use function Safe\glob;
 use function WyriHaximus\toCoroutineOrNotToCoroutine;
 use function WyriHaximus\toThreadOrNotToThread;
 
@@ -36,7 +37,7 @@ final class Collector
     {
         if (\strpos($controller, '*') !== false) {
             /** @var iterable $files */
-            $files = \glob($controller);
+            $files = glob($controller);
             yield from self::locateRoutes($files);
 
             return;
@@ -58,7 +59,7 @@ final class Collector
                         return \get_class($annotation);
                     })->toArray();
 
-                if (!isset($annotations[Method::class]) || !isset($annotations[Routes::class])) {
+                if (!array_key_exists(Method::class, $annotations) || !array_key_exists(Routes::class, $annotations)) {
                     continue;
                 }
 
@@ -69,7 +70,7 @@ final class Collector
                     'static' => $method->isStatic(),
                     'routes' => $annotations[Routes::class]->getRoutes(),
                     'method' => $annotations[Method::class]->getMethod(),
-                    'template' => isset($annotations[Template::class]) ? $annotations[Template::class]->getTemplate() : false,
+                    'template' => array_key_exists(Template::class, $annotations) ? $annotations[Template::class]->getTemplate() : false,
                     'annotations' => [
                         'childprocess' => toChildProcessOrNotToChildProcess($requestHandler, $annotationReader),
                         'coroutine' => toCoroutineOrNotToCoroutine($requestHandler, $annotationReader),

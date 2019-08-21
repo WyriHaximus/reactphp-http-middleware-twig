@@ -30,7 +30,7 @@ final class ThreadMiddleware
     {
         $requestHandlerAnnotations = $request->getAttribute('request-handler-annotations');
 
-        if (isset($requestHandlerAnnotations['thread']) && $requestHandlerAnnotations['thread'] === true) {
+        if (array_key_exists('thread', $requestHandlerAnnotations) && $requestHandlerAnnotations['thread'] === true) {
             return $this->pool->run(function ($jsonRequest) {
                 $request = psr7_server_request_decode($jsonRequest);
                 $requestHandler = $request->getAttribute('request-handler');

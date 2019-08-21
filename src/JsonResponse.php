@@ -10,13 +10,13 @@ final class JsonResponse
 {
     /**
      * @param int        $status  Status code for the response, if any.
-     * @param array      $headers Headers for the response, if any.
+     * @param string[]   $headers Headers for the response, if any.
      * @param JsonStream $body    Stream body.
      * @param string     $version Protocol version.
      * @param string     $reason  Reason phrase (a default will be used if possible).
      */
     public static function create(
-        $status = 200,
+        int $status = 200,
         array $headers = [],
         JsonStream $body,
         string $version = '1.1',

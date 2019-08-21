@@ -7,6 +7,7 @@ use function React\Promise\Stream\buffer;
 use ReactiveApps\Command\HttpServer\JsonResponse;
 use WyriHaximus\AsyncTestUtilities\AsyncTestCase;
 use WyriHaximus\React\Stream\Json\JsonStream;
+use function Safe\json_encode;
 
 /**
  * @internal
@@ -37,6 +38,6 @@ final class JsonResponseTest extends AsyncTestCase
         $body = $response->getBody();
 
         $body = $this->await(buffer($body), $loop);
-        self::assertSame(\json_encode($data), $body);
+        self::assertSame(json_encode($data), $body);
     }
 }

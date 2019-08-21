@@ -9,6 +9,7 @@ use React\Socket\Server as SocketServer;
 use React\Socket\ServerInterface as SocketServerInterface;
 use ReactiveApps\Command\HttpServer\Command\HttpServer;
 use ReactiveApps\Command\HttpServer\Listener\Shutdown;
+use ReactiveApps\LifeCycleEvents\Promise\Shutdown as ShutdownPromise;
 use RingCentral\Psr7\Response;
 use WyriHaximus\PSR3\ContextLogger\ContextLogger;
 use WyriHaximus\React\Http\Middleware\MiddlewareRunner;
@@ -38,6 +39,7 @@ return [
         MiddlewareRunner $middlewareRunner,
         SocketServerInterface $socket,
         CacheInterface $publicPreloadCache,
+        ShutdownPromise $shutdownPromise,
         array $middlwarePrefix = [],
         array $middlwareSuffix = [],
         array $rewrites = [],
@@ -82,7 +84,7 @@ return [
             );
         };
 
-        return new HttpServer($logger, $socket, $middleware);
+        return new HttpServer($logger, $socket, $middleware, $shutdownPromise);
     })
     ->parameter('socket', \DI\get('internal.http-server.socket'))
     ->parameter('public', \DI\get('config.http-server.public'))

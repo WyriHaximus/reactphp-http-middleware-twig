@@ -30,7 +30,7 @@ final class CoroutineMiddleware
     {
         $requestHandlerAnnotations = $request->getAttribute('request-handler-annotations');
 
-        if (isset($requestHandlerAnnotations['coroutine']) && $requestHandlerAnnotations['coroutine'] === true) {
+        if (array_key_exists('coroutine', $requestHandlerAnnotations) && $requestHandlerAnnotations['coroutine'] === true) {
             return $this->runCoroutine($request);
         }
 

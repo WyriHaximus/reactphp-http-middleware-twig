@@ -11,6 +11,7 @@
         "reactive-apps/command": "dev-master",
         "reactive-apps/life-cycle-events": "dev-master",
         "roave/better-reflection": "^3.2",
+        "thecodingmachine/safe": "^0.1.16",
         "wyrihaximus/doctrine-annotation-autoloader": "^1.0",
         "wyrihaximus/get-in-packages-composer.jason": "^1.0",
         "wyrihaximus/json-psr7": "^1.0",
