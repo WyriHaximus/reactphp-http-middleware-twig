@@ -10,6 +10,7 @@ use ReactiveApps\Command\Command;
 use ReactiveApps\LifeCycleEvents\Promise\Shutdown;
 use WyriHaximus\Annotations\Coroutine;
 use WyriHaximus\PSR3\CallableThrowableLogger\CallableThrowableLogger;
+use function React\Promise\resolve;
 
 /**
  * @Coroutine()
@@ -54,7 +55,7 @@ final class HttpServer implements Command
         $httpServer->listen($this->socket);
         $this->logger->debug('Listening for incoming requests');
 
-        yield $this->shutdownEventPromise;
+        yield resolve($this->shutdownEventPromise);
 
         return 0;
     }
