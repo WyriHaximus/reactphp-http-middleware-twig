@@ -45,7 +45,7 @@
         "twig/twig": "^2.8",
         "wyrihaximus/async-test-utilities": "^1.1",
         "wyrihaximus/cs-fixer-config": "^1.0",
-        "wyrihaximus/pool-info": "dev-master",
+        "wyrihaximus/pool-info": "^1.0",
         "wyrihaximus/react-parallel": "dev-master"
     },
     "suggest": {

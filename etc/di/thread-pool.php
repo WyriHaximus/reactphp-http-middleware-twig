@@ -9,7 +9,7 @@ return [
         LoopInterface $loop,
         ParallelPoolsCollector $collector = null
     ) {
-        $pool = new Finite($loop, 32);
+        $pool = Finite::create($loop, 32);
 
         if ($collector instanceof ParallelPoolsCollector) {
             $collector->register('http-server', $pool);
