@@ -6,7 +6,6 @@ use WyriHaximus\CsFixerConfig\PhpCsFixerConfig;
 return (function (): Config
 {
     $paths = [
-        __DIR__ . DIRECTORY_SEPARATOR . 'etc',
         __DIR__ . DIRECTORY_SEPARATOR . 'src',
         __DIR__ . DIRECTORY_SEPARATOR . 'tests',
     ];

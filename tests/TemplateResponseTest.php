@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace ReactiveApps\Tests\Command\HttpServer;
+namespace WyriHaximus\React\Tests\Http\Middleware;
 
-use ReactiveApps\Command\HttpServer\TemplateResponse;
+use WyriHaximus\React\Http\Middleware\TemplateResponse;
 use WyriHaximus\AsyncTestUtilities\AsyncTestCase;
 
 /**
@@ -20,7 +20,10 @@ final class TemplateResponseTest extends AsyncTestCase
             'string' => 'beer',
             'int' => \time(),
         ];
-        $response = (new TemplateResponse())->withTemplateData($data);
+        $template = 'frontpage';
+
+        $response = (new TemplateResponse())->withTemplateData($data)->withTemplate($template);
         self::assertSame($data, $response->getTemplateData());
+        self::assertSame($template, $response->getTemplate());
     }
 }

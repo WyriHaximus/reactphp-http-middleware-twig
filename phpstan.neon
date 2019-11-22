@@ -1,4 +1,6 @@
 parameters:
+	ignoreErrors:
+		- '#Constructor in WyriHaximus\\React\\Http\\Middleware\\TemplateRenderMiddleware has parameter \$templateFileExtension with default value.#'
 	classesAllowedToBeExtended:
 		- Exception
 		- RingCentral\Psr7\Response

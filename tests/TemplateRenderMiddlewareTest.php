@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace ReactiveApps\Tests\Command\HttpServer\Middleware;
+namespace WyriHaximus\React\Tests\Http\Middleware;
 
 use Psr\Http\Message\ResponseInterface;
-use ReactiveApps\Command\HttpServer\Middleware\TemplateRenderMiddleware;
-use ReactiveApps\Command\HttpServer\TemplateResponse;
+use WyriHaximus\React\Http\Middleware\TemplateRenderMiddleware;
+use WyriHaximus\React\Http\Middleware\TemplateResponse;
 use RingCentral\Psr7\Response;
 use RingCentral\Psr7\ServerRequest;
 use Twig\Environment;
@@ -16,20 +16,24 @@ use WyriHaximus\AsyncTestUtilities\AsyncTestCase;
  */
 final class TemplateRenderMiddlewareTest extends AsyncTestCase
 {
-    public function testRenderOnTemplateResponse(): void
+    /**
+     * @testWith [""]
+     *           [".twig"]
+     */
+    public function testRenderOnTemplateResponse(string $extension): void
     {
-        $request = (new ServerRequest(
+        $request = new ServerRequest(
             'GET',
             'https://example.com/'
-        ))->withAttribute('request-handler-template', 'template_pawufhuiwfe');
+        );
 
         /** @var ResponseInterface $response */
         $response = $this->await((new TemplateRenderMiddleware(new Environment(
             new ArrayLoader([
-                'template_pawufhuiwfe.twig' => 'Beer from a {{ foo }}',
+                'template_pawufhuiwfe' . $extension => 'Beer from a {{ foo }}',
             ])
-        )))($request, function () {
-            return (new TemplateResponse())->withTemplateData(['foo' => 'bar']);
+        ), $extension))($request, function () {
+            return (new TemplateResponse())->withTemplateData(['foo' => 'bar'])->withTemplate('template_pawufhuiwfe');
         }));
 
         self::assertSame('Beer from a bar', $response->getBody()->getContents());
@@ -37,10 +41,10 @@ final class TemplateRenderMiddlewareTest extends AsyncTestCase
 
     public function testCallNextOnNonTemplateResponse(): void
     {
-        $request = (new ServerRequest(
+        $request = new ServerRequest(
             'GET',
             'https://example.com/'
-        ));
+        );
 
         /** @var ResponseInterface $response */
         $response = $this->await((new TemplateRenderMiddleware(new Environment(

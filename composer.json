@@ -1,55 +1,16 @@
 {
-    "name": "reactive-apps/command-http-server",
-    "description": "HTTP Server command",
+    "name": "wyrihaximus/react-http-middleware-twig",
+    "description": "ReactPHP HTTP Twig Middleware",
     "license": "MIT",
     "require": {
         "php": "^7.3",
-        "cakephp/collection": "^3.6",
-        "doctrine/annotations": "^1.6",
-        "lcobucci/jwt": "^3.3",
-        "nikic/fast-route": "^1.2",
+        "psr/http-message": "^1.0",
         "react/http": "^0.8.0",
-        "reactive-apps/command": "dev-master",
-        "reactive-apps/life-cycle-events": "dev-master",
-        "roave/better-reflection": "^3.2",
         "thecodingmachine/safe": "^0.1.16",
-        "thruway/middleware": "^0.0.2",
-        "voryx/thruway": "^0.5.3",
-        "wyrihaximus/broadcast": "dev-master",
-        "wyrihaximus/doctrine-annotation-autoloader": "^1.0",
-        "wyrihaximus/get-in-packages-composer.jason": "^1.0",
-        "wyrihaximus/json-psr7": "^1.0",
-        "wyrihaximus/psr-3-callable-throwable-logger": "^1.0",
-        "wyrihaximus/psr-3-context-logger": "^1.0",
-        "wyrihaximus/react-child-process-closure": "^1.0",
-        "wyrihaximus/react-child-process-pool": "^1.4",
-        "wyrihaximus/react-http-middleware-resume-response-body": "^1.0",
-        "wyrihaximus/react-http-middleware-rewrite": "^1.0",
-        "wyrihaximus/react-http-middleware-runner": "^1.0",
-        "wyrihaximus/react-http-middleware-session": "^3.0",
-        "wyrihaximus/react-http-middleware-webroot-preload": "^1.0",
-        "wyrihaximus/react-http-psr-15-middleware-group": "^1.2",
-        "wyrihaximus/react-inspector-child-process-pools": "dev-master",
-        "wyrihaximus/react-inspector-parallel-pools": "dev-master",
-        "wyrihaximus/react-stream-json": "^1.2",
-        "wyrihaximus/recoil-promise-coroutine-wrapper": "^1.0",
-        "wyrihaximus/recoil-queue-caller-pool": "^1.2",
-        "wyrihaximus/string-get-in": "^1.0",
-        "wyrihaximus/to-child-process-or-not-to-child-process": "^1.0",
-        "wyrihaximus/to-coroutine-or-not-to-coroutine": "^1.0",
-        "wyrihaximus/to-thread-or-not-to-thread": "dev-master",
-        "zendframework/zend-diactoros": "^2.1"
+        "twig/twig": "^2.8"
     },
     "require-dev": {
-        "monolog/monolog": "^1.23",
-        "twig/twig": "^2.8",
-        "wyrihaximus/async-test-utilities": "^1.1",
-        "wyrihaximus/cs-fixer-config": "^1.0",
-        "wyrihaximus/pool-info": "^1.0",
-        "wyrihaximus/react-parallel": "dev-master"
-    },
-    "suggest": {
-        "wyrihaximus/react-parallel": "Run request handlers in threads (more performant than child processes)"
+        "wyrihaximus/async-test-utilities": "^1.1"
     },
     "config": {
         "platform": {
@@ -57,56 +18,14 @@
         },
         "sort-packages": true
     },
-    "extra": {
-        "php-di-definitions": {
-            "di": [
-                "etc/di/*.php"
-            ]
-        },
-        "reactive-apps": {
-            "command": {
-                "ReactiveApps\\Command\\HttpServer\\Command": "src/Command"
-            },
-            "http-controller": [
-                "src/Controller/*.php",
-                "src/Controller/**/*.php"
-            ],
-            "required-config": {
-                "http-server.address": "The IP + Port to listen on, for example: 0.0.0.0:8080"
-            },
-            "suggested-config": {
-                "http-server.hsts": "Whether or not to set HSTS headers",
-                "http-server.public": "Public webroot to serve, note only put files in here everyone is allowed to see",
-                "http-server.public.preload.cache": "Custom cache to store the preloaded webroot files, stored in memory by default",
-                "http-server.middleware.prefix": "An array with react/http middleware added before the accesslog and webroot serving middleware",
-                "http-server.middleware.suffix": "An array with react/http middleware added after the accesslog and webroot serving middleware and before the route middleware and request handler",
-                "http-server.pool.ttl": "TTL for a child process to wait for it's next task",
-                "http-server.pool.min": "Minimum number of child processes",
-                "http-server.pool.max": "maximum number of child processes",
-                "http-server.rewrites": "Rewrites request path internally from one path to the other, invisible for visitors",
-                "http-server.thruway.realms": "An array with Thruway realms"
-            },
-            "listeners": {
-                "ReactiveApps\\LifeCycleEvents\\Shutdown": [
-                    "src/Listener/Shutdown.php"
-                ],
-                "ReactiveApps\\Command\\HttpServer\\Event\\RealmClose": [
-                    "src/Listener/RealmClose.php"
-                ],
-                "ReactiveApps\\Command\\HttpServer\\Event\\RealmOpen": [
-                    "src/Listener/RealmOpen.php"
-                ]
-            }
-        }
-    },
     "autoload": {
         "psr-4": {
-            "ReactiveApps\\Command\\HttpServer\\": "src/"
+            "WyriHaximus\\React\\Http\\Middleware\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "ReactiveApps\\Tests\\Command\\HttpServer\\": "tests/"
+            "WyriHaximus\\React\\Tests\\Http\\Middleware\\": "tests/"
         }
     },
     "minimum-stability": "dev",
