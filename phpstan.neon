@@ -1,8 +1,5 @@
 parameters:
 	classesAllowedToBeExtended:
-		- Exception
 		- RingCentral\Psr7\Response
-	excludes_analyse:
-		- %rootDir%/../../../src/Controller/JWT.php # TODO: Remove this line once moved to luis/jwt 4.0
 includes:
 	- vendor/wyrihaximus/async-test-utilities/rules.neon
