@@ -16,11 +16,7 @@ use WyriHaximus\AsyncTestUtilities\AsyncTestCase;
  */
 final class TemplateRenderMiddlewareTest extends AsyncTestCase
 {
-    /**
-     * @testWith [""]
-     *           [".twig"]
-     */
-    public function testRenderOnTemplateResponse(string $extension): void
+    public function testRenderOnTemplateResponse(): void
     {
         $request = new ServerRequest(
             'GET',
@@ -30,9 +26,9 @@ final class TemplateRenderMiddlewareTest extends AsyncTestCase
         /** @var ResponseInterface $response */
         $response = $this->await((new TemplateRenderMiddleware(new Environment(
             new ArrayLoader([
-                'template_pawufhuiwfe' . $extension => 'Beer from a {{ foo }}',
+                'template_pawufhuiwfe' => 'Beer from a {{ foo }}',
             ])
-        ), $extension))($request, function () {
+        )))($request, function () {
             return (new TemplateResponse())->withTemplateData(['foo' => 'bar'])->withTemplate('template_pawufhuiwfe');
         }));
 
