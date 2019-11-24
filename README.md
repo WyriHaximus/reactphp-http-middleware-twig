@@ -1,6 +1,6 @@
 # ReactPHP HTTP Twig Middleware
 
-[![Build Status](https://travis-ci.org/WyriHaximus/reactphp-http-middleware-twig.svg?branch=master)](https://travis-ci.org/WyriHaximus/reactphp-http-middleware-twig)
+[![Build Status](https://travis-ci.com/WyriHaximus/reactphp-http-middleware-twig.svg?branch=master)](https://travis-ci.com/WyriHaximus/reactphp-http-middleware-twig)
 [![Latest Stable Version](https://poser.pugx.org/WyriHaximus/react-http-middleware-twig/v/stable.png)](https://packagist.org/packages/WyriHaximus/react-http-middleware-twig)
 [![Total Downloads](https://poser.pugx.org/WyriHaximus/react-http-middleware-twig/downloads.png)](https://packagist.org/packages/WyriHaximus/react-http-middleware-twig)
 [![Code Coverage](https://scrutinizer-ci.com/g/WyriHaximus/reactphp-http-middleware-twig/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/WyriHaximus/reactphp-http-middleware-twig/?branch=master)
