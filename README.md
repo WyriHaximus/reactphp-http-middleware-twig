@@ -15,6 +15,23 @@ To install via [Composer](http://getcomposer.org/), use the command below, it wi
 composer require wyrihaximus/react-http-middleware-twig
 ```
 
+# Usage
+
+When a `TemplateResponse` is returned as response the `TemplateRenderMiddleware` will render the given template with 
+the given data using the given Twig environment.
+
+```php
+$server = new Server([
+    /** Other middleware */
+    new TemplateRenderMiddleware([
+        $twigEnvironment
+    ]),
+    function () {
+        return (new TemplateResponse())->withTemplateData([/** Array with the data for the template */])->withTemplate('frontpage')
+    }
+]);
+```
+
 # License
 
 The MIT License (MIT)
