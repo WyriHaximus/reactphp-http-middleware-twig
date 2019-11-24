@@ -6,7 +6,6 @@
         "php": "^7.3",
         "psr/http-message": "^1.0",
         "react/http": "^0.8.0",
-        "thecodingmachine/safe": "^0.1.16",
         "twig/twig": "^2.8"
     },
     "require-dev": {
