@@ -34,10 +34,10 @@ matrix:
 ## Install or update dependencies
 install:
   - composer validate
-  - if [ -z "$dropPlatform" ]; then composer config --unset platform.php --ignore-platform-reqs; fi;
-  - if [ -z "$dependencies" ]; then composer install --prefer-dist --ignore-platform-reqs; fi;
-  - if [ "$dependencies" = "lowest" ]; then composer update --prefer-lowest --prefer-dist -n --ignore-platform-reqs; fi;
-  - if [ "$dependencies" = "highest" ]; then composer update --prefer-dist -n --ignore-platform-reqs; fi;
+  - if [ -z "$dropPlatform" ]; then composer config --unset platform.php; fi;
+  - if [ -z "$dependencies" ]; then composer install --prefer-dist; fi;
+  - if [ "$dependencies" = "lowest" ]; then composer update --prefer-lowest --prefer-dist -n; fi;
+  - if [ "$dependencies" = "highest" ]; then composer update --prefer-dist -n; fi;
   - composer show
   - mkdir -p build/logs
 
