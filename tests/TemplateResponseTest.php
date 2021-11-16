@@ -1,29 +1,40 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace WyriHaximus\React\Tests\Http\Middleware;
 
-use WyriHaximus\React\Http\Middleware\TemplateResponse;
 use WyriHaximus\AsyncTestUtilities\AsyncTestCase;
+use WyriHaximus\React\Http\Middleware\TemplateResponse;
+
+use function time;
 
 /**
  * @internal
  */
 final class TemplateResponseTest extends AsyncTestCase
 {
-    public function testDataTransfer(): void
+    /**
+     * @test
+     */
+    public function dataTransfer(): void
     {
-        $data = [
+        $data     = [
             'bool' => [
                 false,
                 true,
             ],
             'string' => 'beer',
-            'int' => \time(),
+            'int' => time(),
         ];
         $template = 'frontpage';
 
-        $response = (new TemplateResponse())->withTemplateData($data)->withTemplate($template);
-        self::assertSame($data, $response->getTemplateData());
-        self::assertSame($template, $response->getTemplate());
+        $rawResponse = new TemplateResponse();
+        $response    = $rawResponse->withTemplateData($data);
+        self::assertSame($data, $response->templateData());
+        self::assertNotSame($rawResponse, $response);
+        $response = $rawResponse->withTemplate($template);
+        self::assertSame($template, $response->template());
+        self::assertNotSame($rawResponse, $response);
     }
 }

@@ -1,0 +1,7 @@
+parameters:
+	ergebnis:
+		classesAllowedToBeExtended:
+			- RingCentral\Psr7\Response
+
+includes:
+	- ../../vendor/wyrihaximus/async-test-utilities/rules.neon
