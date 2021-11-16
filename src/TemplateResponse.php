@@ -1,44 +1,48 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace WyriHaximus\React\Http\Middleware;
 
 use RingCentral\Psr7\Response;
 
+/**
+ * @psalm-suppress PropertyNotSetInConstructor
+ */
 final class TemplateResponse extends Response
 {
-    /** @var string */
-    private $template;
+    private string $template;
 
-    /** @var mixed[] */
-    private $templateData = [];
+    /** @var array<string, mixed> */
+    private array $templateData = [];
 
-    public function getTemplate(): string
+    public function template(): string
     {
         return $this->template;
     }
 
     public function withTemplate(string $template): TemplateResponse
     {
-        $clone = clone $this;
+        $clone           = clone $this;
         $clone->template = $template;
 
         return $clone;
     }
 
     /**
-     * @return mixed[]
+     * @return array<string, mixed>
      */
-    public function getTemplateData(): array
+    public function templateData(): array
     {
         return $this->templateData;
     }
 
     /**
-     * @param mixed[] $data
+     * @param array<string, mixed> $data
      */
     public function withTemplateData(array $data): TemplateResponse
     {
-        $clone = clone $this;
+        $clone               = clone $this;
         $clone->templateData = $data;
 
         return $clone;

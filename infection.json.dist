@@ -1,15 +1,52 @@
 {
-    "timeout": 120,
+    "timeout": 300,
     "source": {
         "directories": [
             "src"
         ]
     },
-    "tmpDir": "build",
     "logs": {
-        "text": "build/infection.log"
+        "text": "./var/infection.log",
+        "summary": "./var/infection-summary.log",
+        "json": "./var/infection.json",
+        "perMutator": "./var/infection-per-mutator.md"
     },
     "mutators": {
-        "@default": true
+        "@default": true,
+        "ArrayItemRemoval": {
+            "ignore": [
+              "WyriHaximus\\React\\Mutex\\AbstractMutexTestCase::thatYouCantRequiredTheSameLockTwice"
+            ]
+        },
+        "InstanceOf_": {
+            "ignore": [
+              "WyriHaximus\\React\\Mutex\\Memory::release"
+            ]
+        },
+        "LogicalNot": {
+            "ignore": [
+              "WyriHaximus\\React\\Mutex\\Memory::release"
+            ]
+        },
+        "LogicalOr": {
+            "ignore": [
+              "WyriHaximus\\React\\Mutex\\Memory::release"
+            ]
+        },
+        "MethodCallRemoval": {
+            "ignore": [
+              "WyriHaximus\\React\\Mutex\\AbstractMutexTestCase::thatYouCantRequiredTheSameLockTwice",
+              "WyriHaximus\\React\\Mutex\\AbstractMutexTestCase::cannotReleaseLockWithWrongRng"
+            ]
+        },
+        "PublicVisibility": {
+            "ignore": [
+              "WyriHaximus\\React\\Mutex\\AbstractMutexTestCase::thatYouCantRequiredTheSameLockTwice",
+              "WyriHaximus\\React\\Mutex\\AbstractMutexTestCase::cannotReleaseLockWithWrongRng"
+            ]
+        }
+    },
+    "phpUnit": {
+        "configDir": "./etc/qa/"
     }
 }

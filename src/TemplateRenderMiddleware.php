@@ -1,25 +1,24 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace WyriHaximus\React\Http\Middleware;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use React\Promise\PromiseInterface;
+use Twig\Environment;
+
 use function React\Promise\resolve;
 use function RingCentral\Psr7\stream_for;
-use Twig\Environment;
 
 /**
  * @internal
  */
 final class TemplateRenderMiddleware
 {
-    /** @var Environment */
-    private $twig;
+    private Environment $twig;
 
-    /**
-     * @param Environment $twig
-     */
     public function __construct(Environment $twig)
     {
         $this->twig = $twig;
@@ -32,8 +31,8 @@ final class TemplateRenderMiddleware
                 $response = $response->withBody(
                     stream_for(
                         $this->twig->render(
-                            $response->getTemplate(),
-                            $response->getTemplateData()
+                            $response->template(),
+                            $response->templateData()
                         )
                     )
                 );
