@@ -10,7 +10,7 @@
         "twig/twig": "^3.3.7"
     },
     "require-dev": {
-        "wyrihaximus/async-test-utilities": "^4.2.0"
+        "wyrihaximus/async-test-utilities": "^4.2.1"
     },
     "config": {
         "platform": {
